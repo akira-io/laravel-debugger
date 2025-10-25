@@ -7,7 +7,7 @@ namespace Akira\Debugger\Payloads;
 use Illuminate\Database\Events\QueryExecuted;
 use Spatie\Ray\Payloads\Payload;
 
-class ExecutedQueryPayload extends Payload
+final class ExecutedQueryPayload extends Payload
 {
     protected QueryExecuted $query;
 

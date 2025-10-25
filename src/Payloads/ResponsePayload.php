@@ -8,7 +8,7 @@ use Illuminate\Testing\TestResponse;
 use Spatie\Ray\ArgumentConverter;
 use Spatie\Ray\Payloads\Payload;
 
-class ResponsePayload extends Payload
+final class ResponsePayload extends Payload
 {
     protected int $statusCode;
 

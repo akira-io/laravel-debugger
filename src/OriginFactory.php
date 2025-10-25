@@ -23,7 +23,7 @@ use Spatie\Backtrace\Frame;
 use Spatie\Ray\Origin\Origin;
 use Spatie\Ray\Support\Invador;
 
-class OriginFactory
+final class OriginFactory
 {
     public function getOrigin(): Origin
     {
@@ -48,7 +48,7 @@ class OriginFactory
         return $frames[$index] ?? null;
     }
 
-    protected function getFrame(): ?Frame
+    private function getFrame(): ?Frame
     {
         $frames = collect(Backtrace::create()->frames())->reverse();
 
@@ -138,17 +138,17 @@ class OriginFactory
         return $originFrame;
     }
 
-    protected function findFrameForStringableMacro(Collection $frames, int $indexOfFoundFrame): ?Frame
+    private function findFrameForStringableMacro(Collection $frames, int $indexOfFoundFrame): ?Frame
     {
         return $frames[$indexOfFoundFrame + 2];
     }
 
-    protected function findFrameForCollectionMacro(Collection $frames, int $indexOfFoundFrame): ?Frame
+    private function findFrameForCollectionMacro(Collection $frames, int $indexOfFoundFrame): ?Frame
     {
         return $frames[$indexOfFoundFrame + 2];
     }
 
-    protected function findFrameForQuery(Collection $frames): ?Frame
+    private function findFrameForQuery(Collection $frames): ?Frame
     {
         $indexOfLastDatabaseCall = $frames
             ->filter(function (Frame $frame) {
@@ -161,7 +161,7 @@ class OriginFactory
         return $frames[$indexOfLastDatabaseCall + 1] ?? null;
     }
 
-    protected function findFrameForQueryBuilder(Collection $frames): ?Frame
+    private function findFrameForQueryBuilder(Collection $frames): ?Frame
     {
         $indexOfLastDatabaseCall = $frames
             ->filter(function (Frame $frame) {
@@ -174,12 +174,12 @@ class OriginFactory
         return $frames[$indexOfLastDatabaseCall + 1] ?? null;
     }
 
-    protected function findFrameForView(Collection $frames, int $indexOfRayFrame): ?Frame
+    private function findFrameForView(Collection $frames, int $indexOfRayFrame): ?Frame
     {
         return $frames[$indexOfRayFrame + 6] ?? null;
     }
 
-    protected function findFrameForDump(Collection $frames): ?Frame
+    private function findFrameForDump(Collection $frames): ?Frame
     {
         $indexOfDumpCall = $frames
             ->search(function (Frame $frame) {
@@ -193,7 +193,7 @@ class OriginFactory
         return $frames[$indexOfDumpCall + 1] ?? null;
     }
 
-    protected function findFrameForEvent(Collection $frames): ?Frame
+    private function findFrameForEvent(Collection $frames): ?Frame
     {
         $indexOfLoggerCall = $frames
             ->search(function (Frame $frame) {
@@ -219,7 +219,7 @@ class OriginFactory
         return $foundFrame ?? null;
     }
 
-    protected function findFrameForLog(Collection $frames, int $indexOfLoggerCall): ?Frame
+    private function findFrameForLog(Collection $frames, int $indexOfLoggerCall): ?Frame
     {
         /** @var Frame $foundFrame */
         if ($foundFrame = $frames[$indexOfLoggerCall + 1]) {
@@ -239,7 +239,7 @@ class OriginFactory
         return $foundFrame ?? null;
     }
 
-    protected function replaceCompiledViewPathWithOriginalViewPath(Frame $frame): Frame
+    private function replaceCompiledViewPathWithOriginalViewPath(Frame $frame): Frame
     {
         if (! file_exists($frame->file)) {
             return $frame;
@@ -247,7 +247,7 @@ class OriginFactory
 
         $fileContents = file_get_contents($frame->file);
 
-        $originalViewPath = trim(Str::between($fileContents, '/**PATH', 'ENDPATH**/'));
+        $originalViewPath = mb_trim(Str::between($fileContents, '/**PATH', 'ENDPATH**/'));
 
         if (! file_exists($originalViewPath)) {
             return $frame;

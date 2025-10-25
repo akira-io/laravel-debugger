@@ -15,7 +15,7 @@ use Spatie\FlareClient\Truncation\ReportTrimmer;
 use Spatie\Ray\Settings\Settings;
 use Throwable;
 
-class ExceptionWatcher extends Watcher
+final class ExceptionWatcher extends Watcher
 {
     public function register(): void
     {

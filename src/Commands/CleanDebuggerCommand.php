@@ -10,7 +10,7 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Process;
 
-class CleanDebuggerCommand extends Command
+final class CleanDebuggerCommand extends Command
 {
     protected $signature = 'debugger:clean';
 
@@ -34,7 +34,7 @@ class CleanDebuggerCommand extends Command
         }
 
         $this->withProgressBar($directories, function ($directory) {
-            $result = Process::run('./vendor/bin/rector process ' . $directory);
+            $result = Process::run('./vendor/bin/rector process '.$directory);
 
             if (! $result->successful()) {
                 $this->error($result->errorOutput());

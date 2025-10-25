@@ -11,7 +11,7 @@ use ZBateson\MailMimeParser\Header\Part\AddressPart;
 use ZBateson\MailMimeParser\IMessage;
 use ZBateson\MailMimeParser\MailMimeParser;
 
-class LoggedMailPayload extends Payload
+final class LoggedMailPayload extends Payload
 {
     protected string $html = '';
 
@@ -78,26 +78,15 @@ class LoggedMailPayload extends Payload
         ];
     }
 
-    protected function sanitizeHtml(string $html): string
-    {
-        $needle = 'Content-Type: text/html; charset=utf-8 Content-Transfer-Encoding: quoted-printable';
-
-        if (strpos($html, $needle) !== false) {
-            $html = substr($html, strpos($html, $needle));
-        }
-
-        return $html;
-    }
-
     protected static function getMailContent(string $loggedMail, IMessage $message): string
     {
-        $startOfHtml = strpos($loggedMail, '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0', true);
+        $startOfHtml = mb_strpos($loggedMail, '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0', true);
 
         if (! $startOfHtml) {
             return $message->getContent() ?? $message->getHtmlContent() ?? '';
         }
 
-        return substr($loggedMail, $startOfHtml) ?? '';
+        return mb_substr($loggedMail, $startOfHtml) ?? '';
     }
 
     protected static function convertHeaderToPersons(?AddressHeader $header): array
@@ -115,5 +104,16 @@ class LoggedMailPayload extends Payload
             },
             $header->getAddresses()
         );
+    }
+
+    protected function sanitizeHtml(string $html): string
+    {
+        $needle = 'Content-Type: text/html; charset=utf-8 Content-Transfer-Encoding: quoted-printable';
+
+        if (mb_strpos($html, $needle) !== false) {
+            $html = mb_substr($html, mb_strpos($html, $needle));
+        }
+
+        return $html;
     }
 }

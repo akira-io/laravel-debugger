@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Akira\Debugger;
 
-class DebuggerProxy
+final class DebuggerProxy
 {
-    protected array $methodsCalled = [];
+    private array $methodsCalled = [];
 
     public function __call($method, $arguments)
     {

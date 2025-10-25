@@ -9,7 +9,7 @@ use Illuminate\View\View;
 use Spatie\Ray\ArgumentConverter;
 use Spatie\Ray\Payloads\Payload;
 
-class ViewPayload extends Payload
+final class ViewPayload extends Payload
 {
     protected View $view;
 
@@ -37,7 +37,7 @@ class ViewPayload extends Payload
         $path = $view->getPath();
 
         if (Str::startsWith($path, base_path())) {
-            $path = substr($path, strlen(base_path()));
+            $path = mb_substr($path, mb_strlen(base_path()));
         }
 
         return $path;

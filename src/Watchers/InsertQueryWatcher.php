@@ -8,7 +8,7 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-class InsertQueryWatcher extends ConditionalQueryWatcher
+final class InsertQueryWatcher extends ConditionalQueryWatcher
 {
     public function register(): void
     {
@@ -17,7 +17,7 @@ class InsertQueryWatcher extends ConditionalQueryWatcher
         $this->enabled = $settings->send_insert_queries_to_ray ?? false;
 
         $this->setConditionalCallback(function (QueryExecuted $query) {
-            return Str::startsWith(strtolower($query->sql), 'insert');
+            return Str::startsWith(mb_strtolower($query->sql), 'insert');
         });
     }
 }

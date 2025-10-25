@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Spatie\Ray\Payloads\Payload;
 use Throwable;
 
-class MailablePayload extends Payload
+final class MailablePayload extends Payload
 {
     protected string $html = '';
 
@@ -21,7 +21,7 @@ class MailablePayload extends Payload
         $this->mailable = $mailable;
     }
 
-    public static function forMailable(Mailable $mailable): MailablePayload
+    public static function forMailable(Mailable $mailable): self
     {
         return new self(self::renderMailable($mailable), $mailable);
     }
@@ -55,6 +55,15 @@ class MailablePayload extends Payload
         return $content;
     }
 
+    protected static function renderMailable(Mailable $mailable): string
+    {
+        try {
+            return $mailable->render();
+        } catch (Throwable $exception) {
+            return "Mailable could not be rendered because {$exception->getMessage()}";
+        }
+    }
+
     protected function convertToPersons(array $persons): array
     {
         return collect($persons)
@@ -65,14 +74,5 @@ class MailablePayload extends Payload
                 ];
             })
             ->toArray();
-    }
-
-    protected static function renderMailable(Mailable $mailable): string
-    {
-        try {
-            return $mailable->render();
-        } catch (Throwable $exception) {
-            return "Mailable could not be rendered because {$exception->getMessage()}";
-        }
     }
 }

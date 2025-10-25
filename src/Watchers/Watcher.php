@@ -19,21 +19,21 @@ abstract class Watcher
         return $this->enabled;
     }
 
-    public function enable(): Watcher
+    public function enable(): self
     {
         $this->enabled = true;
 
         return $this;
     }
 
-    public function disable(): Watcher
+    public function disable(): self
     {
         $this->enabled = false;
 
         return $this;
     }
 
-    public function setRayProxy(DebuggerProxy $rayProxy): Watcher
+    public function setRayProxy(DebuggerProxy $rayProxy): self
     {
         $this->rayProxy = $rayProxy;
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-class SelectQueryWatcher extends ConditionalQueryWatcher
+final class SelectQueryWatcher extends ConditionalQueryWatcher
 {
     public function register(): void
     {
@@ -17,7 +17,7 @@ class SelectQueryWatcher extends ConditionalQueryWatcher
         $this->enabled = $settings->send_select_queries_to_ray ?? false;
 
         $this->setConditionalCallback(function (QueryExecuted $query) {
-            return Str::startsWith(strtolower($query->sql), 'select');
+            return Str::startsWith(mb_strtolower($query->sql), 'select');
         });
     }
 }

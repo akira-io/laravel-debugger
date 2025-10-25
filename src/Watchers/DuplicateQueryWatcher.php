@@ -6,13 +6,14 @@ namespace Akira\Debugger\Watchers;
 
 use Akira\Debugger\Debugger;
 use Akira\Debugger\Payloads\ExecutedQueryPayload;
+use DateTimeInterface;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-class DuplicateQueryWatcher extends Watcher
+final class DuplicateQueryWatcher extends Watcher
 {
     /** @var string[] */
     protected array $executedQueries = [];
@@ -46,7 +47,7 @@ class DuplicateQueryWatcher extends Watcher
         });
     }
 
-    public function enable(): Watcher
+    public function enable(): self
     {
         if (app()->bound('db')) {
             collect(DB::getConnections())->each(function ($connection) {
@@ -54,18 +55,14 @@ class DuplicateQueryWatcher extends Watcher
             });
         }
 
-        parent::enable();
-
-        return $this;
+        return parent::enable();
     }
 
-    public function disable(): Watcher
+    public function disable(): self
     {
         DB::disableQueryLog();
 
-        parent::disable();
-
-        return $this;
+        return parent::disable();
     }
 
     public function getExecutedQueries(): array
@@ -76,7 +73,7 @@ class DuplicateQueryWatcher extends Watcher
     private function cleanupBindings(array $bindings): array
     {
         return array_map(function ($binding) {
-            if ($binding instanceof \DateTimeInterface) {
+            if ($binding instanceof DateTimeInterface) {
                 return $binding->format('Y-m-d H:i:s');
             }
 

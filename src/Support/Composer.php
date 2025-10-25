@@ -7,7 +7,7 @@ namespace Akira\Debugger\Support;
 use Closure;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Composer extends \Illuminate\Support\Composer
+final class Composer extends \Illuminate\Support\Composer
 {
     /**
      * Install the given Composer packages into the application.
@@ -33,7 +33,7 @@ class Composer extends \Illuminate\Support\Composer
             ->run(
                 $output instanceof OutputInterface
                     ? function ($type, $line) use ($output) {
-                        $output->write('    ' . $line);
+                        $output->write('    '.$line);
                     } : $output
             ) === 0;
     }

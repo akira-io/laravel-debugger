@@ -47,7 +47,7 @@ class QueryWatcher extends Watcher
         });
     }
 
-    public function enable(): Watcher
+    public function enable(): self
     {
         if (app()->bound('db')) {
             collect(DB::getConnections())->each(function ($connection) {
@@ -55,18 +55,14 @@ class QueryWatcher extends Watcher
             });
         }
 
-        parent::enable();
-
-        return $this;
+        return parent::enable();
     }
 
-    public function disable(): Watcher
+    public function disable(): self
     {
         DB::disableQueryLog();
 
-        parent::disable();
-
-        return $this;
+        return parent::disable();
     }
 
     public function keepExecutedQueries(): self

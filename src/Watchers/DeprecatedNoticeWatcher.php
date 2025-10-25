@@ -8,7 +8,7 @@ use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-class DeprecatedNoticeWatcher extends Watcher
+final class DeprecatedNoticeWatcher extends Watcher
 {
     public function register(): void
     {

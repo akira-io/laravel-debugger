@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Akira\Debugger\DumpRecorder;
 
-class MultiDumpHandler
+final class MultiDumpHandler
 {
-    protected array $handlers = [];
+    private array $handlers = [];
 
     public function dump($value): void
     {

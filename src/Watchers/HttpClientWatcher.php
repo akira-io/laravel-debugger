@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Event;
 use Spatie\Ray\Payloads\TablePayload;
 use Spatie\Ray\Settings\Settings;
 
-class HttpClientWatcher extends Watcher
+final class HttpClientWatcher extends Watcher
 {
     public static function supportedByLaravelVersion(): bool|int
     {
@@ -23,7 +23,7 @@ class HttpClientWatcher extends Watcher
 
     public function register(): void
     {
-        if (! static::supportedByLaravelVersion()) {
+        if (! self::supportedByLaravelVersion()) {
             return;
         }
 

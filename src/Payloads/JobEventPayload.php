@@ -7,15 +7,16 @@ namespace Akira\Debugger\Payloads;
 use Illuminate\Queue\Jobs\Job;
 use Spatie\Ray\ArgumentConverter;
 use Spatie\Ray\Payloads\Payload;
+use Throwable;
 
-class JobEventPayload extends Payload
+final class JobEventPayload extends Payload
 {
     protected object $event;
 
     /** @var object|mixed */
     protected mixed $job;
 
-    protected ?\Throwable $exception = null;
+    protected ?Throwable $exception = null;
 
     public function __construct(object $event)
     {

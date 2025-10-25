@@ -7,7 +7,7 @@ namespace Akira\Debugger\Payloads;
 use Illuminate\Database\Query\Builder;
 use Spatie\Ray\Payloads\Payload;
 
-class QueryPayload extends Payload
+final class QueryPayload extends Payload
 {
     protected Builder $query;
 

@@ -8,7 +8,7 @@ use Akira\Debugger\Debugger;
 use Akira\Debugger\Payloads\EventPayload;
 use Illuminate\Support\Facades\Event;
 
-class EventWatcher extends Watcher
+final class EventWatcher extends Watcher
 {
     public function register(): void
     {

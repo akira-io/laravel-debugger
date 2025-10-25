@@ -7,7 +7,7 @@ namespace Akira\Debugger\Payloads;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Spatie\Ray\Payloads\Payload;
 
-class MarkdownPayload extends Payload
+final class MarkdownPayload extends Payload
 {
     protected string $markdown;
 
@@ -44,7 +44,7 @@ class MarkdownPayload extends Payload
         $html = $this->processHeaderTags($html);
         $css = $this->getCustomStyles();
 
-        return trim("{$css}{$html}");
+        return mb_trim("{$css}{$html}");
     }
 
     protected function getCustomStyles(): string

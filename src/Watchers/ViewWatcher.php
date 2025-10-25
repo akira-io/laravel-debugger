@@ -8,7 +8,7 @@ use Akira\Debugger\Debugger;
 use Illuminate\Support\Facades\Event;
 use Spatie\Ray\Settings\Settings;
 
-class ViewWatcher extends Watcher
+final class ViewWatcher extends Watcher
 {
     public function register(): void
     {

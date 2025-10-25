@@ -11,22 +11,22 @@ use ReflectionMethod;
 use ReflectionProperty;
 use Symfony\Component\VarDumper\VarDumper;
 
-class DumpRecorder
+final class DumpRecorder
 {
-    protected array $dumps = [];
+    private array $dumps = [];
 
-    protected Container $app;
+    private Container $app;
 
-    protected static bool $registeredHandler = false;
+    private static bool $registeredHandler = false;
 
-    protected static $runningLaravel9 = null;
+    private static $runningLaravel9 = null;
 
     public function __construct(Container $app)
     {
         $this->app = $app;
 
-        if (static::$runningLaravel9 === null) {
-            static::$runningLaravel9 = version_compare(app()->version(), '9.0.0', '>=');
+        if (self::$runningLaravel9 === null) {
+            self::$runningLaravel9 = version_compare(app()->version(), '9.0.0', '>=');
         }
     }
 
@@ -41,8 +41,8 @@ class DumpRecorder
             return $multiDumpHandler;
         });
 
-        if (! static::$registeredHandler || static::$runningLaravel9) {
-            static::$registeredHandler = true;
+        if (! self::$registeredHandler || self::$runningLaravel9) {
+            self::$registeredHandler = true;
 
             $multiDumpHandler->resetHandlers();
 
@@ -66,7 +66,7 @@ class DumpRecorder
         return $this;
     }
 
-    protected function shouldDump(): bool
+    private function shouldDump(): bool
     {
         /** @var Ray $ray */
         $ray = app(Debugger::class);
@@ -80,9 +80,9 @@ class DumpRecorder
      * to create and register a new VarDumper::$handler before we'll overwrite it.
      * Of course, we only need to do this if there isn't a registered VarDumper::$handler.
      *
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
-    protected function ensureOriginalHandlerExists(): void
+    private function ensureOriginalHandlerExists(): void
     {
         $reflectionProperty = new ReflectionProperty(VarDumper::class, 'handler');
         if (PHP_VERSION_ID < 80100) {

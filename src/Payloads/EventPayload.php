@@ -7,7 +7,7 @@ namespace Akira\Debugger\Payloads;
 use Spatie\Ray\ArgumentConverter;
 use Spatie\Ray\Payloads\Payload;
 
-class EventPayload extends Payload
+final class EventPayload extends Payload
 {
     protected string $eventName;
 

@@ -31,6 +31,7 @@ use Akira\Debugger\Watchers\ViewWatcher;
 use Akira\Debugger\Watchers\Watcher;
 use Closure;
 use Composer\InstalledVersions;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Database\QueryException;
@@ -50,16 +51,16 @@ use Spatie\Ray\Ray as BaseRay;
 use Spatie\Ray\Settings\Settings;
 use Throwable;
 
-class Debugger extends BaseRay
+final class Debugger extends BaseRay
 {
     public function __construct(Settings $settings, ?Client $client = null, ?string $uuid = null)
     {
         // persist the enabled setting across multiple instantiations
-        $enabled = static::$enabled;
+        $enabled = self::$enabled;
 
         parent::__construct($settings, $client, $uuid);
 
-        static::$enabled = $enabled;
+        self::$enabled = $enabled;
     }
 
     public function loggedMail(string $loggedMail): self
@@ -596,7 +597,7 @@ class Debugger extends BaseRay
     /**
      * @param  \Spatie\Ray\Payloads\Payload|\Spatie\Ray\Payloads\Payload[]  $payloads
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function sendRequest($payloads, array $meta = []): BaseRay
     {
@@ -609,7 +610,7 @@ class Debugger extends BaseRay
         if (class_exists(InstalledVersions::class)) {
             try {
                 $meta['laravel_ray_package_version'] = InstalledVersions::getVersion('spatie/laravel-ray');
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $meta['laravel_ray_package_version'] = '0.0.0';
             }
         }

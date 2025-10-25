@@ -7,7 +7,7 @@ namespace Akira\Debugger\Payloads;
 use Spatie\Ray\ArgumentConverter;
 use Spatie\Ray\Payloads\Payload;
 
-class CachePayload extends Payload
+final class CachePayload extends Payload
 {
     protected string $type;
 
@@ -41,7 +41,7 @@ class CachePayload extends Payload
     public function getContent(): array
     {
         $values = array_filter([
-            'Event' => '<code>' . $this->type . '</code>',
+            'Event' => '<code>'.$this->type.'</code>',
             'Key' => $this->key,
             'Value' => ArgumentConverter::convertToPrimitive($this->value),
             'Tags' => count($this->tags) ? ArgumentConverter::convertToPrimitive($this->tags) : null,

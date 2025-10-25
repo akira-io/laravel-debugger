@@ -9,7 +9,7 @@ use Illuminate\Support\Env;
 use Spatie\Ray\ArgumentConverter;
 use Spatie\Ray\Payloads\Payload;
 
-class EnvironmentPayload extends Payload
+final class EnvironmentPayload extends Payload
 {
     protected array $values;
 
@@ -70,7 +70,7 @@ class EnvironmentPayload extends Payload
             return "<a href=\"{$value}\" class=\"text-blue-600 hover:underline\">{$value}</a>";
         }
 
-        if (strpos($value, 'base64:') === 0) {
+        if (mb_strpos($value, 'base64:') === 0) {
             return "<div class=\"text-gray-400\">{$value}</div>";
         }
 

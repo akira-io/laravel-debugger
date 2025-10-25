@@ -7,7 +7,7 @@ namespace Akira\Debugger\Watchers;
 use Illuminate\Database\Events\QueryExecuted;
 use Spatie\Ray\Settings\Settings;
 
-class SlowQueryWatcher extends ConditionalQueryWatcher
+final class SlowQueryWatcher extends ConditionalQueryWatcher
 {
     protected int $minimumTimeInMs = 500;
 

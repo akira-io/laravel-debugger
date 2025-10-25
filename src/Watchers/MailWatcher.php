@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-class MailWatcher extends Watcher
+final class MailWatcher extends Watcher
 {
     public function register(): void
     {

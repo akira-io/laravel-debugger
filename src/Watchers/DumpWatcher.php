@@ -7,7 +7,7 @@ namespace Akira\Debugger\Watchers;
 use Akira\Debugger\DumpRecorder\DumpRecorder;
 use Spatie\Ray\Settings\Settings;
 
-class DumpWatcher extends Watcher
+final class DumpWatcher extends Watcher
 {
     public function register(): void
     {

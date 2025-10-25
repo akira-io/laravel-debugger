@@ -13,7 +13,7 @@ use Illuminate\Queue\Events\JobQueued;
 use Illuminate\Support\Facades\Event;
 use Spatie\Ray\Settings\Settings;
 
-class JobWatcher extends Watcher
+final class JobWatcher extends Watcher
 {
     public function register(): void
     {

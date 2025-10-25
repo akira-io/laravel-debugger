@@ -12,7 +12,7 @@ use Illuminate\Cache\Events\KeyForgotten;
 use Illuminate\Cache\Events\KeyWritten;
 use Spatie\Ray\Settings\Settings;
 
-class CacheWatcher extends Watcher
+final class CacheWatcher extends Watcher
 {
     public function register(): void
     {

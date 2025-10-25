@@ -8,7 +8,7 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-class UpdateQueryWatcher extends ConditionalQueryWatcher
+final class UpdateQueryWatcher extends ConditionalQueryWatcher
 {
     public function register(): void
     {
@@ -17,7 +17,7 @@ class UpdateQueryWatcher extends ConditionalQueryWatcher
         $this->enabled = $settings->send_update_queries_to_ray ?? false;
 
         $this->setConditionalCallback(function (QueryExecuted $query) {
-            return Str::startsWith(strtolower($query->sql), 'update');
+            return Str::startsWith(mb_strtolower($query->sql), 'update');
         });
     }
 }

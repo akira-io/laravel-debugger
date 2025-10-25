@@ -9,7 +9,7 @@ use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Facades\Event;
 use Spatie\Ray\Payloads\ApplicationLogPayload;
 
-class ApplicationLogWatcher extends Watcher
+final class ApplicationLogWatcher extends Watcher
 {
     public function register(): void
     {

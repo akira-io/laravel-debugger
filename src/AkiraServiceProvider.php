@@ -42,7 +42,7 @@ use Spatie\Ray\Payloads\Payload;
 use Spatie\Ray\Settings\Settings;
 use Spatie\Ray\Settings\SettingsFactory;
 
-class AkiraServiceProvider extends ServiceProvider
+final class AkiraServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -61,6 +61,35 @@ class AkiraServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->bootWatchers();
+        $this->registerPublishing();
+    }
+
+    public function setProjectName(): self
+    {
+        if (Debugger::$projectName === '') {
+            $projectName = config('app.name');
+
+            if ($projectName !== 'Laravel') {
+                debug()->project($projectName);
+            }
+        }
+
+        return $this;
+    }
+
+    protected function registerPublishing(): void
+    {
+        if ($this->app->runningInConsole()) {
+            // Publish configuration file
+            $this->publishes([
+                __DIR__.'/../config/debugger.php' => config_path('debugger.php'),
+            ], 'debugger-config');
+
+            // Publish all
+            $this->publishes([
+                __DIR__.'/../config/debugger.php' => config_path('debugger.php'),
+            ], 'debugger');
+        }
     }
 
     protected function registerCommands(): self
@@ -97,19 +126,6 @@ class AkiraServiceProvider extends ServiceProvider
                 'send_deprecated_notices_to_ray' => env('SEND_DEPRECATED_NOTICES_TO_DEBUGGER', false),
             ]);
         });
-
-        return $this;
-    }
-
-    public function setProjectName(): self
-    {
-        if (Debugger::$projectName === '') {
-            $projectName = config('app.name');
-
-            if ($projectName !== 'Laravel') {
-                debug()->project($projectName);
-            }
-        }
 
         return $this;
     }

@@ -8,7 +8,7 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-class DeleteQueryWatcher extends ConditionalQueryWatcher
+final class DeleteQueryWatcher extends ConditionalQueryWatcher
 {
     public function register(): void
     {
@@ -17,7 +17,7 @@ class DeleteQueryWatcher extends ConditionalQueryWatcher
         $this->enabled = $settings->send_delete_queries_to_ray ?? false;
 
         $this->setConditionalCallback(function (QueryExecuted $query) {
-            return Str::startsWith(strtolower($query->sql), 'delete');
+            return Str::startsWith(mb_strtolower($query->sql), 'delete');
         });
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Ray\ArgumentConverter;
 use Spatie\Ray\Payloads\Payload;
 
-class ModelPayload extends Payload
+final class ModelPayload extends Payload
 {
     protected ?Model $model;
 

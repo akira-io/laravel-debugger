@@ -17,7 +17,7 @@ use Spatie\Ray\Settings\Settings;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class RequestWatcher extends Watcher
+final class RequestWatcher extends Watcher
 {
     public function register(): void
     {
@@ -80,13 +80,13 @@ class RequestWatcher extends Watcher
                 return json_decode($content, true);
             }
 
-            if (Str::startsWith(strtolower($response->headers->get('Content-Type')), 'text/plain')) {
+            if (Str::startsWith(mb_strtolower($response->headers->get('Content-Type')), 'text/plain')) {
                 return $content;
             }
         }
 
         if ($response instanceof RedirectResponse) {
-            return 'Redirected to ' . $response->getTargetUrl();
+            return 'Redirected to '.$response->getTargetUrl();
         }
 
         if ($response instanceof IlluminateResponse && $response->getOriginalContent() instanceof View) {
@@ -126,7 +126,7 @@ class RequestWatcher extends Watcher
         array_walk_recursive($files, function (&$file) {
             $file = [
                 'name' => $file->getClientOriginalName(),
-                'size' => $file->isFile() ? ($file->getSize() / 1000) . 'KB' : '0',
+                'size' => $file->isFile() ? ($file->getSize() / 1000).'KB' : '0',
             ];
         });
 
