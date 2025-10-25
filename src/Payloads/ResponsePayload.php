@@ -1,0 +1,68 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Akira\Debugger\Payloads;
+
+use Illuminate\Testing\TestResponse;
+use Spatie\Ray\ArgumentConverter;
+use Spatie\Ray\Payloads\Payload;
+
+class ResponsePayload extends Payload
+{
+    protected int $statusCode;
+
+    protected array $headers;
+
+    protected ?string $content;
+
+    protected ?array $json;
+
+    public function __construct(int $statusCode, array $headers, string $content, ?array $json = null)
+    {
+        $this->statusCode = $statusCode;
+
+        $this->headers = $this->normalizeHeaders($headers);
+
+        $this->content = $content;
+
+        $this->json = $json;
+    }
+
+    public static function fromTestResponse(TestResponse $testResponse): self
+    {
+        return new self(
+            $testResponse->getStatusCode(),
+            $testResponse->headers->all(),
+            $testResponse->content(),
+            $json = rescue(function () use ($testResponse) {
+                return $testResponse->json();
+            }, null, false)
+        );
+    }
+
+    public function getType(): string
+    {
+        return 'response';
+    }
+
+    public function getContent(): array
+    {
+        return [
+            'status_code' => $this->statusCode,
+            'headers' => ArgumentConverter::convertToPrimitive($this->headers),
+            'content' => $this->content,
+            'json' => ArgumentConverter::convertToPrimitive($this->json),
+        ];
+    }
+
+    protected function normalizeHeaders(array $headers): array
+    {
+        return collect($headers)
+            ->map(function (array $values) {
+                return $values[0] ?? null;
+            })
+            ->filter()
+            ->toArray();
+    }
+}

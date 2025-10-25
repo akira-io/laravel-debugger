@@ -1,0 +1,48 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.2, 8.3, 8.4]
+        laravel: [11.*, 12.*]
+        exclude:
+          - php: 8.2
+            laravel: 12.*
+
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
+          coverage: xdebug
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Check code style (Pint)
+        run: vendor/bin/pint --test
+
+      - name: Run Rector (dry-run)
+        run: vendor/bin/rector process --dry-run
+
+      - name: Run static analysis (PHPStan)
+        run: vendor/bin/phpstan analyse --memory-limit=2G
+
+      - name: Run tests (Pest)
+        run: vendor/bin/pest

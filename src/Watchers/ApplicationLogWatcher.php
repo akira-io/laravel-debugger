@@ -1,0 +1,84 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Akira\Debugger\Watchers;
+
+use Akira\Debugger\Debugger;
+use Illuminate\Log\Events\MessageLogged;
+use Illuminate\Support\Facades\Event;
+use Spatie\Ray\Payloads\ApplicationLogPayload;
+
+class ApplicationLogWatcher extends Watcher
+{
+    public function register(): void
+    {
+
+        $ray = app(Debugger::class);
+
+        $this->enabled = $ray->settings->send_log_calls_to_ray;
+
+        Event::listen(MessageLogged::class, function (MessageLogged $message) {
+            if (! $this->shouldLogMessage($message)) {
+                return;
+            }
+
+            if (! class_exists('Spatie\Ray\Payloads\ApplicationLogPayload')) {
+                return;
+            }
+
+            $payload = new ApplicationLogPayload($message->message, $message->context);
+
+            /** @var Ray $ray */
+            $ray = app(Debugger::class);
+
+            $ray->sendRequest($payload);
+
+            switch ($message->level) {
+                case 'error':
+                case 'critical':
+                case 'alert':
+                case 'emergency':
+                    $ray->color('red');
+
+                    break;
+                case 'warning':
+                    $ray->color('orange');
+
+                    break;
+            }
+        });
+    }
+
+    protected function shouldLogMessage(MessageLogged $message): bool
+    {
+        if (! $this->enabled()) {
+            return false;
+        }
+
+        if (is_null($message->message)) {
+            return false;
+        }
+
+        /** @var Ray $ray */
+        $ray = app(Debugger::class);
+
+        if (! $ray->settings->send_log_calls_to_ray) {
+            return false;
+        }
+
+        if ((new ExceptionWatcher)->concernsException($message)) {
+            return false;
+        }
+
+        if ((new MailWatcher)->concernsLoggedMail($message)) {
+            return false;
+        }
+
+        if ((new DeprecatedNoticeWatcher)->concernsDeprecatedNotice($message)) {
+            return false;
+        }
+
+        return true;
+    }
+}

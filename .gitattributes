@@ -1,0 +1,46 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# PHP
+*.php text eol=lf
+
+# Composer
+composer.json text eol=lf
+composer.lock text eol=lf
+
+# Config files
+*.neon text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+
+# Documentation
+*.md text eol=lf
+*.txt text eol=lf
+LICENSE text eol=lf
+CHANGELOG text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# GitHub files
+.github/** text eol=lf
+
+# Export ignore
+/.github export-ignore
+/tests export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/phpstan.neon.dist export-ignore
+/phpstan-baseline.neon export-ignore
+/rector.php export-ignore
+/pint.json export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/REFACTORING_SUMMARY.md export-ignore
+/STATUS_REPORT.md export-ignore
+/COMPLETION_SUMMARY.md export-ignore
+/FIXES_APPLIED.md export-ignore
+/QUICK_START.md export-ignore
+/refactor-*.sh export-ignore
+/add-strict-types.sh export-ignore
