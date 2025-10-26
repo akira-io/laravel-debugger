@@ -52,18 +52,18 @@ This creates `config/debugger.php` where you can customize watchers and behavior
 ### Basic Debugging
 
 ```php
-// Using debug() - recommended
-debug($variable);
-debug('User Data', $user);
+// Using ad() - recommended
+ad($variable);
+ad('User Data', $user);
 
 // Using ray() - from spatie/ray (also works)
 ray($variable);
 
 // Debug and die
-rd($user);
+debugAndDie($user);
 ```
 
-> **Note:** Both `debug()` and `ray()` work. We recommend `debug()` for consistency with the Akira Debugger naming, but `ray()` from `spatie/ray` is fully functional.
+> **Note:** Both `ad()` and `ray()` work. We recommend `ad()` for consistency with the Akira Debugger naming, but `ray()` from `spatie/ray` is fully functional.
 
 ### Collections
 

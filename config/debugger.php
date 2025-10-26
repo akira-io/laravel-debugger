@@ -3,24 +3,50 @@
 declare(strict_types=1);
 
 return [
+
     /*
-     * Enable/disable all Akira Debugger functionality
-     */
+    |--------------------------------------------------------------------------
+    | Akira Debugger
+    |--------------------------------------------------------------------------
+    |
+    | This option controls whether the Akira Debugger is enabled or disabled.
+    | By default, it inherits the value of APP_DEBUG, but you can override
+    | it by setting DEBUGGER_ENABLED in your environment file.
+    |
+    */
+
     'enable' => env('DEBUGGER_ENABLED', env('APP_DEBUG', false)),
 
     /*
-     * The host where the Ray app is running
-     */
+    |--------------------------------------------------------------------------
+    | Debugger Host & Port
+    |--------------------------------------------------------------------------
+    |
+    | Define the network host and port used to connect to the Akira Debugger
+    | desktop or CLI application. The default connection focuses on localhost
+    | on port 23517, but you can change it to match your environment.
+    |
+    */
+
     'host' => env('DEBUGGER_HOST', 'localhost'),
 
-    /*
-     * The port number where the Ray app is listening
-     */
     'port' => env('DEBUGGER_PORT', 23517),
 
     /*
-     * Watchers configuration
-     */
+    |--------------------------------------------------------------------------
+    | Watchers
+    |--------------------------------------------------------------------------
+    |
+    | The following list defines which parts of your application will be
+    | actively observed by the Akira Debugger. Each watcher can be toggled
+    | using environment variables for full control in different setups.
+    |
+    | Example:
+    | SEND_LOG_TO_DEBUGGER=true
+    | SEND_HTTP_CLIENT_TO_DEBUGGER=false
+    |
+    */
+
     'watchers' => [
         'cache' => env('SEND_CACHE_TO_DEBUGGER', false),
         'dumps' => env('SEND_DUMPS_TO_DEBUGGER', true),
@@ -42,17 +68,32 @@ return [
     ],
 
     /*
-     * Query threshold in milliseconds for slow query detection
-     */
+    |--------------------------------------------------------------------------
+    | Slow Query Threshold
+    |--------------------------------------------------------------------------
+    |
+    | Any database query exceeding this duration (in milliseconds) will be
+    | considered "slow" and reported to the debugger if enabled. Adjust
+    | this threshold to suit your application's performance profile.
+    |
+    */
+
     'slow_query_threshold_milliseconds' => env('SLOW_QUERY_THRESHOLD_MS', 500),
 
     /*
-     * Automatically sent to Ray when using app()->make()
-     */
-    'send_application_make_to_ray' => env('SEND_APPLICATION_MAKE_TO_RAY', false),
+    |--------------------------------------------------------------------------
+    | Application & View Behavior
+    |--------------------------------------------------------------------------
+    |
+    | The following options allow finer control over what information is sent
+    | to the Akira Debugger. You can automatically capture instances created
+    | via app()->make() and control whether raw variable values should
+    | always be sent to the debugger for more detailed inspection.
+    |
+    */
 
-    /*
-     * Automatically send the rendered views to Ray
-     */
-    'always_send_raw_values' => env('ALWAYS_SEND_RAW_VALUES', false),
+    'send_application_make_to_debugger' => env('SEND_APPLICATION_MAKE_TO_DEBUGGER', false),
+
+    'always_send_raw_values' => env('ALWAYS_SEND_RAW_VALUES_TO_DEBUGGER', false),
+
 ];

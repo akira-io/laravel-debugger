@@ -11,18 +11,16 @@ composer require akira/laravel-debugger --dev
 ### Debug Variables
 
 ```php
-// Using debug() - recommended
-debug($user);
-debug('User data', $user);
+ad($user);
+ad('User data', $user);
 
 // Using ray() - also works
 ray($user);
 
-// Debug and die
-rd($user);
+debugAndDie($user);
 ```
 
-> **Note:** Both `debug()` and `ray()` work perfectly. Use whichever you prefer!
+> **Note:** Both `ad()` and `ray()` work perfectly. Use whichever you prefer!
 
 ### Collections
 
@@ -35,53 +33,53 @@ User::all()->debug('All users');
 
 ```php
 // Enable query logging
-debug()->showQueries();
+ad()->showQueries();
 
 // Detect slow queries (threshold in ms)
-debug()->slowQueries(100);
+ad()->slowQueries(100);
 
 // Detect duplicate queries
-debug()->duplicateQueries();
+ad()->duplicateQueries();
 
 // Detect N+1 queries
-debug()->showQueries()->queries();
+ad()->showQueries()->queries();
 ```
 
 ### Mail
 
 ```php
 // Monitor all sent emails
-debug()->mails();
+ad()->mails();
 
 // Debug specific mailable
-debug()->mailable(new OrderShipped($order));
+ad()->mailable(new OrderShipped($order));
 ```
 
 ### Events
 
 ```php
 // Monitor all events
-debug()->events();
+ad()->events();
 
 // Monitor specific event
-debug()->event(OrderCreated::class);
+ad()->event(OrderCreated::class);
 ```
 
 ### Jobs
 
 ```php
 // Monitor all jobs
-debug()->jobs();
+ad()->jobs();
 
 // Debug specific job
-debug()->job(ProcessOrderJob::class);
+ad()->job(ProcessOrderJob::class);
 ```
 
 ### HTTP Client
 
 ```php
 // Monitor HTTP requests
-debug()->http();
+ad()->http();
 
 // Then make requests
 Http::get('https://api.example.com/users');
@@ -91,14 +89,14 @@ Http::get('https://api.example.com/users');
 
 ```php
 // Monitor cache operations
-debug()->cache();
+ad()->cache();
 ```
 
 ### Views
 
 ```php
 // Monitor rendered views
-debug()->views();
+ad()->views();
 ```
 
 ### Blade Directives
@@ -219,26 +217,26 @@ $this->get('/api/users')->debug();
 ### Conditional Debugging
 
 ```php
-debug()->if(app()->isProduction() === false);
-debug($user);
+ad()->if(app()->isProduction() === false);
+ad($user);
 ```
 
 ### Once
 
 ```php
-debug()->once($variable);
+ad()->once($variable);
 ```
 
 ### Show App
 
 ```php
-debug()->showApp();
+ad()->showApp();
 ```
 
 ### Measure
 
 ```php
-debug()->measure(function() {
+ad()->measure(function() {
     // Code to measure
 });
 ```
@@ -246,7 +244,7 @@ debug()->measure(function() {
 ### Stop Time
 
 ```php
-debug()->stopTime('timer-name');
+ad()->stopTime('timer-name');
 ```
 
 ## Docker Setup
@@ -269,16 +267,16 @@ php artisan debugger:publish-config --docker
 
 The package provides these global helper functions:
 
-- `debug(...$arguments)` - Primary debugging function
-- `rd(...$arguments)` - Debug and die
+- `ad(...$arguments)` - Primary debugging function
+- `debugAndDie(...$arguments)` - Debug and die
 
 ```php
-debug('Hello World');
-debug($user, $order);
-rd($data); // Debug and exit
+ad('Hello World');
+ad($user, $order);
+debugAndDie($data); // Debug and exit
 ```
 
-> **Note:** The `ray()` function from the underlying `spatie/ray` package is still available, but `debug()` is the recommended function for Akira Debugger.
+> **Note:** The `ray()` function from the underlying `spatie/ray` package is still available, but `ad()` is the recommended function for Akira Debugger.
 
 ## Common Use Cases
 
@@ -286,14 +284,14 @@ rd($data); // Debug and exit
 
 ```php
 $response = Http::get('https://api.example.com/users');
-debug($response->json());
+ad($response->json());
 ```
 
 ### Debug Eloquent Relationship
 
 ```php
 $user = User::with('posts')->first();
-debug($user->posts);
+ad($user->posts);
 ```
 
 ### Debug Form Request
@@ -301,7 +299,7 @@ debug($user->posts);
 ```php
 public function store(StoreUserRequest $request)
 {
-    debug($request->validated());
+    ad($request->validated());
     // ...
 }
 ```
@@ -313,7 +311,7 @@ class ProcessOrder implements ShouldQueue
 {
     public function handle()
     {
-        debug($this->order);
+        ad($this->order);
         // ...
     }
 }

@@ -70,7 +70,7 @@ final class AkiraServiceProvider extends ServiceProvider
             $projectName = config('app.name');
 
             if ($projectName !== 'Laravel') {
-                debug()->project($projectName);
+                ad()->project($projectName);
             }
         }
 
@@ -227,8 +227,8 @@ final class AkiraServiceProvider extends ServiceProvider
     {
         Collection::macro('debug', function (string $description = '') {
             $description === ''
-                ? debug($this->items)
-                : debug($description, $this->items);
+                ? ad($this->items)
+                : ad($description, $this->items);
 
             return $this;
         });
@@ -238,7 +238,7 @@ final class AkiraServiceProvider extends ServiceProvider
         });
 
         TestResponse::macro('debug', function () {
-            debug()->testResponse($this);
+            ad()->testResponse($this);
 
             return $this;
         });
@@ -249,8 +249,8 @@ final class AkiraServiceProvider extends ServiceProvider
 
         Stringable::macro('debug', function (string $description = '') {
             $description === ''
-                ? debug($this->value)
-                : debug($description, $this->value);
+                ? ad($this->value)
+                : ad($description, $this->value);
 
             return $this;
         });
@@ -262,7 +262,7 @@ final class AkiraServiceProvider extends ServiceProvider
         Builder::macro('debug', function () {
             $payload = new QueryPayload($this);
 
-            debug()->sendRequest($payload);
+            ad()->sendRequest($payload);
 
             return $this;
         });
@@ -282,19 +282,19 @@ final class AkiraServiceProvider extends ServiceProvider
 
         $this->callAfterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
             Blade::directive('debug', function ($expression) {
-                return "<?php debug($expression); ?>";
+                return "<?php ad($expression); ?>";
             });
             Blade::directive('ray', function ($expression) {
-                return "<?php debug($expression); ?>";
+                return "<?php ad($expression); ?>";
             });
             Blade::directive('measure', function () {
-                return '<?php debug()->measure() ?>';
+                return '<?php ad()->measure() ?>';
             });
             Blade::directive('xdebug', function () {
-                return '<?php debug($__data)?>';
+                return '<?php ad($__data)?>';
             });
             Blade::directive('xray', function () {
-                return '<?php debug($__data)?>';
+                return '<?php ad($__data)?>';
             });
         });
 
