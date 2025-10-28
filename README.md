@@ -7,6 +7,7 @@
 
 </div>
 
+
 **Advanced debugging toolkit for Laravel 12+ built with PHP 8.4 features.**
 
 Akira Debugger is a modern, strictly-typed debugging package designed specifically for Laravel 12+ applications. Built
