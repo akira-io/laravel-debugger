@@ -1,7 +1,687 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method Spatie\\\\LaravelRay\\\\OriginFactory\\:\\:returnTinkerFrame\\(\\)\\.$#"
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$enable\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$host\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$port\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Access to protected property Illuminate\\\\Support\\\\Collection\\:\\:\\$items\\.$#"
+			count: 2
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Access to protected property Illuminate\\\\Support\\\\Stringable\\:\\:\\$value\\.$#"
+			count: 2
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:debug\\(\\)\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Collection\\:\\:debug\\(\\)\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Stringable\\:\\:debug\\(\\)\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Testing\\\\TestResponse\\:\\:debug\\(\\)\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Call to method register\\(\\) on an unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\Watcher\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\AkiraServiceProvider\\:\\:boot\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$watcher contains unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\Watcher\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$projectName of method Spatie\\\\Ray\\\\Ray\\:\\:project\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/AkiraServiceProvider.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
+			count: 2
+			path: src/Commands/PublishDebuggerConfigCommand.php
+
+		-
+			message: "#^Call to function is_null\\(\\) with Illuminate\\\\Database\\\\Eloquent\\\\Model\\|iterable will always evaluate to false\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Call to method disable\\(\\) on an unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\EventWatcher\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Call to method disable\\(\\) on an unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\ExceptionWatcher\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Call to method enable\\(\\) on an unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\ExceptionWatcher\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Call to method sendRequest\\(\\) on an unknown class Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Call to method sendRequest\\(\\) on an unknown class Spatie\\\\RayBundle\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Call to method sendRequest\\(\\) on an unknown class Spatie\\\\WordPressRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Call to method sendRequest\\(\\) on an unknown class Spatie\\\\YiiRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Cannot call method disable\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^If condition is always false\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:context\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:countQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:env\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:events\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:events\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:exception\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:exception\\(\\) has parameter \\$meta with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:handleWatcherCallable\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:hiddenContext\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:httpClientRequests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:httpClientRequests\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:jobs\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:jobs\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:model\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:model\\(\\) has parameter \\$model with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:models\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:models\\(\\) has parameter \\$models with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:queries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:queries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:requests\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:requests\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:sendRequest\\(\\) has parameter \\$meta with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showCache\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showConditionalQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showConditionalQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showConditionalQueries\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showDeleteQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showDeleteQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showDuplicateQueries\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showEvents\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showHttpClientRequests\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showHttpClientRequests\\(\\) should return Spatie\\\\LaravelRay\\\\Ray but returns \\$this\\(Akira\\\\Debugger\\\\Debugger\\)\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showInsertQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showInsertQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showJobs\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showMails\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showQueries\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showRequests\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSelectQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSelectQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSlowQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSlowQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSlowQueries\\(\\) has parameter \\$milliseconds with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showUpdateQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showUpdateQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showViews\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:slowQueries\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:slowQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:slowQueries\\(\\) has parameter \\$milliseconds with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:stopShowingConditionalQueries\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:testResponse\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:testResponse\\(\\) has parameter \\$testResponse with generic class Illuminate\\\\Testing\\\\TestResponse but does not specify its types\\: TResponse$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:views\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:views\\(\\) has parameter \\$callable with no type specified\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^PHPDoc tag @return with type Spatie\\\\LaravelRay\\\\Ray is not subtype of native type Akira\\\\Debugger\\\\Debugger\\.$#"
+			count: 3
+			path: src/Debugger.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$eventWatcher contains unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\EventWatcher\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$exceptionWatcher contains unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\ExceptionWatcher\\.$#"
+			count: 2
+			path: src/Debugger.php
+
+		-
+			message: "#^Parameter \\#1 \\$name of static method Illuminate\\\\Support\\\\Facades\\\\DB\\:\\:connection\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Parameter \\#2 \\$callable of method Akira\\\\Debugger\\\\Debugger\\:\\:handleWatcherCallable\\(\\) expects Closure\\|null, callable\\(\\)\\: mixed given\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between class\\-string\\<Illuminate\\\\Mail\\\\MailManager\\> and 'Illuminate\\\\\\\\Support\\\\\\\\Testing\\\\\\\\Fakes\\\\\\\\MailFake' will always evaluate to false\\.$#"
+			count: 1
+			path: src/Debugger.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\DebuggerProxy\\:\\:__call\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/DebuggerProxy.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\DebuggerProxy\\:\\:__call\\(\\) has parameter \\$arguments with no type specified\\.$#"
+			count: 1
+			path: src/DebuggerProxy.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\DebuggerProxy\\:\\:__call\\(\\) has parameter \\$method with no type specified\\.$#"
+			count: 1
+			path: src/DebuggerProxy.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function call_user_func_array expects callable\\(\\)\\: mixed, array\\{Akira\\\\Debugger\\\\Debugger, mixed\\} given\\.$#"
+			count: 1
+			path: src/DebuggerProxy.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\DebuggerProxy\\:\\:\\$methodsCalled type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DebuggerProxy.php
+
+		-
+			message: "#^Access to property \\$settings on an unknown class Akira\\\\Debugger\\\\DumpRecorder\\\\Ray\\.$#"
+			count: 1
+			path: src/DumpRecorder/DumpRecorder.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$ray contains unknown class Akira\\\\Debugger\\\\DumpRecorder\\\\Ray\\.$#"
+			count: 1
+			path: src/DumpRecorder/DumpRecorder.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\DumpRecorder\\\\DumpRecorder\\:\\:\\$dumps is never read, only written\\.$#"
+			count: 1
+			path: src/DumpRecorder/DumpRecorder.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\DumpRecorder\\\\DumpRecorder\\:\\:\\$dumps type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DumpRecorder/DumpRecorder.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\DumpRecorder\\\\DumpRecorder\\:\\:\\$runningLaravel9 has no type specified\\.$#"
+			count: 1
+			path: src/DumpRecorder/DumpRecorder.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\DumpRecorder\\\\MultiDumpHandler\\:\\:dump\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: src/DumpRecorder/MultiDumpHandler.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\DumpRecorder\\\\MultiDumpHandler\\:\\:\\$handlers type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DumpRecorder/MultiDumpHandler.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Support\\\\Optional\\:\\:\\$file\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Support\\\\Optional\\:\\:\\$lineNumber\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Binary operation \"\\+\" between int\\|string\\|false and 1 results in an error\\.$#"
+			count: 4
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Binary operation \"\\+\" between int\\|string\\|false and 2 results in an error\\.$#"
+			count: 3
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Binary operation \"\\+\" between int\\|string\\|false and 2\\|3 results in an error\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Binary operation \"\\+\" between int\\|string\\|false and 3 results in an error\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Call to an undefined method Akira\\\\Debugger\\\\OriginFactory\\:\\:returnTinkerFrame\\(\\)\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Cannot access property \\$class on Spatie\\\\Backtrace\\\\Frame\\|null\\.$#"
+			count: 3
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Cannot access property \\$class on mixed\\.$#"
+			count: 2
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Cannot access property \\$file on Spatie\\\\Backtrace\\\\Frame\\|null\\.$#"
+			count: 2
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Cannot access property \\$file on mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Class Akira\\\\Debugger\\\\Ray not found\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForCache\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForCache\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForCollectionMacro\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForCollectionMacro\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForDump\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForDump\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForEvent\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForEvent\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForLog\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForLog\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForQuery\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForQuery\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForQueryBuilder\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForQueryBuilder\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForStringableMacro\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForStringableMacro\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForView\\(\\) has parameter \\$frames with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForView\\(\\) should return Spatie\\\\Backtrace\\\\Frame\\|null but returns mixed\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:filter\\(\\) expects \\(callable\\(mixed, int\\|string\\)\\: bool\\)\\|null, Closure\\(Spatie\\\\Backtrace\\\\Frame\\)\\: bool given\\.$#"
+			count: 2
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#1 \\$frame of method Akira\\\\Debugger\\\\OriginFactory\\:\\:replaceCompiledViewPathWithOriginalViewPath\\(\\) expects Spatie\\\\Backtrace\\\\Frame, Spatie\\\\Backtrace\\\\Frame\\|null given\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#1 \\$haystack of static method Illuminate\\\\Support\\\\Str\\:\\:startsWith\\(\\) expects string, string\\|null given\\.$#"
+			count: 3
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#1 \\$subject of static method Illuminate\\\\Support\\\\Str\\:\\:between\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#2 \\$indexOfFoundFrame of method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForCollectionMacro\\(\\) expects int, int\\|string\\|false given\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#2 \\$indexOfFoundFrame of method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForStringableMacro\\(\\) expects int, int\\|string\\|false given\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#2 \\$indexOfLoggerCall of method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForLog\\(\\) expects int, int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#2 \\$indexOfRayFrame of method Akira\\\\Debugger\\\\OriginFactory\\:\\:findFrameForView\\(\\) expects int, int\\|string\\|false given\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
+			message: "#^Parameter \\#2 \\$needles of static method Illuminate\\\\Support\\\\Str\\:\\:startsWith\\(\\) expects iterable\\<string\\>\\|string, mixed given\\.$#"
 			count: 1
 			path: src/OriginFactory.php
 
@@ -9,6 +689,406 @@ parameters:
 			message: "#^Variable \\$foundFrame in PHPDoc tag @var does not exist\\.$#"
 			count: 2
 			path: src/OriginFactory.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\CachePayload\\:\\:__construct\\(\\) has parameter \\$tags with no type specified\\.$#"
+			count: 1
+			path: src/Payloads/CachePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\CachePayload\\:\\:__construct\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: src/Payloads/CachePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\CachePayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/CachePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\EnvironmentPayload\\:\\:decorateSpecialValues\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: src/Payloads/EnvironmentPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\EnvironmentPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EnvironmentPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\EnvironmentPayload\\:\\:getDotEnvValues\\(\\) has parameter \\$filterNames with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EnvironmentPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\EnvironmentPayload\\:\\:getDotEnvValues\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EnvironmentPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\EnvironmentPayload\\:\\:loadDotEnv\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EnvironmentPayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\EnvironmentPayload\\:\\:\\$values type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EnvironmentPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\EventPayload\\:\\:__construct\\(\\) has parameter \\$payload with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EventPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\EventPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EventPayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\EventPayload\\:\\:\\$payload type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/EventPayload.php
+
+		-
+			message: "#^Call to function is_null\\(\\) with float will always evaluate to false\\.$#"
+			count: 1
+			path: src/Payloads/ExecutedQueryPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ExecutedQueryPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ExecutedQueryPayload.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$job\\.$#"
+			count: 1
+			path: src/Payloads/JobEventPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\JobEventPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/JobEventPayload.php
+
+		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:__construct\\(\\) has parameter \\$bcc with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:__construct\\(\\) has parameter \\$cc with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:__construct\\(\\) has parameter \\$from with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:__construct\\(\\) has parameter \\$to with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:convertHeaderToPersons\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Parameter \\#1 \\$header of static method Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:convertHeaderToPersons\\(\\) expects ZBateson\\\\MailMimeParser\\\\Header\\\\AddressHeader\\|null, ZBateson\\\\MailMimeParser\\\\Header\\\\IHeader\\|null given\\.$#"
+			count: 4
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Parameter \\#3 \\$offset of function mb_strpos expects int, true given\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$bcc type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$cc type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$from type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$to type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/LoggedMailPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MailablePayload\\:\\:convertToPersons\\(\\) has parameter \\$persons with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/MailablePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MailablePayload\\:\\:convertToPersons\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/MailablePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MailablePayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/MailablePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/MarkdownPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processCodeBlocks\\(\\) has parameter \\$html with no type specified\\.$#"
+			count: 1
+			path: src/Payloads/MarkdownPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processHeaderTags\\(\\) has parameter \\$html with no type specified\\.$#"
+			count: 1
+			path: src/Payloads/MarkdownPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processHeaderTags\\(\\) should return string but returns array\\<int, string\\>\\|string\\|null\\.$#"
+			count: 1
+			path: src/Payloads/MarkdownPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ModelPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ModelPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\QueryPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/QueryPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:__construct\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:__construct\\(\\) has parameter \\$json with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:fromTestResponse\\(\\) has parameter \\$testResponse with generic class Illuminate\\\\Testing\\\\TestResponse but does not specify its types\\: TResponse$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:normalizeHeaders\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:normalizeHeaders\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Parameter \\#4 \\$json of class Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload constructor expects array\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:\\$headers type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:\\$json type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ResponsePayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ViewPayload\\:\\:getContent\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ViewPayload.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\ViewPayload\\:\\:getData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Payloads/ViewPayload.php
+
+		-
+			message: "#^Cannot call method all\\(\\) on Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\), mixed\\>\\|null\\.$#"
+			count: 1
+			path: src/Support/Composer.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_log_calls_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/ApplicationLogWatcher.php
+
+		-
+			message: "#^Access to property \\$settings on an unknown class Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 1
+			path: src/Watchers/ApplicationLogWatcher.php
+
+		-
+			message: "#^Call to function is_null\\(\\) with string will always evaluate to false\\.$#"
+			count: 1
+			path: src/Watchers/ApplicationLogWatcher.php
+
+		-
+			message: "#^Call to method color\\(\\) on an unknown class Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 2
+			path: src/Watchers/ApplicationLogWatcher.php
+
+		-
+			message: "#^Call to method sendRequest\\(\\) on an unknown class Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 1
+			path: src/Watchers/ApplicationLogWatcher.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$ray contains unknown class Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 2
+			path: src/Watchers/ApplicationLogWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_cache_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/CacheWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/CacheWatcher.php
+
+		-
+			message: "#^Call to method sendRequest\\(\\) on an unknown class Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 4
+			path: src/Watchers/CacheWatcher.php
+
+		-
+			message: "#^Cannot call method listen\\(\\) on mixed\\.$#"
+			count: 4
+			path: src/Watchers/CacheWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\CacheWatcher\\:\\:ray\\(\\) has invalid return type Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 1
+			path: src/Watchers/CacheWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\CacheWatcher\\:\\:ray\\(\\) should return Akira\\\\Debugger\\\\Watchers\\\\Ray but returns Akira\\\\Debugger\\\\Debugger\\.$#"
+			count: 1
+			path: src/Watchers/CacheWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/ConditionalQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:abstractName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/ConditionalQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:buildWatcherForName\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/ConditionalQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:buildWatcherForName\\(\\) has parameter \\$name with no type specified\\.$#"
+			count: 1
+			path: src/Watchers/ConditionalQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:setConditionalCallback\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/ConditionalQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:setConditionalCallback\\(\\) has parameter \\$conditionalCallback with no type specified\\.$#"
+			count: 1
+			path: src/Watchers/ConditionalQueryWatcher.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:\\$conditionalCallback has no type specified\\.$#"
+			count: 1
+			path: src/Watchers/ConditionalQueryWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_deprecated_notices_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/DeprecatedNoticeWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_dumps_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/DumpWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_duplicate_queries_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/DuplicateQueryWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/DuplicateQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\DuplicateQueryWatcher\\:\\:cleanupBindings\\(\\) has parameter \\$bindings with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Watchers/DuplicateQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\DuplicateQueryWatcher\\:\\:cleanupBindings\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Watchers/DuplicateQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\DuplicateQueryWatcher\\:\\:disable\\(\\) should return Akira\\\\Debugger\\\\Watchers\\\\DuplicateQueryWatcher but returns Akira\\\\Debugger\\\\Watchers\\\\Watcher\\.$#"
+			count: 1
+			path: src/Watchers/DuplicateQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\DuplicateQueryWatcher\\:\\:enable\\(\\) should return Akira\\\\Debugger\\\\Watchers\\\\DuplicateQueryWatcher but returns Akira\\\\Debugger\\\\Watchers\\\\Watcher\\.$#"
+			count: 1
+			path: src/Watchers/DuplicateQueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\DuplicateQueryWatcher\\:\\:getExecutedQueries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Watchers/DuplicateQueryWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/EventWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_exceptions_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/ExceptionWatcher.php
 
 		-
 			message: "#^Call to method createReport\\(\\) on an unknown class Facade\\\\FlareClient\\\\Flare\\.$#"
@@ -51,41 +1131,196 @@ parameters:
 			path: src/Watchers/ExceptionWatcher.php
 
 		-
-			message: "#^PHPDoc tag @var for variable \\$flare contains unknown class Facade\\\\FlareClient\\\\Flare\\.$#"
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ExceptionWatcher\\:\\:getFlareReport\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Watchers/ExceptionWatcher.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Support\\\\Optional::\\$file.$#"
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_http_client_requests_to_ray\\.$#"
 			count: 1
-			path: src/OriginFactory.php
+			path: src/Watchers/HttpClientWatcher.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Support\\\\Optional::\\$lineNumber.$#"
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 2
+			path: src/Watchers/HttpClientWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\HttpClientWatcher\\:\\:getRequestType\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: src/OriginFactory.php
+			path: src/Watchers/HttpClientWatcher.php
 
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional::applyCalledMethods\\(\\).$#"
-			count: 11
-			path: src/
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\HttpClientWatcher\\:\\:handleRequest\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/HttpClientWatcher.php
 
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional::getActionName\\(\\).$#"
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\HttpClientWatcher\\:\\:handleResponse\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/HttpClientWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_jobs_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/JobWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/JobWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/MailWatcher.php
+
+		-
+			message: "#^Call to method loggedMail\\(\\) on an unknown class Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 1
+			path: src/Watchers/MailWatcher.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$ray contains unknown class Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 1
+			path: src/Watchers/MailWatcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$html of class Akira\\\\Debugger\\\\Payloads\\\\MailablePayload constructor expects string, resource\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Watchers/MailWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_queries_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/QueryWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/QueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\QueryWatcher\\:\\:disable\\(\\) should return Akira\\\\Debugger\\\\Watchers\\\\QueryWatcher but returns Akira\\\\Debugger\\\\Watchers\\\\Watcher\\.$#"
+			count: 1
+			path: src/Watchers/QueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\QueryWatcher\\:\\:enable\\(\\) should return Akira\\\\Debugger\\\\Watchers\\\\QueryWatcher but returns Akira\\\\Debugger\\\\Watchers\\\\Watcher\\.$#"
+			count: 1
+			path: src/Watchers/QueryWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\QueryWatcher\\:\\:getExecutedQueries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Watchers/QueryWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_requests_to_ray\\.$#"
 			count: 1
 			path: src/Watchers/RequestWatcher.php
 
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional::gatherMiddleware\\(\\).$#"
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
 			count: 1
 			path: src/Watchers/RequestWatcher.php
 
 		-
-			message: "#^Access to protected property Illuminate\\\\Support\\\\Collection::\\$items.$#"
-			count: 2
-			path: src/RayServiceProvider.php
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:gatherMiddleware\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
 
 		-
-			message: "#^Access to protected property Illuminate\\\\Support\\\\Stringable::\\$value.$#"
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:getActionName\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:extractDataFromView\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:extractDataFromView\\(\\) has parameter \\$view with no type specified\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:handleRequest\\(\\) has invalid return type Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:handleRequest\\(\\) should return Akira\\\\Debugger\\\\Watchers\\\\Ray but returns Akira\\\\Debugger\\\\Debugger\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:payload\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:response\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function array_replace_recursive expects array, mixed given\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
 			count: 2
-			path: src/RayServiceProvider.php
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function mb_strtolower expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Unable to resolve the template type TKey in call to function collect$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Unable to resolve the template type TValue in call to function collect$#"
+			count: 1
+			path: src/Watchers/RequestWatcher.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Watchers\\\\SlowQueryWatcher\\:\\:\\$minimumTimeInMs \\(int\\) does not accept float\\.$#"
+			count: 1
+			path: src/Watchers/SlowQueryWatcher.php
+
+		-
+			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_views_to_ray\\.$#"
+			count: 1
+			path: src/Watchers/ViewWatcher.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Support\\\\Optional\\:\\:applyCalledMethods\\(\\)\\.$#"
+			count: 1
+			path: src/Watchers/ViewWatcher.php
+
+		-
+			message: "#^Property Akira\\\\Debugger\\\\Watchers\\\\Watcher\\:\\:\\$rayProxy has no type specified\\.$#"
+			count: 1
+			path: src/Watchers/Watcher.php
+
+		-
+			message: "#^Function ad\\(\\) has parameter \\$arguments with no type specified\\.$#"
+			count: 1
+			path: src/helpers.php
+
+		-
+			message: "#^Function ad\\(\\) should return Akira\\\\Debugger\\\\Debugger but returns Spatie\\\\Ray\\\\Ray\\.$#"
+			count: 1
+			path: src/helpers.php
+
+		-
+			message: "#^Function debugAndDie\\(\\) has parameter \\$arguments with no type specified\\.$#"
+			count: 1
+			path: src/helpers.php
