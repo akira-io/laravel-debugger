@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pestPHP
+    colors="true"
+    bootstrap="tests/bootstrap.php"
+    testdox="true"
+>
+    <testSuite name="Unit">
+        <directory>tests/Unit</directory>
+    </testSuite>
+
+    <testSuite name="Feature">
+        <directory>tests/Feature</directory>
+    </testSuite>
+
+    <coverage>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <directory>src/Support</directory>
+            <directory>src/Contracts</directory>
+        </exclude>
+    </coverage>
+</pestPHP>
