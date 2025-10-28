@@ -1,6 +1,6 @@
 {
   "name": "akira-laravel-debugger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advanced debugging and diagnostics tools for Laravel applications",
   "private": true,
   "scripts": {
