@@ -1,0 +1,20 @@
+{
+  "name": "akira-laravel-debugger",
+  "version": "1.0.0",
+  "description": "Advanced debugging and diagnostics tools for Laravel applications",
+  "private": true,
+  "scripts": {
+    "lint": "composer analyse",
+    "test": "composer test",
+    "release": "release-it",
+    "release:dry": "release-it --dry-run",
+    "release:ci": "release-it --ci"
+  },
+  "devDependencies": {
+    "release-it": "^17.0.0",
+    "@release-it/conventional-changelog": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

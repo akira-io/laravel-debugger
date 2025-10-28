@@ -1,12 +1,16 @@
-# Akira Debugger
+![img.png](docs/assets/banner.png)
+
+<div align="center">
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/akira/laravel-debugger.svg?style=flat-square)](https://packagist.org/packages/akira/laravel-debugger)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/akira/laravel-debugger/tests?label=tests)](https://github.com/akira/laravel-debugger/actions?query=workflow%3Atests+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/akira/laravel-debugger.svg?style=flat-square)](https://packagist.org/packages/akira/laravel-debugger)
+
+</div>
 
 **Advanced debugging toolkit for Laravel 12+ built with PHP 8.4 features.**
 
-Akira Debugger is a modern, strictly-typed debugging package designed specifically for Laravel 12+ applications. Built from the ground up with PHP 8.4's latest features including strict types, readonly properties, and modern attributes.
+Akira Debugger is a modern, strictly-typed debugging package designed specifically for Laravel 12+ applications. Built
+from the ground up with PHP 8.4's latest features including strict types, readonly properties, and modern attributes.
 
 ## Requirements
 
@@ -14,7 +18,8 @@ Akira Debugger is a modern, strictly-typed debugging package designed specifical
 - **Laravel:** ^11.0|^12.0
 - **Dependencies:** See [composer.json](composer.json)
 
-> **Note:** This package is built with strict typing and modern PHP features. While it supports PHP 8.2+, it's optimized for PHP 8.4 and Laravel 12.
+> **Note:** This package is built with strict typing and modern PHP features. While it supports PHP 8.2+, it's optimized
+> for PHP 8.4 and Laravel 12.
 
 ## Features
 
@@ -63,7 +68,8 @@ ray($variable);
 debugAndDie($user);
 ```
 
-> **Note:** Both `ad()` and `ray()` work. We recommend `ad()` for consistency with the Akira Debugger naming, but `ray()` from `spatie/ray` is fully functional.
+> **Note:** Both `ad()` and `ray()` work. We recommend `ad()` for consistency with the Akira Debugger naming, but
+`ray()` from `spatie/ray` is fully functional.
 
 ### Collections
 
