@@ -15,7 +15,7 @@ jobs:
         with:
           webhook_url: ${{ secrets.DISCORD }}
           color: "2105893"
-          username: "Larvel Debugger"
+          username: "Laravel Debugger"
           avatar_url: "https://avatars.githubusercontent.com/u/116525492?s=96&v=4"
           content: "||@everyone||"
           footer_title: "Laravel Debugger"
