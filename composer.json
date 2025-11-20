@@ -69,12 +69,11 @@
     "test:lint": "pint --test",
     "test:refactor": "rector --dry-run",
     "test:types": "phpstan",
-    "test:coverage": "pest",
     "test": [
       "@test:lint",
       "@test:refactor",
       "@test:types",
-      "@test:coverage"
+      "pest"
     ]
   },
   "minimum-stability": "stable",
