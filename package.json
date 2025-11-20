@@ -11,6 +11,7 @@
     "release:ci": "release-it --ci"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^10.0.2",
     "release-it": "^19.0.0"
   },
   "engines": {

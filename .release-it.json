@@ -9,6 +9,12 @@
     "push": true,
     "pushTags": true
   },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "preset": "angular"
+    }
+  },
   "github": {
     "release": true,
     "releaseName": "v${version}",
