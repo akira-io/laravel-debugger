@@ -9,12 +9,7 @@ use Spatie\Ray\Payloads\Payload;
 
 final class ExecutedQueryPayload extends Payload
 {
-    protected QueryExecuted $query;
-
-    public function __construct(QueryExecuted $query)
-    {
-        $this->query = $query;
-    }
+    public function __construct(private readonly QueryExecuted $query) {}
 
     public function getType(): string
     {
@@ -36,7 +31,7 @@ final class ExecutedQueryPayload extends Payload
         ];
 
         if ($this->hasAllProperties()) {
-            $properties = array_merge($properties, [
+            return array_merge($properties, [
                 'connection_name' => $this->query->connectionName,
                 'time' => $this->query->time,
             ]);
@@ -45,7 +40,7 @@ final class ExecutedQueryPayload extends Payload
         return $properties;
     }
 
-    protected function hasAllProperties(): bool
+    private function hasAllProperties(): bool
     {
         return ! is_null($this->query->time);
     }

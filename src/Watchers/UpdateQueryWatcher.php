@@ -16,8 +16,6 @@ final class UpdateQueryWatcher extends ConditionalQueryWatcher
 
         $this->enabled = $settings->send_update_queries_to_ray ?? false;
 
-        $this->setConditionalCallback(function (QueryExecuted $query) {
-            return Str::startsWith(mb_strtolower($query->sql), 'update');
-        });
+        $this->setConditionalCallback(fn (QueryExecuted $query) => Str::startsWith(mb_strtolower($query->sql), 'update'));
     }
 }

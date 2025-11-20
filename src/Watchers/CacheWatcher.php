@@ -20,7 +20,7 @@ final class CacheWatcher extends Watcher
 
         $this->enabled = $settings->send_cache_to_ray;
 
-        app('events')->listen(CacheHit::class, function (CacheHit $event) {
+        app('events')->listen(CacheHit::class, function (CacheHit $event): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -32,7 +32,7 @@ final class CacheWatcher extends Watcher
             optional($this->rayProxy)->applyCalledMethods($ray);
         });
 
-        app('events')->listen(CacheMissed::class, function (CacheMissed $event) {
+        app('events')->listen(CacheMissed::class, function (CacheMissed $event): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -42,7 +42,7 @@ final class CacheWatcher extends Watcher
             $this->ray()->sendRequest($payload);
         });
 
-        app('events')->listen(KeyWritten::class, function (KeyWritten $event) {
+        app('events')->listen(KeyWritten::class, function (KeyWritten $event): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -58,7 +58,7 @@ final class CacheWatcher extends Watcher
             $this->ray()->sendRequest($payload);
         });
 
-        app('events')->listen(KeyForgotten::class, function (KeyForgotten $event) {
+        app('events')->listen(KeyForgotten::class, function (KeyForgotten $event): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -78,7 +78,7 @@ final class CacheWatcher extends Watcher
         return app(Debugger::class);
     }
 
-    protected function formatExpiration(KeyWritten $event): ?int
+    private function formatExpiration(KeyWritten $event): ?int
     {
         return $event->seconds;
     }

@@ -9,12 +9,7 @@ use Spatie\Ray\Payloads\Payload;
 
 final class QueryPayload extends Payload
 {
-    protected Builder $query;
-
-    public function __construct(Builder $query)
-    {
-        $this->query = $query;
-    }
+    public function __construct(private readonly Builder $query) {}
 
     public function getType(): string
     {

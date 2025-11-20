@@ -16,7 +16,7 @@ use Spatie\Ray\Settings\Settings;
 final class DuplicateQueryWatcher extends Watcher
 {
     /** @var string[] */
-    protected array $executedQueries = [];
+    private array $executedQueries = [];
 
     public function register(): void
     {
@@ -24,7 +24,7 @@ final class DuplicateQueryWatcher extends Watcher
 
         $this->enabled = $settings->send_duplicate_queries_to_ray;
 
-        Event::listen(QueryExecuted::class, function (QueryExecuted $query) {
+        Event::listen(QueryExecuted::class, function (QueryExecuted $query): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -50,7 +50,7 @@ final class DuplicateQueryWatcher extends Watcher
     public function enable(): self
     {
         if (app()->bound('db')) {
-            collect(DB::getConnections())->each(function ($connection) {
+            collect(DB::getConnections())->each(function ($connection): void {
                 $connection->enableQueryLog();
             });
         }

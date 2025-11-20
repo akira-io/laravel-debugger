@@ -13,18 +13,12 @@ use Symfony\Component\VarDumper\VarDumper;
 
 final class DumpRecorder
 {
-    private array $dumps = [];
-
-    private Container $app;
-
     private static bool $registeredHandler = false;
 
-    private static $runningLaravel9 = null;
+    private static bool|int|null $runningLaravel9 = null;
 
-    public function __construct(Container $app)
+    public function __construct(private readonly Container $app)
     {
-        $this->app = $app;
-
         if (self::$runningLaravel9 === null) {
             self::$runningLaravel9 = version_compare(app()->version(), '9.0.0', '>=');
         }
@@ -37,9 +31,7 @@ final class DumpRecorder
     {
         $multiDumpHandler = new MultiDumpHandler;
 
-        $this->app->singleton(MultiDumpHandler::class, function () use ($multiDumpHandler) {
-            return $multiDumpHandler;
-        });
+        $this->app->singleton(MultiDumpHandler::class, fn (): MultiDumpHandler => $multiDumpHandler);
 
         if (! self::$registeredHandler || self::$runningLaravel9) {
             self::$registeredHandler = true;
@@ -48,7 +40,7 @@ final class DumpRecorder
 
             $this->ensureOriginalHandlerExists();
 
-            $originalHandler = VarDumper::setHandler(function ($dumpedVariable) use ($multiDumpHandler) {
+            $originalHandler = VarDumper::setHandler(function ($dumpedVariable) use ($multiDumpHandler): void {
                 $multiDumpHandler->dump($dumpedVariable);
             });
 
@@ -56,7 +48,7 @@ final class DumpRecorder
                 $multiDumpHandler->addHandler($originalHandler);
             }
 
-            $multiDumpHandler->addHandler(function ($dumpedVariable) {
+            $multiDumpHandler->addHandler(function ($dumpedVariable): void {
                 if ($this->shouldDump()) {
                     app(Debugger::class)->send($dumpedVariable);
                 }
@@ -85,17 +77,11 @@ final class DumpRecorder
     private function ensureOriginalHandlerExists(): void
     {
         $reflectionProperty = new ReflectionProperty(VarDumper::class, 'handler');
-        if (PHP_VERSION_ID < 80100) {
-            $reflectionProperty->setAccessible(true);
-        }
         $handler = $reflectionProperty->getValue();
 
         if (! $handler) {
             // No handler registered yet, so we'll force VarDumper to create one.
             $reflectionMethod = new ReflectionMethod(VarDumper::class, 'register');
-            if (PHP_VERSION_ID < 80100) {
-                $reflectionMethod->setAccessible(true);
-            }
             $reflectionMethod->invoke(null);
         }
     }

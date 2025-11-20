@@ -10,12 +10,7 @@ use Spatie\Ray\Payloads\Payload;
 
 final class ModelPayload extends Payload
 {
-    protected ?Model $model;
-
-    public function __construct(?Model $model)
-    {
-        $this->model = $model;
-    }
+    public function __construct(private readonly ?Model $model) {}
 
     public function getType(): string
     {
@@ -24,18 +19,18 @@ final class ModelPayload extends Payload
 
     public function getContent(): array
     {
-        if (! $this->model) {
+        if (! $this->model instanceof Model) {
             return [];
         }
 
         $content = [
-            'class_name' => get_class($this->model),
+            'class_name' => $this->model::class,
             'attributes' => ArgumentConverter::convertToPrimitive($this->model->attributesToArray()),
         ];
 
         $relations = $this->model->relationsToArray();
 
-        if (count($relations)) {
+        if (count($relations) !== 0) {
             $content['relations'] = ArgumentConverter::convertToPrimitive($relations);
         }
 

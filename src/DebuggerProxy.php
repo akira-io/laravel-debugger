@@ -10,7 +10,7 @@ final class DebuggerProxy
 
     public function __call($method, $arguments)
     {
-        $this->methodsCalled[] = compact('method', 'arguments');
+        $this->methodsCalled[] = ['method' => $method, 'arguments' => $arguments];
     }
 
     public function applyCalledMethods(Debugger $debugger): void

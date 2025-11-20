@@ -26,7 +26,7 @@ class QueryWatcher extends Watcher
 
         $this->enabled = $settings->send_queries_to_ray;
 
-        Event::listen(QueryExecuted::class, function (QueryExecuted $query) {
+        Event::listen(QueryExecuted::class, function (QueryExecuted $query): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -50,7 +50,7 @@ class QueryWatcher extends Watcher
     public function enable(): self
     {
         if (app()->bound('db')) {
-            collect(DB::getConnections())->each(function ($connection) {
+            collect(DB::getConnections())->each(function ($connection): void {
                 $connection->enableQueryLog();
             });
         }

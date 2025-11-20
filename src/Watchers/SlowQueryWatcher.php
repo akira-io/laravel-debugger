@@ -9,7 +9,7 @@ use Spatie\Ray\Settings\Settings;
 
 final class SlowQueryWatcher extends ConditionalQueryWatcher
 {
-    protected int $minimumTimeInMs = 500;
+    private int $minimumTimeInMs = 500;
 
     public function register(): void
     {
@@ -18,9 +18,7 @@ final class SlowQueryWatcher extends ConditionalQueryWatcher
         $this->enabled = $settings->send_slow_queries_to_ray ?? false;
         $this->minimumTimeInMs = $settings->slow_query_threshold_in_ms ?? $this->minimumTimeInMs;
 
-        $this->setConditionalCallback(function (QueryExecuted $query) {
-            return $query->time >= $this->minimumTimeInMs;
-        });
+        $this->setConditionalCallback(fn (QueryExecuted $query): bool => $query->time >= $this->minimumTimeInMs);
     }
 
     public function setMinimumTimeInMilliseconds(float $milliseconds): self

@@ -76,7 +76,7 @@ final class Debugger extends BaseRay
     {
         $shouldRestoreFake = false;
 
-        if (get_class(app(MailManager::class)) === MailFake::class) {
+        if (app(MailManager::class)::class === MailFake::class) {
             $shouldRestoreFake = true;
 
             Mail::swap(new MailManager(app()));
@@ -86,9 +86,7 @@ final class Debugger extends BaseRay
             Mail::fake();
         }
 
-        $payloads = array_map(function (Mailable $mailable) {
-            return MailablePayload::forMailable($mailable);
-        }, $mailables);
+        $payloads = array_map(fn (Mailable $mailable): MailablePayload => MailablePayload::forMailable($mailable), $mailables);
 
         $this->sendRequest($payloads);
 
@@ -96,10 +94,9 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showMails($callable = null)
+    public function showMails(?Closure $callable = null)
     {
         $watcher = app(MailWatcher::class);
 
@@ -129,7 +126,7 @@ final class Debugger extends BaseRay
             $keys = $keys[0];
         }
 
-        $context = count($keys)
+        $context = $keys !== []
             ? Context::only($keys)
             : Context::all();
 
@@ -154,7 +151,7 @@ final class Debugger extends BaseRay
             $keys = $keys[0];
         }
 
-        $hiddenContext = count($keys)
+        $hiddenContext = $keys !== []
             ? Context::onlyHidden($keys)
             : Context::allHidden();
 
@@ -187,15 +184,11 @@ final class Debugger extends BaseRay
             if (is_iterable($model)) {
                 foreach ($passedModel as $item) {
                     $models[] = $item;
-
-                    continue;
                 }
             }
         }
 
-        $payloads = array_map(function (?Model $model) {
-            return new ModelPayload($model);
-        }, $models);
+        $payloads = array_map(fn (?Model $model): ModelPayload => new ModelPayload($model), $models);
 
         foreach ($payloads as $payload) {
             ray()->sendRequest($payload);
@@ -238,17 +231,16 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showEvents($callable = null)
+    public function showEvents(?Closure $callable = null)
     {
         $watcher = app(EventWatcher::class);
 
         return $this->handleWatcherCallable($watcher, $callable);
     }
 
-    public function events($callable = null)
+    public function events(?Closure $callable = null)
     {
         return $this->showEvents($callable);
     }
@@ -284,10 +276,9 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showJobs($callable = null)
+    public function showJobs(?Closure $callable = null)
     {
         $watcher = app(JobWatcher::class);
 
@@ -295,10 +286,9 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showCache($callable = null)
+    public function showCache(?Closure $callable = null)
     {
         $watcher = app(CacheWatcher::class);
 
@@ -312,7 +302,7 @@ final class Debugger extends BaseRay
         return $this;
     }
 
-    public function jobs($callable = null)
+    public function jobs(?Closure $callable = null)
     {
         return $this->showJobs($callable);
     }
@@ -332,17 +322,16 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showViews($callable = null)
+    public function showViews(?Closure $callable = null)
     {
         $watcher = app(ViewWatcher::class);
 
         return $this->handleWatcherCallable($watcher, $callable);
     }
 
-    public function views($callable = null)
+    public function views(?Closure $callable = null)
     {
         return $this->showViews($callable);
     }
@@ -355,10 +344,9 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showQueries($callable = null)
+    public function showQueries(?Closure $callable = null)
     {
         $watcher = app(QueryWatcher::class);
 
@@ -380,14 +368,10 @@ final class Debugger extends BaseRay
 
         $executedQueryStatistics = collect($watcher->getExecutedQueries())
 
-            ->pipe(function (Collection $queries) {
-                return [
-                    'Count' => $queries->count(),
-                    'Total time' => $queries->sum(function (QueryExecuted $query) {
-                        return $query->time;
-                    }),
-                ];
-            });
+            ->pipe(fn (Collection $queries): array => [
+                'Count' => $queries->count(),
+                'Total time' => $queries->sum(fn (QueryExecuted $query) => $query->time),
+            ]);
 
         $executedQueryStatistics['Total time'] .= ' ms';
 
@@ -400,7 +384,7 @@ final class Debugger extends BaseRay
         return $output;
     }
 
-    public function queries($callable = null)
+    public function queries(?Closure $callable = null)
     {
         return $this->showQueries($callable);
     }
@@ -412,12 +396,12 @@ final class Debugger extends BaseRay
         return $this;
     }
 
-    public function slowQueries($milliseconds = 500, $callable = null)
+    public function slowQueries($milliseconds = 500, ?Closure $callable = null)
     {
         return $this->showSlowQueries($milliseconds, $callable);
     }
 
-    public function showSlowQueries($milliseconds = 500, $callable = null)
+    public function showSlowQueries($milliseconds = 500, ?Closure $callable = null)
     {
         $watcher = app(SlowQueryWatcher::class)
             ->setMinimumTimeInMilliseconds($milliseconds);
@@ -433,10 +417,9 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showDuplicateQueries($callable = null)
+    public function showDuplicateQueries(?Closure $callable = null)
     {
         $watcher = app(DuplicateQueryWatcher::class);
 
@@ -450,21 +433,21 @@ final class Debugger extends BaseRay
         return $this;
     }
 
-    public function showConditionalQueries(Closure $condition, $callable = null, $name = 'default')
+    public function showConditionalQueries(Closure $condition, ?Closure $callable = null, string $name = 'default')
     {
         $watcher = ConditionalQueryWatcher::buildWatcherForName($condition, $name);
 
         return $this->handleWatcherCallable($watcher, $callable);
     }
 
-    public function stopShowingConditionalQueries($name = 'default'): self
+    public function stopShowingConditionalQueries(string $name = 'default'): self
     {
         app(ConditionalQueryWatcher::abstractName($name))->disable();
 
         return $this;
     }
 
-    public function showUpdateQueries($callable = null)
+    public function showUpdateQueries(?Closure $callable = null)
     {
         $watcher = app(UpdateQueryWatcher::class);
 
@@ -478,7 +461,7 @@ final class Debugger extends BaseRay
         return $this;
     }
 
-    public function showDeleteQueries($callable = null)
+    public function showDeleteQueries(?Closure $callable = null)
     {
         $watcher = app(DeleteQueryWatcher::class);
 
@@ -492,7 +475,7 @@ final class Debugger extends BaseRay
         return $this;
     }
 
-    public function showInsertQueries($callable = null)
+    public function showInsertQueries(?Closure $callable = null)
     {
         $watcher = app(InsertQueryWatcher::class);
 
@@ -506,7 +489,7 @@ final class Debugger extends BaseRay
         return $this;
     }
 
-    public function showSelectQueries($callable = null)
+    public function showSelectQueries(?Closure $callable = null)
     {
         $watcher = app(SelectQueryWatcher::class);
 
@@ -521,17 +504,16 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showRequests($callable = null)
+    public function showRequests(?Closure $callable = null)
     {
         $watcher = app(RequestWatcher::class);
 
         return $this->handleWatcherCallable($watcher, $callable);
     }
 
-    public function requests($callable = null)
+    public function requests(?Closure $callable = null)
     {
         return $this->showRequests($callable);
     }
@@ -544,12 +526,11 @@ final class Debugger extends BaseRay
     }
 
     /**
-     * @param  null  $callable
      * @return \Spatie\LaravelRay\Ray
      */
-    public function showHttpClientRequests($callable = null)
+    public function showHttpClientRequests(?Closure $callable = null)
     {
-        if (! HttpClientWatcher::supportedByLaravelVersion()) {
+        if (in_array(HttpClientWatcher::supportedByLaravelVersion(), [false, 0], true)) {
             $this->send('Http logging is not available in your Laravel version')->red();
 
             return $this;
@@ -560,7 +541,7 @@ final class Debugger extends BaseRay
         return $this->handleWatcherCallable($watcher, $callable);
     }
 
-    public function httpClientRequests($callable = null)
+    public function httpClientRequests(?Closure $callable = null)
     {
         return $this->showHttpClientRequests($callable);
     }
@@ -572,7 +553,7 @@ final class Debugger extends BaseRay
         return $this;
     }
 
-    public function testResponse(TestResponse $testResponse)
+    public function testResponse(TestResponse $testResponse): void
     {
         $payload = ResponsePayload::fromTestResponse($testResponse);
 
@@ -610,7 +591,7 @@ final class Debugger extends BaseRay
         if (class_exists(InstalledVersions::class)) {
             try {
                 $meta['laravel_ray_package_version'] = InstalledVersions::getVersion('spatie/laravel-ray');
-            } catch (Exception $e) {
+            } catch (Exception) {
                 $meta['laravel_ray_package_version'] = '0.0.0';
             }
         }
@@ -618,7 +599,7 @@ final class Debugger extends BaseRay
         return BaseRay::sendRequest($payloads, $meta);
     }
 
-    protected function handleWatcherCallable(Watcher $watcher, ?Closure $callable = null)
+    private function handleWatcherCallable(Watcher $watcher, ?Closure $callable = null)
     {
         $rayProxy = new DebuggerProxy;
 
@@ -630,7 +611,7 @@ final class Debugger extends BaseRay
             $watcher->setRayProxy($rayProxy);
         }
 
-        if ($callable) {
+        if ($callable instanceof Closure) {
             $output = $callable();
 
             if (! $wasEnabled) {
@@ -645,7 +626,7 @@ final class Debugger extends BaseRay
         return $rayProxy;
     }
 
-    protected function requestWatcher(): RequestWatcher
+    private function requestWatcher(): RequestWatcher
     {
         return app(RequestWatcher::class);
     }

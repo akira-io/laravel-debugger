@@ -15,7 +15,7 @@ class ConditionalQueryWatcher extends QueryWatcher
 {
     protected $conditionalCallback;
 
-    public static function buildWatcherForName(Closure $condition, $name)
+    public static function buildWatcherForName(Closure $condition, string $name)
     {
         $watcher = new self;
         $watcher->setConditionalCallback($condition);
@@ -23,12 +23,12 @@ class ConditionalQueryWatcher extends QueryWatcher
         return app()->instance(self::abstractName($name), $watcher);
     }
 
-    public static function abstractName(string $name)
+    public static function abstractName(string $name): string
     {
         return self::class.':'.$name;
     }
 
-    public function setConditionalCallback($conditionalCallback)
+    public function setConditionalCallback($conditionalCallback): void
     {
         $this->conditionalCallback = $conditionalCallback;
 
@@ -42,7 +42,7 @@ class ConditionalQueryWatcher extends QueryWatcher
 
     public function listen(): void
     {
-        Event::listen(QueryExecuted::class, function (QueryExecuted $query) {
+        Event::listen(QueryExecuted::class, function (QueryExecuted $query): void {
             if (! $this->enabled()) {
                 return;
             }

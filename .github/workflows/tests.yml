@@ -35,14 +35,5 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-interaction
 
-      - name: Check code style (Pint)
-        run: vendor/bin/pint --test
-
-      - name: Run Rector (dry-run)
-        run: vendor/bin/rector process --dry-run
-
-      - name: Run static analysis (PHPStan)
-        run: vendor/bin/phpstan analyse --memory-limit=2G
-
       - name: Run tests (Pest)
-        run: vendor/bin/pest
+        run: composer test

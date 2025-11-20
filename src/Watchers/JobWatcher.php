@@ -26,7 +26,7 @@ final class JobWatcher extends Watcher
             JobProcessing::class,
             JobProcessed::class,
             JobFailed::class,
-        ], function (object $event) {
+        ], function (object $event): void {
             if (! $this->enabled()) {
                 return;
             }

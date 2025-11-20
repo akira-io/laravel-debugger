@@ -37,9 +37,7 @@ final class OriginFactory
 
     public function findFrameForCache(Collection $frames): ?Frame
     {
-        $index = $frames->search(function (Frame $frame) {
-            return $frame->class === CacheManager::class;
-        });
+        $index = $frames->search(fn (Frame $frame): bool => $frame->class === CacheManager::class);
 
         while (Str::startsWith($frames[$index]->class, 'Illuminate')) {
             $index++;
@@ -58,11 +56,7 @@ final class OriginFactory
                     return true;
                 }
 
-                if (Str::startsWith($frame->file, __DIR__)) {
-                    return true;
-                }
-
-                return false;
+                return Str::startsWith($frame->file, __DIR__);
             });
 
         /** @var Frame|null $rayFrame */
@@ -127,7 +121,7 @@ final class OriginFactory
             if (Str::startsWith($originFrame->file, config('view.compiled'))) {
                 return $this->replaceCompiledViewPathWithOriginalViewPath($originFrame);
             }
-        } catch (BindingResolutionException $exception) {
+        } catch (BindingResolutionException) {
             // ignore errors caused by using `storage_path`
         }
 
@@ -151,12 +145,8 @@ final class OriginFactory
     private function findFrameForQuery(Collection $frames): ?Frame
     {
         $indexOfLastDatabaseCall = $frames
-            ->filter(function (Frame $frame) {
-                return ! is_null($frame->class);
-            })
-            ->search(function (Frame $frame) {
-                return Str::startsWith($frame->class, 'Illuminate\Database');
-            });
+            ->filter(fn (Frame $frame): bool => ! is_null($frame->class))
+            ->search(fn (Frame $frame) => Str::startsWith($frame->class, 'Illuminate\Database'));
 
         return $frames[$indexOfLastDatabaseCall + 1] ?? null;
     }
@@ -164,12 +154,8 @@ final class OriginFactory
     private function findFrameForQueryBuilder(Collection $frames): ?Frame
     {
         $indexOfLastDatabaseCall = $frames
-            ->filter(function (Frame $frame) {
-                return ! is_null($frame->class);
-            })
-            ->search(function (Frame $frame) {
-                return Str::startsWith($frame->class, 'Illuminate\Database');
-            });
+            ->filter(fn (Frame $frame): bool => ! is_null($frame->class))
+            ->search(fn (Frame $frame) => Str::startsWith($frame->class, 'Illuminate\Database'));
 
         return $frames[$indexOfLastDatabaseCall + 1] ?? null;
     }
@@ -182,7 +168,7 @@ final class OriginFactory
     private function findFrameForDump(Collection $frames): ?Frame
     {
         $indexOfDumpCall = $frames
-            ->search(function (Frame $frame) {
+            ->search(function (Frame $frame): bool {
                 if (! is_null($frame->class)) {
                     return false;
                 }
@@ -196,24 +182,18 @@ final class OriginFactory
     private function findFrameForEvent(Collection $frames): ?Frame
     {
         $indexOfLoggerCall = $frames
-            ->search(function (Frame $frame) {
-                return $frame->class === Logger::class;
-            });
+            ->search(fn (Frame $frame): bool => $frame->class === Logger::class);
 
         if ($indexOfLoggerCall) {
             return $this->findFrameForLog($frames, $indexOfLoggerCall);
         }
 
         $indexOfEventDispatcherCall = $frames
-            ->search(function (Frame $frame) {
-                return ($frame->class === Dispatcher::class) && $frame->method === 'dispatch';
-            });
+            ->search(fn (Frame $frame): bool => ($frame->class === Dispatcher::class) && $frame->method === 'dispatch');
 
         /** @var Frame $foundFrame */
-        if ($foundFrame = $frames[$indexOfEventDispatcherCall + 2]) {
-            if (Str::endsWith($foundFrame->file, \Spatie\Ray\Ray::makePathOsSafe('/Illuminate/Foundation/Events/Dispatchable.php'))) {
-                $foundFrame = $frames[$indexOfEventDispatcherCall + 3];
-            }
+        if (($foundFrame = $frames[$indexOfEventDispatcherCall + 2]) && Str::endsWith($foundFrame->file, \Spatie\Ray\Ray::makePathOsSafe('/Illuminate/Foundation/Events/Dispatchable.php'))) {
+            $foundFrame = $frames[$indexOfEventDispatcherCall + 3];
         }
 
         return $foundFrame ?? null;
@@ -222,17 +202,14 @@ final class OriginFactory
     private function findFrameForLog(Collection $frames, int $indexOfLoggerCall): ?Frame
     {
         /** @var Frame $foundFrame */
-        if ($foundFrame = $frames[$indexOfLoggerCall + 1]) {
-            if ($foundFrame->class === LogManager::class) {
-                $foundFrame = $frames[$indexOfLoggerCall + 2];
-
-                if ($foundFrame->class = Facade::class) {
-                    $foundFrame = $frames[$indexOfLoggerCall + 3];
-                }
-
-                if (Str::endsWith($foundFrame->file, \Spatie\Ray\Ray::makePathOsSafe('/Illuminate/Foundation/helpers.php'))) {
-                    $foundFrame = $frames[$indexOfLoggerCall + 3];
-                }
+        if (($foundFrame = $frames[$indexOfLoggerCall + 1]) && $foundFrame->class === LogManager::class) {
+            $foundFrame = $frames[$indexOfLoggerCall + 2];
+            $foundFrame->class = Facade::class;
+            if ($foundFrame->class !== '' && $foundFrame->class !== '0') {
+                $foundFrame = $frames[$indexOfLoggerCall + 3];
+            }
+            if (Str::endsWith($foundFrame->file, \Spatie\Ray\Ray::makePathOsSafe('/Illuminate/Foundation/helpers.php'))) {
+                $foundFrame = $frames[$indexOfLoggerCall + 3];
             }
         }
 

@@ -11,18 +11,18 @@ use Spatie\Ray\Payloads\Payload;
 
 final class EnvironmentPayload extends Payload
 {
-    protected array $values;
+    private readonly array $values;
 
-    protected string $path;
+    private readonly string $path;
 
-    protected string $filename;
+    private readonly string $filename;
 
     /**
      * @param  string[]|array|null  $onlyShowNames
      */
     public function __construct(?array $onlyShowNames = null, ?string $filename = null)
     {
-        $filename = $filename ?? app()->environmentFilePath();
+        $filename ??= app()->environmentFilePath();
 
         $this->path = dirname($filename);
 
@@ -50,7 +50,7 @@ final class EnvironmentPayload extends Payload
         ];
     }
 
-    protected function decorateSpecialValues($value): string
+    private function decorateSpecialValues($value): string
     {
         if ($value === '') {
             return '<div class="text-gray-400">(empty)</div>';
@@ -66,23 +66,23 @@ final class EnvironmentPayload extends Payload
             return "<div class=\"text-{$color}-600\">{$value}</div>";
         }
 
-        if (preg_match('~^https?://~', $value) === 1) {
+        if (preg_match('~^https?://~', (string) $value) === 1) {
             return "<a href=\"{$value}\" class=\"text-blue-600 hover:underline\">{$value}</a>";
         }
 
-        if (mb_strpos($value, 'base64:') === 0) {
+        if (mb_strpos((string) $value, 'base64:') === 0) {
             return "<div class=\"text-gray-400\">{$value}</div>";
         }
 
         // ip addresses
-        if (preg_match('~(\d{1,3}\.){3}\d{1,3}~', $value) === 1) {
+        if (preg_match('~(\d{1,3}\.){3}\d{1,3}~', (string) $value) === 1) {
             return "<div href=\"{$value}\" class=\"text-indigo-700\">{$value}</div>";
         }
 
         return $value;
     }
 
-    protected function loadDotEnv(): array
+    private function loadDotEnv(): array
     {
         return Dotenv::create(
             Env::getRepository(),
@@ -91,16 +91,14 @@ final class EnvironmentPayload extends Payload
         )->safeLoad();
     }
 
-    protected function getDotEnvValues(?array $filterNames): array
+    private function getDotEnvValues(?array $filterNames): array
     {
         $values = $this->loadDotEnv();
 
-        if (! $filterNames) {
+        if ($filterNames === null || $filterNames === []) {
             return $values;
         }
 
-        return array_filter($values, function ($value) use ($filterNames) {
-            return in_array($value, $filterNames, true);
-        }, ARRAY_FILTER_USE_KEY);
+        return array_filter($values, fn ($value): bool => in_array($value, $filterNames, true), ARRAY_FILTER_USE_KEY);
     }
 }

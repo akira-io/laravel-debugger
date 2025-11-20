@@ -51,11 +51,6 @@ parameters:
 			path: src/AkiraServiceProvider.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\AkiraServiceProvider\\:\\:boot\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
 			message: "#^PHPDoc tag @var for variable \\$watcher contains unknown class Spatie\\\\LaravelRay\\\\Watchers\\\\Watcher\\.$#"
 			count: 1
 			path: src/AkiraServiceProvider.php
@@ -146,11 +141,6 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:events\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:exception\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Debugger.php
@@ -176,17 +166,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:httpClientRequests\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:jobs\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:jobs\\(\\) has parameter \\$callable with no type specified\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -216,17 +196,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:queries\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:requests\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:requests\\(\\) has parameter \\$callable with no type specified\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -246,22 +216,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showConditionalQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showConditionalQueries\\(\\) has parameter \\$name with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showDeleteQueries\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showDeleteQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -291,11 +246,6 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showInsertQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showJobs\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
 			count: 1
 			path: src/Debugger.php
@@ -321,17 +271,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSelectQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSlowQueries\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showSlowQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -346,11 +286,6 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showUpdateQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:showViews\\(\\) has invalid return type Spatie\\\\LaravelRay\\\\Ray\\.$#"
 			count: 1
 			path: src/Debugger.php
@@ -361,22 +296,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:slowQueries\\(\\) has parameter \\$callable with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:slowQueries\\(\\) has parameter \\$milliseconds with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:stopShowingConditionalQueries\\(\\) has parameter \\$name with no type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:testResponse\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -387,11 +307,6 @@ parameters:
 
 		-
 			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:views\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Debugger\\:\\:views\\(\\) has parameter \\$callable with no type specified\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -411,7 +326,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Parameter \\#1 \\$name of static method Illuminate\\\\Support\\\\Facades\\\\DB\\:\\:connection\\(\\) expects string\\|null, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$name of static method Illuminate\\\\Support\\\\Facades\\\\DB\\:\\:connection\\(\\) expects string\\|UnitEnum\\|null, mixed given\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -421,7 +336,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between class\\-string\\<Illuminate\\\\Mail\\\\MailManager\\> and 'Illuminate\\\\\\\\Support\\\\\\\\Testing\\\\\\\\Fakes\\\\\\\\MailFake' will always evaluate to false\\.$#"
+			message: "#^Strict comparison using \\=\\=\\= between class\\-string\\<Illuminate\\\\Mail\\\\MailManager\\>&literal\\-string and 'Illuminate\\\\\\\\Support\\\\\\\\Testing\\\\\\\\Fakes\\\\\\\\MailFake' will always evaluate to false\\.$#"
 			count: 1
 			path: src/Debugger.php
 
@@ -457,21 +372,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @var for variable \\$ray contains unknown class Akira\\\\Debugger\\\\DumpRecorder\\\\Ray\\.$#"
-			count: 1
-			path: src/DumpRecorder/DumpRecorder.php
-
-		-
-			message: "#^Property Akira\\\\Debugger\\\\DumpRecorder\\\\DumpRecorder\\:\\:\\$dumps is never read, only written\\.$#"
-			count: 1
-			path: src/DumpRecorder/DumpRecorder.php
-
-		-
-			message: "#^Property Akira\\\\Debugger\\\\DumpRecorder\\\\DumpRecorder\\:\\:\\$dumps type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/DumpRecorder/DumpRecorder.php
-
-		-
-			message: "#^Property Akira\\\\Debugger\\\\DumpRecorder\\\\DumpRecorder\\:\\:\\$runningLaravel9 has no type specified\\.$#"
 			count: 1
 			path: src/DumpRecorder/DumpRecorder.php
 
@@ -527,7 +427,7 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$class on mixed\\.$#"
-			count: 2
+			count: 4
 			path: src/OriginFactory.php
 
 		-
@@ -542,11 +442,6 @@ parameters:
 
 		-
 			message: "#^Class Akira\\\\Debugger\\\\Ray not found\\.$#"
-			count: 1
-			path: src/OriginFactory.php
-
-		-
-			message: "#^If condition is always true\\.$#"
 			count: 1
 			path: src/OriginFactory.php
 
@@ -686,17 +581,17 @@ parameters:
 			path: src/OriginFactory.php
 
 		-
+			message: "#^Result of && is always true\\.$#"
+			count: 1
+			path: src/OriginFactory.php
+
+		-
 			message: "#^Variable \\$foundFrame in PHPDoc tag @var does not exist\\.$#"
 			count: 2
 			path: src/OriginFactory.php
 
 		-
 			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\CachePayload\\:\\:__construct\\(\\) has parameter \\$tags with no type specified\\.$#"
-			count: 1
-			path: src/Payloads/CachePayload.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\CachePayload\\:\\:__construct\\(\\) has parameter \\$value with no type specified\\.$#"
 			count: 1
 			path: src/Payloads/CachePayload.php
 
@@ -816,26 +711,6 @@ parameters:
 			path: src/Payloads/LoggedMailPayload.php
 
 		-
-			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$bcc type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Payloads/LoggedMailPayload.php
-
-		-
-			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$cc type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Payloads/LoggedMailPayload.php
-
-		-
-			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$from type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Payloads/LoggedMailPayload.php
-
-		-
-			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\LoggedMailPayload\\:\\:\\$to type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Payloads/LoggedMailPayload.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MailablePayload\\:\\:convertToPersons\\(\\) has parameter \\$persons with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Payloads/MailablePayload.php
@@ -856,17 +731,17 @@ parameters:
 			path: src/Payloads/MarkdownPayload.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processCodeBlocks\\(\\) has parameter \\$html with no type specified\\.$#"
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processCodeBlocks\\(\\) should return string but returns array\\<int, string\\>\\|string\\.$#"
 			count: 1
 			path: src/Payloads/MarkdownPayload.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processHeaderTags\\(\\) has parameter \\$html with no type specified\\.$#"
+			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processHeaderTags\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: src/Payloads/MarkdownPayload.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Payloads\\\\MarkdownPayload\\:\\:processHeaderTags\\(\\) should return string but returns array\\<int, string\\>\\|string\\|null\\.$#"
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, League\\\\CommonMark\\\\Output\\\\RenderedContentInterface given\\.$#"
 			count: 1
 			path: src/Payloads/MarkdownPayload.php
 
@@ -917,11 +792,6 @@ parameters:
 
 		-
 			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:\\$headers type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Payloads/ResponsePayload.php
-
-		-
-			message: "#^Property Akira\\\\Debugger\\\\Payloads\\\\ResponsePayload\\:\\:\\$json type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Payloads/ResponsePayload.php
 
@@ -1006,22 +876,7 @@ parameters:
 			path: src/Watchers/ConditionalQueryWatcher.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:abstractName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Watchers/ConditionalQueryWatcher.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:buildWatcherForName\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Watchers/ConditionalQueryWatcher.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:buildWatcherForName\\(\\) has parameter \\$name with no type specified\\.$#"
-			count: 1
-			path: src/Watchers/ConditionalQueryWatcher.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\ConditionalQueryWatcher\\:\\:setConditionalCallback\\(\\) has no return type specified\\.$#"
 			count: 1
 			path: src/Watchers/ConditionalQueryWatcher.php
 
@@ -1146,21 +1001,6 @@ parameters:
 			path: src/Watchers/HttpClientWatcher.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\HttpClientWatcher\\:\\:getRequestType\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Watchers/HttpClientWatcher.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\HttpClientWatcher\\:\\:handleRequest\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Watchers/HttpClientWatcher.php
-
-		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\HttpClientWatcher\\:\\:handleResponse\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Watchers/HttpClientWatcher.php
-
-		-
 			message: "#^Access to an undefined property Spatie\\\\Ray\\\\Settings\\\\Settings\\:\\:\\$send_jobs_to_ray\\.$#"
 			count: 1
 			path: src/Watchers/JobWatcher.php
@@ -1241,11 +1081,6 @@ parameters:
 			path: src/Watchers/RequestWatcher.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:extractDataFromView\\(\\) has parameter \\$view with no type specified\\.$#"
-			count: 1
-			path: src/Watchers/RequestWatcher.php
-
-		-
 			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:handleRequest\\(\\) has invalid return type Akira\\\\Debugger\\\\Watchers\\\\Ray\\.$#"
 			count: 1
 			path: src/Watchers/RequestWatcher.php
@@ -1256,12 +1091,12 @@ parameters:
 			path: src/Watchers/RequestWatcher.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:payload\\(\\) has no return type specified\\.$#"
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:payload\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Watchers/RequestWatcher.php
 
 		-
-			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:response\\(\\) has no return type specified\\.$#"
+			message: "#^Method Akira\\\\Debugger\\\\Watchers\\\\RequestWatcher\\:\\:response\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Watchers/RequestWatcher.php
 
@@ -1273,21 +1108,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
 			count: 2
-			path: src/Watchers/RequestWatcher.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function mb_strtolower expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Watchers/RequestWatcher.php
-
-		-
-			message: "#^Unable to resolve the template type TKey in call to function collect$#"
-			count: 1
-			path: src/Watchers/RequestWatcher.php
-
-		-
-			message: "#^Unable to resolve the template type TValue in call to function collect$#"
-			count: 1
 			path: src/Watchers/RequestWatcher.php
 
 		-

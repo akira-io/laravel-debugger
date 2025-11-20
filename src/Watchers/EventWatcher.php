@@ -12,7 +12,7 @@ final class EventWatcher extends Watcher
 {
     public function register(): void
     {
-        Event::listen('*', function (string $eventName, array $arguments) {
+        Event::listen('*', function (string $eventName, array $arguments): void {
             if (! $this->enabled()) {
                 return;
             }

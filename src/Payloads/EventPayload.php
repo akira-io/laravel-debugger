@@ -9,18 +9,13 @@ use Spatie\Ray\Payloads\Payload;
 
 final class EventPayload extends Payload
 {
-    protected string $eventName;
+    private mixed $event = null;
 
-    /** @var object|mixed|null */
-    protected mixed $event = null;
+    private array $payload = [];
 
-    protected array $payload = [];
-
-    public function __construct(string $eventName, array $payload)
+    public function __construct(private readonly string $eventName, array $payload)
     {
-        $this->eventName = $eventName;
-
-        class_exists($eventName)
+        class_exists($this->eventName)
             ? $this->event = $payload[0]
             : $this->payload = $payload;
     }
@@ -35,7 +30,7 @@ final class EventPayload extends Payload
         return [
             'name' => $this->eventName,
             'event' => $this->event ? ArgumentConverter::convertToPrimitive($this->event) : null,
-            'payload' => count($this->payload) ? ArgumentConverter::convertToPrimitive($this->payload) : null,
+            'payload' => $this->payload !== [] ? ArgumentConverter::convertToPrimitive($this->payload) : null,
             'class_based_event' => ! is_null($this->event),
         ];
     }

@@ -9,28 +9,12 @@ use Spatie\Ray\Payloads\Payload;
 
 final class CachePayload extends Payload
 {
-    protected string $type;
-
     /** @var string[] */
-    protected array $tags;
+    private readonly array $tags;
 
-    protected string $key;
-
-    protected mixed $value;
-
-    protected ?int $expirationInSeconds;
-
-    public function __construct(string $type, string $key, $tags, $value = null, ?int $expirationInSeconds = null)
+    public function __construct(private readonly string $type, private readonly string $key, $tags, private readonly mixed $value = null, private readonly ?int $expirationInSeconds = null)
     {
-        $this->type = $type;
-
-        $this->key = $key;
-
         $this->tags = is_array($tags) ? $tags : [$tags];
-
-        $this->value = $value;
-
-        $this->expirationInSeconds = $expirationInSeconds;
     }
 
     public function getType(): string
@@ -44,7 +28,7 @@ final class CachePayload extends Payload
             'Event' => '<code>'.$this->type.'</code>',
             'Key' => $this->key,
             'Value' => ArgumentConverter::convertToPrimitive($this->value),
-            'Tags' => count($this->tags) ? ArgumentConverter::convertToPrimitive($this->tags) : null,
+            'Tags' => $this->tags !== [] ? ArgumentConverter::convertToPrimitive($this->tags) : null,
             'Expiration in seconds' => $this->expirationInSeconds,
         ]);
 

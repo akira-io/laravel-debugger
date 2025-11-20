@@ -10,23 +10,11 @@ use Spatie\Ray\Payloads\Payload;
 
 final class ResponsePayload extends Payload
 {
-    protected int $statusCode;
+    private readonly array $headers;
 
-    protected array $headers;
-
-    protected ?string $content;
-
-    protected ?array $json;
-
-    public function __construct(int $statusCode, array $headers, string $content, ?array $json = null)
+    public function __construct(private readonly int $statusCode, array $headers, private readonly ?string $content, private readonly ?array $json = null)
     {
-        $this->statusCode = $statusCode;
-
         $this->headers = $this->normalizeHeaders($headers);
-
-        $this->content = $content;
-
-        $this->json = $json;
     }
 
     public static function fromTestResponse(TestResponse $testResponse): self
@@ -35,9 +23,7 @@ final class ResponsePayload extends Payload
             $testResponse->getStatusCode(),
             $testResponse->headers->all(),
             $testResponse->content(),
-            $json = rescue(function () use ($testResponse) {
-                return $testResponse->json();
-            }, null, false)
+            $json = rescue(fn () => $testResponse->json(), null, false)
         );
     }
 
@@ -56,12 +42,10 @@ final class ResponsePayload extends Payload
         ];
     }
 
-    protected function normalizeHeaders(array $headers): array
+    private function normalizeHeaders(array $headers): array
     {
         return collect($headers)
-            ->map(function (array $values) {
-                return $values[0] ?? null;
-            })
+            ->map(fn (array $values) => $values[0] ?? null)
             ->filter()
             ->toArray();
     }

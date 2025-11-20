@@ -23,7 +23,7 @@ final class HttpClientWatcher extends Watcher
 
     public function register(): void
     {
-        if (! self::supportedByLaravelVersion()) {
+        if (in_array(self::supportedByLaravelVersion(), [false, 0], true)) {
             return;
         }
 
@@ -31,7 +31,7 @@ final class HttpClientWatcher extends Watcher
 
         $this->enabled = $settings->send_http_client_requests_to_ray;
 
-        Event::listen(RequestSending::class, function (RequestSending $event) {
+        Event::listen(RequestSending::class, function (RequestSending $event): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -41,7 +41,7 @@ final class HttpClientWatcher extends Watcher
             optional($this->rayProxy)->applyCalledMethods($ray);
         });
 
-        Event::listen(ResponseReceived::class, function (ResponseReceived $event) {
+        Event::listen(ResponseReceived::class, function (ResponseReceived $event): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -52,7 +52,7 @@ final class HttpClientWatcher extends Watcher
         });
     }
 
-    protected function handleRequest(Request $request)
+    private function handleRequest(Request $request): \Spatie\Ray\Ray
     {
         $payload = new TablePayload([
             'Method' => $request->method(),
@@ -66,7 +66,7 @@ final class HttpClientWatcher extends Watcher
         return app(Debugger::class)->sendRequest($payload);
     }
 
-    protected function getRequestType(Request $request)
+    private function getRequestType(Request $request): string
     {
         if ($request->isJson()) {
             return 'Json';
@@ -82,7 +82,7 @@ final class HttpClientWatcher extends Watcher
     /**
      * @throws Exception
      */
-    protected function handleResponse(Request $request, Response $response)
+    private function handleResponse(Request $request, Response $response): \Spatie\Ray\Ray
     {
         $payload = new TablePayload([
             'URL' => $request->url(),
@@ -90,9 +90,7 @@ final class HttpClientWatcher extends Watcher
             'Success' => $response->successful(),
             'Status' => $response->status(),
             'Headers' => $response->headers(),
-            'Body' => rescue(function () use ($response) {
-                return $response->json();
-            }, $response->body(), false),
+            'Body' => rescue(fn () => $response->json(), $response->body(), false),
             'Cookies' => $response->cookies(),
             'Size' => $response->handlerStats()['size_download'] ?? null,
             'Connection time' => $response->handlerStats()['connect_time'] ?? null,

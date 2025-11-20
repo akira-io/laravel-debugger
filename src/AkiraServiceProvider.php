@@ -44,7 +44,7 @@ use Spatie\Ray\Settings\SettingsFactory;
 
 final class AkiraServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this
             ->registerCommands()
@@ -58,7 +58,7 @@ final class AkiraServiceProvider extends ServiceProvider
             ->registerPayloadFinder();
     }
 
-    public function boot()
+    public function boot(): void
     {
         $this->bootWatchers();
         $this->registerPublishing();
@@ -77,7 +77,7 @@ final class AkiraServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function registerPublishing(): void
+    private function registerPublishing(): void
     {
         if ($this->app->runningInConsole()) {
             // Publish configuration file
@@ -92,7 +92,7 @@ final class AkiraServiceProvider extends ServiceProvider
         }
     }
 
-    protected function registerCommands(): self
+    private function registerCommands(): self
     {
         $this->commands(PublishDebuggerConfigCommand::class);
         $this->commands(CleanDebuggerCommand::class);
@@ -100,7 +100,7 @@ final class AkiraServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function registerSettings(): self
+    private function registerSettings(): self
     {
         $this->app->singleton(Settings::class, function ($app) {
             $settings = SettingsFactory::createFromConfigFile($app->configPath());
@@ -130,15 +130,13 @@ final class AkiraServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function registerBindings(): self
+    private function registerBindings(): self
     {
         $settings = app(Settings::class);
 
-        $this->app->bind(Client::class, function () use ($settings) {
-            return new Client($settings->port, $settings->host);
-        });
+        $this->app->bind(Client::class, fn (): Client => new Client($settings->port, $settings->host));
 
-        $this->app->bind(Debugger::class, function () {
+        $this->app->bind(Debugger::class, function (): Debugger {
             $client = app(Client::class);
 
             $settings = app(Settings::class);
@@ -157,7 +155,7 @@ final class AkiraServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function registerWatchers(): self
+    private function registerWatchers(): self
     {
         $watchers = [
             ExceptionWatcher::class,
@@ -181,14 +179,14 @@ final class AkiraServiceProvider extends ServiceProvider
         ];
 
         collect($watchers)
-            ->each(function (string $watcherClass) {
+            ->each(function (string $watcherClass): void {
                 $this->app->singleton($watcherClass);
             });
 
         return $this;
     }
 
-    protected function bootWatchers(): self
+    private function bootWatchers(): self
     {
         $watchers = [
             ExceptionWatcher::class,
@@ -213,7 +211,7 @@ final class AkiraServiceProvider extends ServiceProvider
         ];
 
         collect($watchers)
-            ->each(function (string $watcherClass) {
+            ->each(function (string $watcherClass): void {
                 /** @var \Spatie\LaravelRay\Watchers\Watcher $watcher */
                 $watcher = app($watcherClass);
 
@@ -223,9 +221,9 @@ final class AkiraServiceProvider extends ServiceProvider
         return $this;
     }
 
-    protected function registerMacros(): self
+    private function registerMacros(): self
     {
-        Collection::macro('debug', function (string $description = '') {
+        Collection::macro('debug', function (string $description = ''): object {
             $description === ''
                 ? ad($this->items)
                 : ad($description, $this->items);
@@ -233,21 +231,17 @@ final class AkiraServiceProvider extends ServiceProvider
             return $this;
         });
 
-        Collection::macro('ray', function (string $description = '') {
-            return $this->debug($description);
-        });
+        Collection::macro('ray', fn (string $description = '') => $this->debug($description));
 
-        TestResponse::macro('debug', function () {
+        TestResponse::macro('debug', function (): object {
             ad()->testResponse($this);
 
             return $this;
         });
 
-        TestResponse::macro('ray', function () {
-            return $this->debug();
-        });
+        TestResponse::macro('ray', fn () => $this->debug());
 
-        Stringable::macro('debug', function (string $description = '') {
+        Stringable::macro('debug', function (string $description = ''): object {
             $description === ''
                 ? ad($this->value)
                 : ad($description, $this->value);
@@ -255,11 +249,9 @@ final class AkiraServiceProvider extends ServiceProvider
             return $this;
         });
 
-        Stringable::macro('ray', function (string $description = '') {
-            return $this->debug($description);
-        });
+        Stringable::macro('ray', fn (string $description = '') => $this->debug($description));
 
-        Builder::macro('debug', function () {
+        Builder::macro('debug', function (): object {
             $payload = new QueryPayload($this);
 
             ad()->sendRequest($payload);
@@ -267,43 +259,31 @@ final class AkiraServiceProvider extends ServiceProvider
             return $this;
         });
 
-        Builder::macro('ray', function () {
-            return $this->debug();
-        });
+        Builder::macro('ray', fn () => $this->debug());
 
         return $this;
     }
 
-    protected function registerBladeDirectives(): self
+    private function registerBladeDirectives(): self
     {
         if (! $this->app->has('blade.compiler')) {
             return $this;
         }
 
-        $this->callAfterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
-            Blade::directive('debug', function ($expression) {
-                return "<?php ad($expression); ?>";
-            });
-            Blade::directive('ray', function ($expression) {
-                return "<?php ad($expression); ?>";
-            });
-            Blade::directive('measure', function () {
-                return '<?php ad()->measure() ?>';
-            });
-            Blade::directive('xdebug', function () {
-                return '<?php ad($__data)?>';
-            });
-            Blade::directive('xray', function () {
-                return '<?php ad($__data)?>';
-            });
+        $this->callAfterResolving('blade.compiler', function (BladeCompiler $bladeCompiler): void {
+            Blade::directive('debug', fn ($expression): string => "<?php ad($expression); ?>");
+            Blade::directive('ray', fn ($expression): string => "<?php ad($expression); ?>");
+            Blade::directive('measure', fn (): string => '<?php ad()->measure() ?>');
+            Blade::directive('xdebug', fn (): string => '<?php ad($__data)?>');
+            Blade::directive('xray', fn (): string => '<?php ad($__data)?>');
         });
 
         return $this;
     }
 
-    protected function registerPayloadFinder(): self
+    private function registerPayloadFinder(): self
     {
-        PayloadFactory::registerPayloadFinder(function ($argument) {
+        PayloadFactory::registerPayloadFinder(function ($argument): ModelPayload|MailablePayload|null {
             if ($argument instanceof Model) {
                 return new ModelPayload($argument);
             }

@@ -16,7 +16,7 @@ final class ViewWatcher extends Watcher
 
         $this->enabled = $settings->send_views_to_ray;
 
-        Event::listen('composing:*', function ($event, $data) {
+        Event::listen('composing:*', function ($event, $data): void {
             if (! $this->enabled()) {
                 return;
             }

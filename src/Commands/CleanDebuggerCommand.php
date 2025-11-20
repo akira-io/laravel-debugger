@@ -33,7 +33,7 @@ final class CleanDebuggerCommand extends Command
                 ->requirePackages(['rector/rector'], true, $this->output);
         }
 
-        $this->withProgressBar($directories, function ($directory) {
+        $this->withProgressBar($directories, function (string $directory): void {
             $result = Process::run('./vendor/bin/rector process '.$directory);
 
             if (! $result->successful()) {

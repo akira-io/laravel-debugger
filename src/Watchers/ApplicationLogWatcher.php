@@ -18,12 +18,12 @@ final class ApplicationLogWatcher extends Watcher
 
         $this->enabled = $ray->settings->send_log_calls_to_ray;
 
-        Event::listen(MessageLogged::class, function (MessageLogged $message) {
+        Event::listen(MessageLogged::class, function (MessageLogged $message): void {
             if (! $this->shouldLogMessage($message)) {
                 return;
             }
 
-            if (! class_exists('Spatie\Ray\Payloads\ApplicationLogPayload')) {
+            if (! class_exists(ApplicationLogPayload::class)) {
                 return;
             }
 
@@ -50,7 +50,7 @@ final class ApplicationLogWatcher extends Watcher
         });
     }
 
-    protected function shouldLogMessage(MessageLogged $message): bool
+    private function shouldLogMessage(MessageLogged $message): bool
     {
         if (! $this->enabled()) {
             return false;
@@ -75,10 +75,6 @@ final class ApplicationLogWatcher extends Watcher
             return false;
         }
 
-        if ((new DeprecatedNoticeWatcher)->concernsDeprecatedNotice($message)) {
-            return false;
-        }
-
-        return true;
+        return ! (new DeprecatedNoticeWatcher)->concernsDeprecatedNotice($message);
     }
 }

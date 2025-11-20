@@ -23,7 +23,7 @@ final class ExceptionWatcher extends Watcher
 
         $this->enabled = $settings->send_exceptions_to_ray;
 
-        Event::listen(MessageLogged::class, function (MessageLogged $message) {
+        Event::listen(MessageLogged::class, function (MessageLogged $message): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -36,7 +36,7 @@ final class ExceptionWatcher extends Watcher
 
             $meta = [];
 
-            if ($flareReport = $this->getFlareReport($exception)) {
+            if (($flareReport = $this->getFlareReport($exception)) !== null && ($flareReport = $this->getFlareReport($exception)) !== []) {
                 $meta['flare_report'] = $flareReport;
             }
 
@@ -53,11 +53,7 @@ final class ExceptionWatcher extends Watcher
             return false;
         }
 
-        if (! $messageLogged->context['exception'] instanceof Exception) {
-            return false;
-        }
-
-        return true;
+        return $messageLogged->context['exception'] instanceof Exception;
     }
 
     public function getFlareReport(Throwable $exception): ?array

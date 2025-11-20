@@ -29,7 +29,7 @@ final class MailWatcher extends Watcher
 
     public function listenForLoggedMails(): void
     {
-        Event::listen(MessageLogged::class, function (MessageLogged $messageLogged) {
+        Event::listen(MessageLogged::class, function (MessageLogged $messageLogged): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -51,11 +51,7 @@ final class MailWatcher extends Watcher
             return false;
         }
 
-        if (! Str::contains($messageLogged->message, 'To:')) {
-            return false;
-        }
-
-        return true;
+        return Str::contains($messageLogged->message, 'To:');
     }
 
     public function supportsMessageSendingEvent(): bool
@@ -63,11 +59,11 @@ final class MailWatcher extends Watcher
         return version_compare(app()->version(), '11.0.0', '>=');
     }
 
-    protected function registerMessageSendingEventListener(): void
+    private function registerMessageSendingEventListener(): void
     {
         Event::listen([
             MessageSending::class,
-        ], function (MessageSending $event) {
+        ], function (MessageSending $event): void {
             if (! $this->enabled()) {
                 return;
             }

@@ -25,7 +25,7 @@ final class RequestWatcher extends Watcher
 
         $this->enabled = $settings->send_requests_to_ray;
 
-        Event::listen(RequestHandled::class, function (RequestHandled $event) {
+        Event::listen(RequestHandled::class, function (RequestHandled $event): void {
             if (! $this->enabled()) {
                 return;
             }
@@ -36,16 +36,14 @@ final class RequestWatcher extends Watcher
         });
     }
 
-    protected function handleRequest(Request $request, Response $response): Ray
+    private function handleRequest(Request $request, Response $response): Ray
     {
         $startTime = defined('LARAVEL_START')
             ? LARAVEL_START
             : $request->server('REQUEST_TIME_FLOAT');
 
         $headers = collect($request->headers->all())
-            ->map(function (array $header) {
-                return $header[0];
-            })
+            ->map(fn (array $header): ?string => $header[0])
             ->toArray();
 
         $session = $request->hasSession()
@@ -54,7 +52,7 @@ final class RequestWatcher extends Watcher
 
         $payload = new TablePayload([
             'IP Address' => $request->ip(),
-            'URI' => str_replace($request->root(), '', $request->fullUrl()) ?: '/',
+            'URI' => ! in_array(str_replace($request->root(), '', $request->fullUrl()), ['', '0'], true) && str_replace($request->root(), '', $request->fullUrl()) !== [] ? str_replace($request->root(), '', $request->fullUrl()) : '/',
             'Method' => $request->method(),
             'Controller action' => optional($request->route())->getActionName(),
             'Middleware' => array_values(optional($request->route())->gatherMiddleware() ?? []),
@@ -70,7 +68,7 @@ final class RequestWatcher extends Watcher
         return app(Debugger::class)->sendRequest($payload);
     }
 
-    protected function response(Response $response)
+    private function response(Response $response): array|string
     {
         $content = $response->getContent();
 
@@ -80,7 +78,7 @@ final class RequestWatcher extends Watcher
                 return json_decode($content, true);
             }
 
-            if (Str::startsWith(mb_strtolower($response->headers->get('Content-Type')), 'text/plain')) {
+            if (Str::startsWith(mb_strtolower((string) $response->headers->get('Content-Type')), 'text/plain')) {
                 return $content;
             }
         }
@@ -99,7 +97,7 @@ final class RequestWatcher extends Watcher
         return 'HTML Response';
     }
 
-    protected function extractDataFromView($view)
+    private function extractDataFromView(View $view)
     {
         return collect($view->getData())
             ->map(function ($value) {
@@ -109,7 +107,7 @@ final class RequestWatcher extends Watcher
 
                 if (is_object($value)) {
                     return [
-                        'class' => get_class($value),
+                        'class' => $value::class,
                         'properties' => json_decode(json_encode($value), true),
                     ];
                 }
@@ -119,11 +117,11 @@ final class RequestWatcher extends Watcher
             ->toArray();
     }
 
-    private function payload(Request $request)
+    private function payload(Request $request): array
     {
         $files = $request->files->all();
 
-        array_walk_recursive($files, function (&$file) {
+        array_walk_recursive($files, function (&$file): void {
             $file = [
                 'name' => $file->getClientOriginalName(),
                 'size' => $file->isFile() ? ($file->getSize() / 1000).'KB' : '0',

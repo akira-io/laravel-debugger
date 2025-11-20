@@ -16,8 +16,6 @@ final class InsertQueryWatcher extends ConditionalQueryWatcher
 
         $this->enabled = $settings->send_insert_queries_to_ray ?? false;
 
-        $this->setConditionalCallback(function (QueryExecuted $query) {
-            return Str::startsWith(mb_strtolower($query->sql), 'insert');
-        });
+        $this->setConditionalCallback(fn (QueryExecuted $query) => Str::startsWith(mb_strtolower($query->sql), 'insert'));
     }
 }

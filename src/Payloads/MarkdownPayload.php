@@ -9,12 +9,7 @@ use Spatie\Ray\Payloads\Payload;
 
 final class MarkdownPayload extends Payload
 {
-    protected string $markdown;
-
-    public function __construct(string $markdown)
-    {
-        $this->markdown = $markdown;
-    }
+    public function __construct(private readonly string $markdown) {}
 
     public function getType(): string
     {
@@ -29,7 +24,7 @@ final class MarkdownPayload extends Payload
         ];
     }
 
-    protected function markdownToHtml(string $markdown): string
+    private function markdownToHtml(string $markdown): string
     {
         $converter = new GithubFlavoredMarkdownConverter([
             'renderer' => [
@@ -47,20 +42,20 @@ final class MarkdownPayload extends Payload
         return mb_trim("{$css}{$html}");
     }
 
-    protected function getCustomStyles(): string
+    private function getCustomStyles(): string
     {
         // render links as underlined
         return '<style>a { text-decoration:underline!important; }</style>';
     }
 
-    protected function processCodeBlocks($html): string
+    private function processCodeBlocks(\League\CommonMark\Output\RenderedContentInterface $html): string
     {
         // format code blocks background color, padding, and display width; the background
         // color changes based on light or dark app theme.
         return str_replace('<pre><code', '<pre class="w-100 bg-gray-200 dark:bg-gray-800 p-5"><code', $html);
     }
 
-    protected function processHeaderTags($html): string
+    private function processHeaderTags(string $html): string
     {
         // render headers with the correct format and size as divs
         $html = str_replace(['<h1>', '<h2>', '<h3>', '<h4>'], [

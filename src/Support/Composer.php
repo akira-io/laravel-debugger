@@ -25,14 +25,14 @@ final class Composer extends \Illuminate\Support\Composer
             'require',
             ...$packages,
         ])
-            ->when($dev, function ($command) {
+            ->when($dev, function ($command): void {
                 $command->push('--dev');
             })->all();
 
         return $this->getProcess($command, ['COMPOSER_MEMORY_LIMIT' => '-1'])
             ->run(
                 $output instanceof OutputInterface
-                    ? function ($type, $line) use ($output) {
+                    ? function ($type, string $line) use ($output): void {
                         $output->write('    '.$line);
                     } : $output
             ) === 0;

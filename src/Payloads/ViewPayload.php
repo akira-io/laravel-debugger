@@ -11,12 +11,7 @@ use Spatie\Ray\Payloads\Payload;
 
 final class ViewPayload extends Payload
 {
-    protected View $view;
-
-    public function __construct(View $view)
-    {
-        $this->view = $view;
-    }
+    public function __construct(private readonly View $view) {}
 
     public function getType(): string
     {
@@ -32,23 +27,21 @@ final class ViewPayload extends Payload
         ];
     }
 
-    protected function pathRelativeToProjectRoot(View $view): string
+    private function pathRelativeToProjectRoot(View $view): string
     {
         $path = $view->getPath();
 
         if (Str::startsWith($path, base_path())) {
-            $path = mb_substr($path, mb_strlen(base_path()));
+            return mb_substr($path, mb_strlen(base_path()));
         }
 
         return $path;
     }
 
-    protected function getData(View $view): array
+    private function getData(View $view): array
     {
         return collect($view->getData())
-            ->filter(function ($value, $key) {
-                return ! in_array($key, ['app', '__env', 'obLevel', 'errors']);
-            })
+            ->filter(fn ($value, $key): bool => ! in_array($key, ['app', '__env', 'obLevel', 'errors']))
             ->toArray();
     }
 }

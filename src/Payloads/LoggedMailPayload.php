@@ -13,33 +13,7 @@ use ZBateson\MailMimeParser\MailMimeParser;
 
 final class LoggedMailPayload extends Payload
 {
-    protected string $html = '';
-
-    protected array $from;
-
-    protected ?string $subject;
-
-    protected array $to;
-
-    protected array $cc;
-
-    protected array $bcc;
-
-    public function __construct(
-        string $html,
-        array $from = [],
-        ?string $subject = null,
-        array $to = [],
-        array $cc = [],
-        array $bcc = []
-    ) {
-        $this->html = $html;
-        $this->from = $from;
-        $this->subject = $subject;
-        $this->to = $to;
-        $this->cc = $cc;
-        $this->bcc = $bcc;
-    }
+    public function __construct(private readonly string $html, private readonly array $from = [], private readonly ?string $subject = null, private readonly array $to = [], private readonly array $cc = [], private readonly array $bcc = []) {}
 
     public static function forLoggedMail(string $loggedMail): self
     {
@@ -78,40 +52,38 @@ final class LoggedMailPayload extends Payload
         ];
     }
 
-    protected static function getMailContent(string $loggedMail, IMessage $message): string
+    private static function getMailContent(string $loggedMail, IMessage $message): string
     {
         $startOfHtml = mb_strpos($loggedMail, '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0', true);
 
-        if (! $startOfHtml) {
+        if ($startOfHtml === 0 || $startOfHtml === false) {
             return $message->getContent() ?? $message->getHtmlContent() ?? '';
         }
 
         return mb_substr($loggedMail, $startOfHtml) ?? '';
     }
 
-    protected static function convertHeaderToPersons(?AddressHeader $header): array
+    private static function convertHeaderToPersons(?AddressHeader $header): array
     {
-        if ($header === null) {
+        if (! $header instanceof AddressHeader) {
             return [];
         }
 
         return array_map(
-            function (AddressPart $address) {
-                return [
-                    'name' => $address->getName(),
-                    'email' => $address->getEmail(),
-                ];
-            },
+            fn (AddressPart $address): array => [
+                'name' => $address->getName(),
+                'email' => $address->getEmail(),
+            ],
             $header->getAddresses()
         );
     }
 
-    protected function sanitizeHtml(string $html): string
+    private function sanitizeHtml(string $html): string
     {
         $needle = 'Content-Type: text/html; charset=utf-8 Content-Transfer-Encoding: quoted-printable';
 
         if (mb_strpos($html, $needle) !== false) {
-            $html = mb_substr($html, mb_strpos($html, $needle));
+            return mb_substr($html, mb_strpos($html, $needle));
         }
 
         return $html;

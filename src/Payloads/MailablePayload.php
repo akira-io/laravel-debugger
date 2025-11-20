@@ -10,16 +10,7 @@ use Throwable;
 
 final class MailablePayload extends Payload
 {
-    protected string $html = '';
-
-    protected ?Mailable $mailable = null;
-
-    public function __construct(string $html, ?Mailable $mailable = null)
-    {
-        $this->html = $html;
-
-        $this->mailable = $mailable;
-    }
+    public function __construct(private readonly string $html, private readonly ?Mailable $mailable = null) {}
 
     public static function forMailable(Mailable $mailable): self
     {
@@ -41,9 +32,9 @@ final class MailablePayload extends Payload
             'bcc' => [],
         ];
 
-        if ($this->mailable) {
-            $content = array_merge($content, [
-                'mailable_class' => get_class($this->mailable),
+        if ($this->mailable instanceof Mailable) {
+            return array_merge($content, [
+                'mailable_class' => $this->mailable::class,
                 'from' => $this->convertToPersons($this->mailable->from),
                 'subject' => $this->mailable->subject,
                 'to' => $this->convertToPersons($this->mailable->to),
@@ -55,7 +46,7 @@ final class MailablePayload extends Payload
         return $content;
     }
 
-    protected static function renderMailable(Mailable $mailable): string
+    private static function renderMailable(Mailable $mailable): string
     {
         try {
             return $mailable->render();
@@ -64,15 +55,13 @@ final class MailablePayload extends Payload
         }
     }
 
-    protected function convertToPersons(array $persons): array
+    private function convertToPersons(array $persons): array
     {
         return collect($persons)
-            ->map(function (array $person) {
-                return [
-                    'email' => $person['address'],
-                    'name' => $person['name'] ?? '',
-                ];
-            })
+            ->map(fn (array $person): array => [
+                'email' => $person['address'],
+                'name' => $person['name'] ?? '',
+            ])
             ->toArray();
     }
 }
