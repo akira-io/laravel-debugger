@@ -15,7 +15,7 @@ from the ground up with PHP 8.4's latest features including strict types, readon
 
 ## Requirements
 
-- **PHP:** ^8.0 +
+- **PHP:** ^8.2
 - **Laravel:** ^11.0|^12.0
 - **Dependencies:** See [composer.json](composer.json)
 
