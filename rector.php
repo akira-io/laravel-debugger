@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -10,7 +11,7 @@ return RectorConfig::configure()
         __DIR__.'/tests',
     ])
     ->withSkip([
-        //  AddOverrideAttributeToOverriddenMethodsRector::class,
+        AddOverrideAttributeToOverriddenMethodsRector::class,
     ])
     ->withPreparedSets(
         deadCode: true,

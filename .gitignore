@@ -16,6 +16,7 @@ package-lock.json
 .phpunit.result.cache
 phpunit.xml
 .pest
+.temp/
 
 # PHPStan
 /build/
