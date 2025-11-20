@@ -1,72 +1,72 @@
 {
-    "name": "akira/laravel-debugger",
-    "description": "Advanced debugging toolkit for Laravel 12+ built with PHP 8.4 features.",
-    "type": "library",
-    "license": "MIT",
-    "keywords": [
-        "akira",
-        "laravel",
-        "debugger",
-        "debug",
-        "laravel-12",
-        "php-8.4"
-    ],
-    "require": {
-        "php": "^8.2|^8.3|^8.4",
-        "illuminate/support": "^11.0|^12.0",
-        "illuminate/collections": "^11.0|^12.0",
-        "illuminate/contracts": "^11.0|^12.0",
-        "illuminate/database": "^11.0|^12.0",
-        "illuminate/queue": "^11.0|^12.0",
-        "symfony/var-dumper": "^6.0|^7.0",
-        "symfony/stopwatch": "^6.0|^7.0",
-        "spatie/backtrace": "^1.8",
-        "spatie/ray": "^1.41",
-        "zbateson/mail-mime-parser": "^2.0|^3.0"
+  "name": "akira/laravel-debugger",
+  "description": "Advanced debugging toolkit for Laravel 12+ built with PHP 8.4 features.",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "akira",
+    "laravel",
+    "debugger",
+    "debug",
+    "laravel-12",
+    "php-8.4"
+  ],
+  "require": {
+    "php": "^8.0",
+    "illuminate/support": "^11.0|^12.0",
+    "illuminate/collections": "^11.0|^12.0",
+    "illuminate/contracts": "^11.0|^12.0",
+    "illuminate/database": "^11.0|^12.0",
+    "illuminate/queue": "^11.0|^12.0",
+    "symfony/var-dumper": "^6.0|^7.0",
+    "symfony/stopwatch": "^6.0|^7.0",
+    "spatie/backtrace": "^1.8",
+    "spatie/ray": "^1.41",
+    "zbateson/mail-mime-parser": "^2.0|^3.0"
+  },
+  "require-dev": {
+    "laravel/framework": "^11.0|^12.0",
+    "laravel/pint": "^1.16",
+    "phpstan/phpstan": "^1.10|^2.0",
+    "pestphp/pest": "^2.0|^3.0",
+    "pestphp/pest-plugin-laravel": "^2.0|^3.0|^4.0",
+    "rector/rector": "^0.19|^1.0",
+    "orchestra/testbench": "^8.0|^9.0",
+    "guzzlehttp/guzzle": "^7.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Akira\\Debugger\\": "src/"
     },
-    "require-dev": {
-        "laravel/framework": "^11.0|^12.0",
-        "laravel/pint": "^1.16",
-        "phpstan/phpstan": "^1.10|^2.0",
-        "pestphp/pest": "^2.0|^3.0",
-        "pestphp/pest-plugin-laravel": "^2.0|^3.0",
-        "rector/rector": "^0.19|^1.0",
-        "orchestra/testbench": "^8.0|^9.0",
-        "guzzlehttp/guzzle": "^7.8"
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Akira\\Debugger\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
     },
-    "autoload": {
-        "psr-4": {
-            "Akira\\Debugger\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Akira\\Debugger\\Tests\\": "tests/"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        },
-        "sort-packages": true,
-        "autoloader-suffix": "AkiraDebugger"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Akira\\Debugger\\AkiraServiceProvider"
-            ]
-        }
-    },
-    "scripts": {
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint",
-        "refactor": "vendor/bin/rector process"
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "sort-packages": true,
+    "autoloader-suffix": "AkiraDebugger"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Akira\\Debugger\\AkiraServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "analyse": "vendor/bin/phpstan analyse",
+    "test": "vendor/bin/pest --coverage",
+    "format": "vendor/bin/pint",
+    "refactor": "vendor/bin/rector process"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
