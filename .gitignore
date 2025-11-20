@@ -48,3 +48,4 @@ phpstan.neon
 # OS
 Thumbs.db
 .DS_Store
+/.phpunit.cache/test-results
