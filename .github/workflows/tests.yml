@@ -45,4 +45,4 @@ jobs:
         run: vendor/bin/phpstan analyse --memory-limit=2G
 
       - name: Run tests (Pest)
-        run: vendor/bin/pest --no-cache
+        run: vendor/bin/pest
