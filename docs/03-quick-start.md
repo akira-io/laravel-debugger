@@ -16,20 +16,20 @@ Ensure you have:
 Open any controller, route, or class and try:
 
 ```php
-debug('Hello, Akira Debugger!');
+ad('Hello, Akira Debugger!');
 ```
 
 ### 2. Debug a Variable
 
 ```php
 $user = User::first();
-debug($user);
+ad($user);
 ```
 
 ### 3. Debug with a Label
 
 ```php
-debug('Current User', $user);
+ad('Current User', $user);
 ```
 
 That's it! You're debugging!
@@ -38,11 +38,11 @@ That's it! You're debugging!
 
 ### Debugging Queries
 
-Enable query watching:
+Enable query watching in your code:
 
 ```php
-// In your .env
-SEND_QUERIES_TO_DEBUGGER=true
+// Enable query logging
+ad()->showQueries();
 ```
 
 Now all queries are automatically logged.
@@ -51,20 +51,19 @@ Now all queries are automatically logged.
 
 ```php
 $users = User::all();
-$users->debug('All Users');
+ad('All Users', $users);
 ```
 
 ### Debugging in Blade
 
 ```blade
-@debug($user)
-@xdebug {{-- Debug all view data --}}
+ad($user)
 ```
 
 ### Debug and Stop
 
 ```php
-rd($user); // Debugs and stops execution
+debugAndDie($user); // Debugs and stops execution
 ```
 
 ## Next Steps

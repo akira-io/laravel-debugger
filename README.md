@@ -15,7 +15,7 @@ from the ground up with PHP 8.4's latest features including strict types, readon
 
 ## Requirements
 
-- **PHP:** ^8.2|^8.3|^8.4
+- **PHP:** ^8.0 +
 - **Laravel:** ^11.0|^12.0
 - **Dependencies:** See [composer.json](composer.json)
 
@@ -53,87 +53,129 @@ php artisan vendor:publish --tag=debugger-config
 
 This creates `config/debugger.php` where you can customize watchers and behavior.
 
-## Usage
+## Quick Start
 
 ### Basic Debugging
 
+The simplest way to debug with `ad()`:
+
 ```php
-// Using ad() - recommended
-ad($variable);
-ad('User Data', $user);
+// Debug a variable
+ad($user);
 
-// Using ray() - from spatie/ray (also works)
-ray($variable);
+// Debug with label
+ad('Current User', $user);
 
-// Debug and die
+// Debug and stop execution
 debugAndDie($user);
+
+// Debug multiple values
+ad($user, $orders, $settings);
 ```
 
-> **Note:** Both `ad()` and `ray()` work. We recommend `ad()` for consistency with the Akira Debugger naming, but
-`ray()` from `spatie/ray` is fully functional.
+Learn more in [Basic Usage](docs/04-basic-usage.md).
 
-### Collections
+## Usage
+
+### Query Debugging
+
+Monitor database queries in real-time:
 
 ```php
-// Enable query watcher
-Debugger::showQueries();
+// Enable query logging
+ad()->showQueries();
 
-// Detect slow queries (threshold in ms)
-Debugger::slowQueries(100);
+// Find slow queries (threshold in milliseconds)
+ad()->slowQueries(100);
 
 // Detect duplicate queries
-Debugger::duplicateQueries();
+ad()->showDuplicateQueries();
 
-// Detect N+1 queries
-Debugger::conditionalQueries();
+// Detect N+1 query problems
+ad()->showConditionalQueries(function ($query) {
+    return $query->toSql();
+});
 ```
+
+Learn more in [Query Debugging](docs/07-query-debugging.md).
 
 ### Event Monitoring
 
-```php
-// Watch specific event
-Debugger::event(OrderCreated::class);
+Track Laravel events as they fire:
 
+```php
 // Watch all events
-Debugger::events();
+ad()->showEvents();
+
+// Get events info
+ad()->events();
 ```
+
+See [Event Debugging](docs/09-event-debugging.md) for details.
 
 ### Job Debugging
 
-```php
-// Monitor job execution
-Debugger::jobs();
-
-// Debug specific job
-Debugger::job(ProcessOrderJob::class);
-```
-
-### HTTP Client Debugging
+Monitor queued jobs and their execution:
 
 ```php
-// Monitor HTTP requests
-Debugger::http();
+// Monitor all job execution
+ad()->showJobs();
 
-// Make request (automatically logged)
-Http::get('https://api.example.com/users');
+// Get jobs info
+ad()->jobs();
 ```
+
+Read [Job Debugging](docs/10-job-debugging.md) for advanced usage.
 
 ### Mail Debugging
 
-```php
-// Monitor sent emails
-Debugger::mails();
+Inspect sent emails without sending:
 
-// Debug mailable
-Debugger::mailable(new OrderShipped($order));
+```php
+// Log all sent emails
+ad()->showMails();
+
+// Debug a mailable
+ad()->mailable(new OrderConfirmation($order));
 ```
+
+Details in [Mail Debugging](docs/08-mail-debugging.md).
+
+### HTTP Debugging
+
+Monitor HTTP client requests and responses:
+
+```php
+// Track all HTTP requests
+ad()->showHttpClientRequests();
+
+// HTTP requests are automatically logged
+$response = Http::get('https://api.example.com/users');
+```
+
+Learn more in [HTTP Debugging](docs/11-http-debugging.md).
 
 ### Cache Monitoring
 
+Track cache operations:
+
 ```php
-// Watch cache operations
-Debugger::cache();
+// Monitor cache hits and misses
+ad()->showCache();
 ```
+
+See [Cache Debugging](docs/12-cache-debugging.md).
+
+### View Debugging
+
+Inspect rendered views and their data:
+
+```php
+// Watch view rendering
+ad()->showViews();
+```
+
+Read [View Debugging](docs/13-view-debugging.md).
 
 ### Commands
 

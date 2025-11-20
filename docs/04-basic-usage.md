@@ -272,37 +272,23 @@ ad('After Operation')->memory();
 
 ## Output Customization
 
-### Colors
+### Labels and Context
+
+Add context to your debug output:
 
 ```php
-ad()->green('Success Message');
-ad()->red('Error Message');
-ad()->orange('Warning Message');
-ad()->blue('Info Message');
+ad()->context([
+    'user_id' => auth()->id(),
+    'route' => request()->route()->getName(),
+])->send($data);
 ```
 
-### Sizes
+### Stack Traces
+
+Include a stack trace with your debug:
 
 ```php
-ad()->small($data);
-ad()->large($data);
-```
-
-### Grouping
-
-Group related debug calls:
-
-```php
-ad()->group('User Processing', function () {
-    ad('Fetching user');
-    $user = User::find(1);
-
-    ad('Processing orders');
-    $orders = $user->orders;
-
-    ad('Sending notification');
-    $user->notify(new OrderProcessed());
-});
+ad()->trace()->send($variable);
 ```
 
 ## Best Practices
