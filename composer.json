@@ -12,12 +12,12 @@
     "php-8.4"
   ],
   "require": {
-    "php": "^8.2",
-    "illuminate/support": "^11.0|^12.0",
-    "illuminate/collections": "^11.0|^12.0",
-    "illuminate/contracts": "^11.0|^12.0",
-    "illuminate/database": "^11.0|^12.0",
-    "illuminate/queue": "^11.0|^12.0",
+    "php": "^8.4",
+    "illuminate/support": "^12.0",
+    "illuminate/collections": "^12.0",
+    "illuminate/contracts": "^12.0",
+    "illuminate/database": "^12.0",
+    "illuminate/queue": "^12.0",
     "symfony/var-dumper": "^6.0|^7.0",
     "symfony/stopwatch": "^6.0|^7.0",
     "spatie/backtrace": "^1.8",
@@ -25,13 +25,13 @@
     "zbateson/mail-mime-parser": "^2.0|^3.0"
   },
   "require-dev": {
-    "laravel/framework": "^11.0|^12.0",
+    "laravel/framework": "^12.0",
     "laravel/pint": "^1.16",
     "phpstan/phpstan": "^1.10|^2.0",
-    "pestphp/pest": "^2.0|^3.0|^4.0",
-    "pestphp/pest-plugin-laravel": "^2.0|^3.0|^4.0",
+    "pestphp/pest": "^4.0",
+    "pestphp/pest-plugin-laravel": "^4.0",
     "rector/rector": "^0.19|^1.0",
-    "orchestra/testbench": "^9.0|^10.0",
+    "orchestra/testbench": "^10.0",
     "guzzlehttp/guzzle": "^7.8"
   },
   "autoload": {

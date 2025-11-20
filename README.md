@@ -15,25 +15,22 @@ from the ground up with PHP 8.4's latest features including strict types, readon
 
 ## Requirements
 
-- **PHP:** ^8.2
-- **Laravel:** ^11.0|^12.0
+- **PHP:** ^8.4
+- **Laravel:** ^12.0
 - **Dependencies:** See [composer.json](composer.json)
-
-> **Note:** This package is built with strict typing and modern PHP features. While it supports PHP 8.2+, it's optimized
-> for PHP 8.4 and Laravel 12.
 
 ## Features
 
-- 🎯 **Laravel 12+ exclusive** - Built for the latest framework features
-- ⚡ **PHP 8.4 strict typing** - Full type safety throughout
-- 🔍 **Query debugging** - Monitor SQL queries, detect N+1, slow queries
-- 📧 **Mail debugging** - Inspect sent emails and mailables
-- �� **Event tracking** - Watch Laravel events as they fire
-- 📦 **Job monitoring** - Track queued jobs and their execution
-- 🌐 **HTTP debugging** - Log HTTP client requests and responses
-- 💾 **Cache monitoring** - Track cache hits, misses, and operations
-- 🎨 **View debugging** - Inspect rendered views and their data
-- ⚠️ **Exception tracking** - Catch and log exceptions with full context
+- **Laravel 12+ exclusive** - Built for the latest framework features
+- **PHP 8.4 strict typing** - Full type safety throughout
+- **Query debugging** - Monitor SQL queries, detect N+1, slow queries
+- **Mail debugging** - Inspect sent emails and mailables
+- **Event tracking** - Watch Laravel events as they fire
+- **Job monitoring** - Track queued jobs and their execution
+- **HTTP debugging** - Log HTTP client requests and responses
+- **Cache monitoring** - Track cache hits, misses, and operations
+- **View debugging** - Inspect rendered views and their data
+- ️ **Exception tracking** - Catch and log exceptions with full context
 
 ## Installation
 
