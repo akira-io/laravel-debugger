@@ -68,13 +68,11 @@
     "refactor": "rector",
     "test:lint": "pint --test",
     "test:refactor": "rector --dry-run",
-    "test:arch": "pest --filter=arch",
     "test:types": "phpstan",
     "test:coverage": "pest",
     "test": [
       "@test:lint",
       "@test:refactor",
-      "@test:arch",
       "@test:types",
       "@test:coverage",
       "@test:type-coverage"
