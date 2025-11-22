@@ -24,7 +24,7 @@
     "publish": false
   },
   "hooks": {
-    "before:init": "npm run lint && npm run test",
+    "before:init": "composer test",
     "after:release": "echo 'Release v${version} complete!'"
   }
 }

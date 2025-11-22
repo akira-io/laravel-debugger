@@ -86,7 +86,7 @@ final class Debugger extends BaseRay
             Mail::fake();
         }
 
-        $payloads = array_map(fn (Mailable $mailable): MailablePayload => MailablePayload::forMailable($mailable), $mailables);
+        $payloads = array_map(MailablePayload::forMailable(...), $mailables);
 
         $this->sendRequest($payloads);
 
@@ -618,7 +618,7 @@ final class Debugger extends BaseRay
                 $watcher->disable();
             }
 
-            if ((new ReflectionFunction($callable))->hasReturnType()) {
+            if (new ReflectionFunction($callable)->hasReturnType()) {
                 return $output;
             }
         }

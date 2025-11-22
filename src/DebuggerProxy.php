@@ -8,7 +8,7 @@ final class DebuggerProxy
 {
     private array $methodsCalled = [];
 
-    public function __call($method, $arguments)
+    public function __call(string $method, array $arguments)
     {
         $this->methodsCalled[] = ['method' => $method, 'arguments' => $arguments];
     }

@@ -5,7 +5,3 @@ parameters:
     level: max
     paths:
         - src
-    tmpDir: build/phpstan
-    checkGenericClassInNonGenericObjectType: true
-    checkMissingVarTagTypehint: true
-    inferPrivatePropertyTypeFromConstructor: true

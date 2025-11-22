@@ -29,7 +29,7 @@ final class CleanDebuggerCommand extends Command
         ];
 
         if (! InstalledVersions::isInstalled('rector/rector')) {
-            (new Composer($files, defined('TESTBENCH_WORKING_PATH') ? TESTBENCH_WORKING_PATH : base_path()))
+            new Composer($files, defined('TESTBENCH_WORKING_PATH') ? TESTBENCH_WORKING_PATH : base_path())
                 ->requirePackages(['rector/rector'], true, $this->output);
         }
 

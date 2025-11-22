@@ -16,7 +16,7 @@ use Spatie\Ray\Settings\Settings;
 
 final class HttpClientWatcher extends Watcher
 {
-    public static function supportedByLaravelVersion(): bool|int
+    public static function supportedByLaravelVersion(): bool
     {
         return version_compare(app()->version(), '8.46.0', '>=');
     }
