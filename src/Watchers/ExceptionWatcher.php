@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Akira\Debugger\Watchers;
 
 use Akira\Debugger\Debugger;
-use Closure;
 use Exception;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Facades\Event;

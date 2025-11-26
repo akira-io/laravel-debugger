@@ -27,7 +27,7 @@ class TestCase extends Orchestra
 
         $this->client = new FakeClient;
 
-        $this->app->bind(Debugger::class, function (): \Akira\Debugger\Debugger {
+        $this->app->bind(Debugger::class, function (): Debugger {
             $settings = app(Settings::class);
 
             $ad = new Debugger($settings, $this->client, 'fakeUuid');

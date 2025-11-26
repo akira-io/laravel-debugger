@@ -127,24 +127,6 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^Call to method disable\(\) on an unknown class Spatie\\LaravelRay\\Watchers\\EventWatcher\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Call to method disable\(\) on an unknown class Spatie\\LaravelRay\\Watchers\\ExceptionWatcher\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Call to method enable\(\) on an unknown class Spatie\\LaravelRay\\Watchers\\ExceptionWatcher\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: '#^Call to method sendRequest\(\) on an unknown class Spatie\\LaravelRay\\Ray\.$#'
 			identifier: class.notFound
 			count: 1
@@ -199,19 +181,7 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:env\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: '#^Method Akira\\Debugger\\Debugger\:\:events\(\) has no return type specified\.$#'
-			identifier: missingType.return
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:exception\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
@@ -247,20 +217,8 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:model\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: '#^Method Akira\\Debugger\\Debugger\:\:model\(\) has parameter \$model with no value type specified in iterable type iterable\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:models\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
 			count: 1
 			path: src/Debugger.php
 
@@ -289,14 +247,8 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showCache\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showCache\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showCache\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
@@ -313,44 +265,20 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showDuplicateQueries\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showDuplicateQueries\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showDuplicateQueries\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showEvents\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showEvents\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showEvents\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showHttpClientRequests\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showHttpClientRequests\(\) should return Spatie\\LaravelRay\\Ray but returns \$this\(Akira\\Debugger\\Debugger\)\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showHttpClientRequests\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showHttpClientRequests\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
@@ -361,50 +289,26 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showJobs\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showJobs\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showJobs\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showMails\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showMails\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showQueries\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showMails\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showQueries\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showQueries\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showRequests\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showRequests\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showRequests\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
@@ -421,38 +325,20 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showSlowQueries\(\) has parameter \$milliseconds with no type specified\.$#'
-			identifier: missingType.parameter
-			count: 1
-			path: src/Debugger.php
-
-		-
 			message: '#^Method Akira\\Debugger\\Debugger\:\:showUpdateQueries\(\) has no return type specified\.$#'
 			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showViews\(\) has invalid return type Spatie\\LaravelRay\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:showViews\(\) should return Spatie\\LaravelRay\\Ray but returns mixed\.$#'
-			identifier: return.type
+			message: '#^Method Akira\\Debugger\\Debugger\:\:showViews\(\) has no return type specified\.$#'
+			identifier: missingType.return
 			count: 1
 			path: src/Debugger.php
 
 		-
 			message: '#^Method Akira\\Debugger\\Debugger\:\:slowQueries\(\) has no return type specified\.$#'
 			identifier: missingType.return
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Debugger\:\:slowQueries\(\) has parameter \$milliseconds with no type specified\.$#'
-			identifier: missingType.parameter
 			count: 1
 			path: src/Debugger.php
 
@@ -469,24 +355,6 @@ parameters:
 			path: src/Debugger.php
 
 		-
-			message: '#^PHPDoc tag @return with type Spatie\\LaravelRay\\Ray is not subtype of native type Akira\\Debugger\\Debugger\.$#'
-			identifier: return.phpDocType
-			count: 3
-			path: src/Debugger.php
-
-		-
-			message: '#^PHPDoc tag @var for variable \$eventWatcher contains unknown class Spatie\\LaravelRay\\Watchers\\EventWatcher\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^PHPDoc tag @var for variable \$exceptionWatcher contains unknown class Spatie\\LaravelRay\\Watchers\\ExceptionWatcher\.$#'
-			identifier: class.notFound
-			count: 2
-			path: src/Debugger.php
-
-		-
 			message: '#^Parameter \#1 \$callback of function array_map expects \(callable\(mixed\)\: mixed\)\|null, Closure\(Illuminate\\Database\\Eloquent\\Model\|null\)\: Akira\\Debugger\\Payloads\\ModelPayload given\.$#'
 			identifier: argument.type
 			count: 1
@@ -494,12 +362,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:sum\(\) expects \(callable\(mixed\)\: float\)\|string\|null, Closure\(Illuminate\\Database\\Events\\QueryExecuted\)\: float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Debugger.php
-
-		-
-			message: '#^Parameter \#1 \$milliseconds of method Akira\\Debugger\\Watchers\\SlowQueryWatcher\:\:setMinimumTimeInMilliseconds\(\) expects float, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Debugger.php
@@ -1093,12 +955,6 @@ parameters:
 			path: src/Payloads/LoggedMailPayload.php
 
 		-
-			message: '#^Parameter \#3 \$offset of function mb_strpos expects int, true given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Payloads/LoggedMailPayload.php
-
-		-
 			message: '#^Method Akira\\Debugger\\Payloads\\MailablePayload\:\:convertToPersons\(\) has parameter \$persons with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1291,27 +1147,9 @@ parameters:
 			path: src/Watchers/CacheWatcher.php
 
 		-
-			message: '#^Call to method sendRequest\(\) on an unknown class Akira\\Debugger\\Watchers\\Ray\.$#'
-			identifier: class.notFound
-			count: 4
-			path: src/Watchers/CacheWatcher.php
-
-		-
 			message: '#^Cannot call method listen\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 4
-			path: src/Watchers/CacheWatcher.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Watchers\\CacheWatcher\:\:ray\(\) has invalid return type Akira\\Debugger\\Watchers\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Watchers/CacheWatcher.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Watchers\\CacheWatcher\:\:ray\(\) should return Akira\\Debugger\\Watchers\\Ray but returns Akira\\Debugger\\Debugger\.$#'
-			identifier: return.type
-			count: 1
 			path: src/Watchers/CacheWatcher.php
 
 		-
@@ -1453,81 +1291,21 @@ parameters:
 			path: src/Watchers/ExceptionWatcher.php
 
 		-
-			message: '#^Call to method createReport\(\) on an unknown class Facade\\FlareClient\\Flare\.$#'
-			identifier: class.notFound
+			message: '#^If condition is always true\.$#'
+			identifier: if.alwaysTrue
 			count: 1
 			path: src/Watchers/ExceptionWatcher.php
 
 		-
-			message: '#^Call to method createReport\(\) on an unknown class Spatie\\FlareClient\\Flare\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Call to method trim\(\) on an unknown class Facade\\FlareClient\\Truncation\\ReportTrimmer\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Call to method trim\(\) on an unknown class Spatie\\FlareClient\\Truncation\\ReportTrimmer\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Cannot call method toArray\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Class Facade\\FlareClient\\Flare not found\.$#'
-			identifier: class.notFound
-			count: 2
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Class Spatie\\FlareClient\\Flare not found\.$#'
-			identifier: class.notFound
-			count: 2
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Instantiated class Facade\\FlareClient\\Truncation\\ReportTrimmer not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Instantiated class Spatie\\FlareClient\\Truncation\\ReportTrimmer not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Watchers\\ExceptionWatcher\:\:getFlareReport\(\) return type has no value type specified in iterable type array\.$#'
+			message: '#^Method Akira\\Debugger\\Watchers\\ExceptionWatcher\:\:collectMetaData\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Watchers\\ExceptionWatcher\:\:getFlareReport\(\) should return array\|null but returns mixed\.$#'
-			identifier: return.type
-			count: 2
 			path: src/Watchers/ExceptionWatcher.php
 
 		-
 			message: '#^Parameter \#1 \$exception of method Akira\\Debugger\\Debugger\:\:exception\(\) expects Throwable, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: src/Watchers/ExceptionWatcher.php
-
-		-
-			message: '#^Parameter \#1 \$exception of method Akira\\Debugger\\Watchers\\ExceptionWatcher\:\:getFlareReport\(\) expects Throwable, mixed given\.$#'
-			identifier: argument.type
-			count: 2
 			path: src/Watchers/ExceptionWatcher.php
 
 		-
@@ -1705,18 +1483,6 @@ parameters:
 			path: src/Watchers/RequestWatcher.php
 
 		-
-			message: '#^Method Akira\\Debugger\\Watchers\\RequestWatcher\:\:handleRequest\(\) has invalid return type Akira\\Debugger\\Watchers\\Ray\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/Watchers/RequestWatcher.php
-
-		-
-			message: '#^Method Akira\\Debugger\\Watchers\\RequestWatcher\:\:handleRequest\(\) should return Akira\\Debugger\\Watchers\\Ray but returns Akira\\Debugger\\Debugger\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Watchers/RequestWatcher.php
-
-		-
 			message: '#^Method Akira\\Debugger\\Watchers\\RequestWatcher\:\:payload\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1765,7 +1531,7 @@ parameters:
 			path: src/Watchers/SelectQueryWatcher.php
 
 		-
-			message: '#^Property Akira\\Debugger\\Watchers\\SlowQueryWatcher\:\:\$minimumTimeInMs \(int\) does not accept float\.$#'
+			message: '#^Property Akira\\Debugger\\Watchers\\SlowQueryWatcher\:\:\$minimumTimeInMs \(int\) does not accept float\|int\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Watchers/SlowQueryWatcher.php

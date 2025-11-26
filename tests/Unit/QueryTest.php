@@ -56,7 +56,7 @@ it('can log all queries in a callable', function (): void {
 });
 
 it('can log all queries in a callable and gets results', function (): void {
-    $results = ad()->showQueries(fn(): Illuminate\Support\Collection =>
+    $results = ad()->showQueries(fn (): Illuminate\Support\Collection =>
         // will be logged
         DB::table('users')->where('id', 1)->get());
     expect($this->client->sentRequests())->toHaveCount(1)

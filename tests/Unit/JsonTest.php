@@ -6,7 +6,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 it('can send a json test response to ray', function (): void {
-    Route::get('test', fn() => response()->json(['a' => 1]));
+    Route::get('test', fn () => response()->json(['a' => 1]));
 
     $this
         ->get('test')
@@ -24,7 +24,7 @@ it('can send a json test response to ray', function (): void {
 });
 
 it('can send a regular test response to ray', function (): void {
-    Route::get('test', fn(): \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response => response('hello', 201));
+    Route::get('test', fn (): Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response => response('hello', 201));
 
     $this
         ->get('test')

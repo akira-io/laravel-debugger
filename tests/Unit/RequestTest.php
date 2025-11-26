@@ -6,7 +6,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 it('can listen to requests', function (): void {
-    Route::get('test', fn(): string => 'ok');
+    Route::get('test', fn (): string => 'ok');
 
     ad()->requests();
 
@@ -16,7 +16,7 @@ it('can listen to requests', function (): void {
 });
 
 it('can listen to requests that return json', function (): void {
-    Route::get('test-json', fn() => response()->json(['message' => 'ok']));
+    Route::get('test-json', fn () => response()->json(['message' => 'ok']));
 
     ad()->requests();
 
@@ -26,7 +26,7 @@ it('can listen to requests that return json', function (): void {
 });
 
 it('can listen to requests that return text', function (): void {
-    Route::get('test-text', fn(): \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response => response('ok', 200, ['content-type' => 'text/plain']));
+    Route::get('test-text', fn (): Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response => response('ok', 200, ['content-type' => 'text/plain']));
 
     ad()->requests();
 
@@ -36,7 +36,7 @@ it('can listen to requests that return text', function (): void {
 });
 
 it('can listen to requests that return redirects', function (): void {
-    Route::get('test-redirect', fn() => response()->redirectTo('/'));
+    Route::get('test-redirect', fn () => response()->redirectTo('/'));
 
     ad()->requests();
 

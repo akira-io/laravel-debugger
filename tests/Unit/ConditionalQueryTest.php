@@ -53,7 +53,7 @@ it('can show only type queries', function (string $rayShowMethod, string $raySto
 ]);
 
 it('can take a custom condition and only return those queries', function (): void {
-    ad()->showConditionalQueries(fn(QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan')));
+    ad()->showConditionalQueries(fn (QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan')));
 
     User::query()->create(['email' => 'joan@example.com']);
     User::query()->create(['email' => 'john@example.com']);
@@ -72,10 +72,10 @@ it('can take a custom condition and only return those queries', function (): voi
 
 it('can handle multiple conditional query watchers', function (): void {
     $john = ad()->showConditionalQueries(
-        fn(QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan')),
+        fn (QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan')),
         function (): User {
             ad()->showConditionalQueries(
-                fn(QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'john')),
+                fn (QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'john')),
                 null,
                 'look for john'
             );
