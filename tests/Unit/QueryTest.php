@@ -6,7 +6,7 @@ use Akira\Debugger\Tests\TestClasses\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
-it('can start logging queries', function () {
+it('can start logging queries', function (): void {
     ad()->showQueries();
 
     DB::table('users')->get('id');
@@ -14,7 +14,7 @@ it('can start logging queries', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can start logging queries using alias', function () {
+it('can start logging queries using alias', function (): void {
     ad()->queries();
 
     DB::table('users')->get('id');
@@ -22,7 +22,7 @@ it('can start logging queries using alias', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can stop logging queries', function () {
+it('can stop logging queries', function (): void {
     ad()->showQueries();
 
     DB::table('users')->get('id');
@@ -34,7 +34,7 @@ it('can stop logging queries', function () {
     expect($this->client->sentRequests())->toHaveCount(2);
 });
 
-it('calling log queries twice will not log all queries twice', function () {
+it('calling log queries twice will not log all queries twice', function (): void {
     ad()->showQueries();
     ad()->showQueries();
 
@@ -43,8 +43,8 @@ it('calling log queries twice will not log all queries twice', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can log all queries in a callable', function () {
-    ad()->showQueries(function () {
+it('can log all queries in a callable', function (): void {
+    ad()->showQueries(function (): void {
         // will be logged
         DB::table('users')->where('id', 1)->get();
     });
@@ -55,17 +55,16 @@ it('can log all queries in a callable', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can log all queries in a callable and gets results', function () {
-    $results = ad()->showQueries(function (): Illuminate\Support\Collection {
+it('can log all queries in a callable and gets results', function (): void {
+    $results = ad()->showQueries(fn(): Illuminate\Support\Collection =>
         // will be logged
-        return DB::table('users')->where('id', 1)->get();
-    });
+        DB::table('users')->where('id', 1)->get());
     expect($this->client->sentRequests())->toHaveCount(1)
         ->and($results)->toBeInstanceOf(Illuminate\Support\Collection::class)
         ->and($results->count())->toEqual(0);
 });
 
-it('show queries can be colorized', function () {
+it('show queries can be colorized', function (): void {
     $this->useRealUuid();
 
     ad()->showQueries()->green();
@@ -78,8 +77,8 @@ it('show queries can be colorized', function () {
         ->and($sentPayloads[0]['uuid'])->not->toEqual('fakeUuid');
 });
 
-it('can count the amount of executed queries', function () {
-    ad()->countQueries(function () {
+it('can count the amount of executed queries', function (): void {
+    ad()->countQueries(function (): void {
         DB::table('users')->get('id');
         DB::table('users')->get('id');
         DB::table('users')->get('id');
@@ -92,7 +91,7 @@ it('can count the amount of executed queries', function () {
     expect(Arr::get($payload, 'payloads.0.content.values.Count'))->toEqual(3);
 });
 
-it('an eloquent query can be sent to ray', function () {
+it('an eloquent query can be sent to ray', function (): void {
     User::create(['email' => 'john@example.com']);
 
     $user = User::query()->where('email', 'john@example.com')->ray()->first();

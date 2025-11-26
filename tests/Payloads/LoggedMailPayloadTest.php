@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Akira\Debugger\Payloads\LoggedMailPayload;
 
-it('can parse a logged mail', function () {
+it('can parse a logged mail', function (): void {
     $loggedMail = <<<'EOD'
 Message-ID: <780b20b2a80adefb6ebb6c9fb7d15d8a@swift.generated>
 Date: Fri, 26 Nov 2025 08:54:24 +0000
@@ -59,7 +59,7 @@ EOD;
     ])->toEqual($payload->getContent());
 });
 
-it('can omit some headers in a parsed mail', function () {
+it('can omit some headers in a parsed mail', function (): void {
     $loggedMail = <<<'EOD'
 From: Example <hello@example.com>
 To: Geral <geral@akira-io.com>

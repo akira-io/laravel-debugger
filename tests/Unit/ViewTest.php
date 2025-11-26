@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-it('can send the view payload', function () {
+it('can send the view payload', function (): void {
     ad()->showViews();
 
     view('test')->render();
@@ -12,7 +12,7 @@ it('can send the view payload', function () {
         ->and($payloads[0]['payloads'][0]['type'])->toEqual('view');
 });
 
-it('show views can be colorized', function () {
+it('show views can be colorized', function (): void {
     $this->useRealUuid();
 
     ad()->showViews()->green();

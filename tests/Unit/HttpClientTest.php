@@ -6,7 +6,7 @@ use Akira\Debugger\Watchers\HttpClientWatcher;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
-beforeEach(function () {
+beforeEach(function (): void {
     if (! HttpClientWatcher::supportedByLaravelVersion()) {
         $this->markTestSkipped('Tests require Laravel 8.45.0 or greater.');
     }
@@ -20,7 +20,7 @@ beforeEach(function () {
     );
 });
 
-it('can listen to http client requests', function () {
+it('can listen to http client requests', function (): void {
     ad()->showHttpClientRequests();
 
     Http::get('test.com/ok', ['hello' => 'world']);
@@ -30,7 +30,7 @@ it('can listen to http client requests', function () {
         ->and(Arr::get($this->client->sentRequests(), '0.payloads.0.content.label'))->toEqual('Http');
 });
 
-it('can listen to http client responses', function () {
+it('can listen to http client responses', function (): void {
     ad()->showHttpClientRequests();
 
     Http::get('test.com/json');
@@ -39,7 +39,7 @@ it('can listen to http client responses', function () {
         ->and(Arr::get($this->client->sentRequests(), '1.payloads.0.content.label'))->toEqual('Http');
 });
 
-it('can listen for non successful requests', function () {
+it('can listen for non successful requests', function (): void {
     ad()->showHttpClientRequests();
 
     Http::get('test.com/not-found');
@@ -47,13 +47,13 @@ it('can listen for non successful requests', function () {
     expect(Arr::get($this->client->sentRequests(), '1.payloads.0.content.values')['Status'])->toEqual('404');
 });
 
-it('doesnt send a payload when disabled', function () {
+it('doesnt send a payload when disabled', function (): void {
     Http::get('test.com/not-found');
 
     expect($this->client->sentRequests())->toBeEmpty();
 });
 
-it('show http client can be colorized', function () {
+it('show http client can be colorized', function (): void {
     $this->useRealUuid();
 
     ad()->showHttpClientRequests()->green();

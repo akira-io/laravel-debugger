@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Spatie\Ray\Settings\Settings;
 
-it('can show only update queries and return the results', function () {
+it('can show only update queries and return the results', function (): void {
     $user = ad()->showUpdateQueries(function (): User {
         $user = User::query()->create(['email' => 'john@example.com']);
         $user->update(['email' => 'joan@example.com']);
@@ -23,7 +23,7 @@ it('can show only update queries and return the results', function () {
     $this->assertSame('joan@example.com', $user->email);
 });
 
-it('can show only type queries', function (string $rayShowMethod, string $rayStopMethod, string $sqlCommand) {
+it('can show only type queries', function (string $rayShowMethod, string $rayStopMethod, string $sqlCommand): void {
     ad()->$rayShowMethod();
 
     // Run all query types
@@ -52,10 +52,8 @@ it('can show only type queries', function (string $rayShowMethod, string $raySto
     'select' => ['showSelectQueries', 'stopShowingSelectQueries', 'select'],
 ]);
 
-it('can take a custom condition and only return those queries', function () {
-    ad()->showConditionalQueries(function (QueryExecuted $query) {
-        return Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan'));
-    });
+it('can take a custom condition and only return those queries', function (): void {
+    ad()->showConditionalQueries(fn(QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan')));
 
     User::query()->create(['email' => 'joan@example.com']);
     User::query()->create(['email' => 'john@example.com']);
@@ -72,16 +70,12 @@ it('can take a custom condition and only return those queries', function () {
     expect($this->client->sentPayloads())->toHaveCount(1);
 });
 
-it('can handle multiple conditional query watchers', function () {
+it('can handle multiple conditional query watchers', function (): void {
     $john = ad()->showConditionalQueries(
-        function (QueryExecuted $query) {
-            return Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan'));
-        },
+        fn(QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'joan')),
         function (): User {
             ad()->showConditionalQueries(
-                function (QueryExecuted $query) {
-                    return Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'john'));
-                },
+                fn(QueryExecuted $query) => Arr::first($query->bindings, fn ($binding) => Str::contains($binding, 'john')),
                 null,
                 'look for john'
             );
@@ -121,7 +115,7 @@ it('can handle multiple conditional query watchers', function () {
     expect($this->client->sentPayloads())->toHaveCount(3);
 });
 
-it('can start watching from config only', function () {
+it('can start watching from config only', function (): void {
     app(Settings::class)->send_select_queries_to_ray = true;
 
     // Refresh the watcher and register again to pick up settings change

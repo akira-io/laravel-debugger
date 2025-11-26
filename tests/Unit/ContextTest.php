@@ -6,7 +6,7 @@ namespace Spatie\LaravelRay\Tests\Unit;
 
 use Illuminate\Support\Facades\Context;
 
-it('can send all context', function () {
+it('can send all context', function (): void {
     if (! contextSupported()) {
         return;
     }
@@ -24,7 +24,7 @@ it('can send all context', function () {
     expect($clipboardData)->toContain('key', 'value');
 });
 
-it('can send specific context keys variadic', function () {
+it('can send specific context keys variadic', function (): void {
     if (! contextSupported()) {
         return;
     }
@@ -45,7 +45,7 @@ it('can send specific context keys variadic', function () {
         ->and($clipboardData)->not()->toContain('key2');
 });
 
-it('can send specific context keys using an array', function () {
+it('can send specific context keys using an array', function (): void {
     if (! contextSupported()) {
         return;
     }
@@ -66,7 +66,7 @@ it('can send specific context keys using an array', function () {
         ->and($clipboardData)->not()->toContain('key2');
 });
 
-it('can send all hidden context', function () {
+it('can send all hidden context', function (): void {
     if (! contextSupported()) {
         return;
     }

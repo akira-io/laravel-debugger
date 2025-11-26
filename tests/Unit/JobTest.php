@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Akira\Debugger\Tests\TestClasses\TestJob;
 use Illuminate\Support\Arr;
 
-it('can automatically send jobs to ray', function () {
+it('can automatically send jobs to ray', function (): void {
     ad()->showJobs();
 
     dispatch(new TestJob);
@@ -18,7 +18,7 @@ it('can automatically send jobs to ray', function () {
         ->and($this->client->sentRequests())->toHaveCount(2);
 });
 
-it('show jobs can be colorized', function () {
+it('show jobs can be colorized', function (): void {
     $this->useRealUuid();
 
     ad()->showJobs()->green();

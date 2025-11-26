@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-it('can log dumps', function () {
+it('can log dumps', function (): void {
     dump('test');
 
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can log dumps with a specified dumper format', function () {
+it('can log dumps with a specified dumper format', function (): void {
     ob_start();
     $_SERVER['VAR_DUMPER_FORMAT'] = 'html';
     dump('test 1');

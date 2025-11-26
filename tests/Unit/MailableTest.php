@@ -8,13 +8,13 @@ use Illuminate\Mail\Message;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
 
-it('can send the mailable payload', function () {
+it('can send the mailable payload', function (): void {
     ad()->mailable(new TestMailable);
 
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can send a logged mailable automatically', function () {
+it('can send a logged mailable automatically', function (): void {
     Mail::mailer('log')
         ->cc(['adriaan' => 'adriaan@spatie.be', 'seb@spatie.be'])
         ->bcc(['willem@spatie.be', 'jef@spatie.be'])
@@ -24,14 +24,14 @@ it('can send a logged mailable automatically', function () {
     expect($this->client->sentRequests())->toHaveCount(2);
 });
 
-it('can send multiple mailable payloads', function () {
+it('can send multiple mailable payloads', function (): void {
     ad()->mailable(new TestMailable, new TestMailable);
 
     expect($this->client->sentPayloads())->toHaveCount(2)
         ->and($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('will automatically send mails to ray', function () {
+it('will automatically send mails to ray', function (): void {
     if (! (new MailWatcher)->supportsMessageSendingEvent()) {
         $this->markTestSkipped('This test works for Laravel versions that can automatically log all non-log mails');
     }
@@ -56,12 +56,12 @@ it('will automatically send mails to ray', function () {
     expect(Arr::get($requests, '0.payloads.0.origin.file'))->toContain('Mailer.php');
 });
 
-it('works with Mail::raw()', function () {
+it('works with Mail::raw()', function (): void {
     if (! (new MailWatcher)->supportsMessageSendingEvent()) {
         $this->markTestSkipped('This test works for Laravel versions that can automatically log all non-log mails');
     }
 
-    Mail::raw('Hello world', function (Message $message) {
+    Mail::raw('Hello world', function (Message $message): void {
         $message->to('tim@spatie.be')->from('info@spatie.be');
     });
 

@@ -8,7 +8,7 @@ use Akira\Debugger\Tests\TestClasses\User;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\DB;
 
-it('can start logging duplicate queries', function () {
+it('can start logging duplicate queries', function (): void {
     ad()->showDuplicateQueries();
 
     DB::table('users')->get();
@@ -24,7 +24,7 @@ it('can start logging duplicate queries', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('ignores queries with different bindings', function () {
+it('ignores queries with different bindings', function (): void {
     ad()->showDuplicateQueries();
 
     DB::table('users')->where('id', 1)->get();
@@ -41,7 +41,7 @@ it('ignores queries with different bindings', function () {
     expect($this->client->sentRequests())->toHaveCount(2);
 });
 
-it('can stop logging duplicate queries', function () {
+it('can stop logging duplicate queries', function (): void {
     ad()->showDuplicateQueries();
 
     DB::table('users')->get('id');
@@ -53,8 +53,8 @@ it('can stop logging duplicate queries', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can log all duplicate queries in a callable', function () {
-    ad()->showDuplicateQueries(function () {
+it('can log all duplicate queries in a callable', function (): void {
+    ad()->showDuplicateQueries(function (): void {
         // will be logged
         DB::table('users')->where('id', 1)->get();
         DB::table('users')->where('id', 1)->get();
@@ -66,7 +66,7 @@ it('can log all duplicate queries in a callable', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('eloquent duplicate queries are sent to ray', function () {
+it('eloquent duplicate queries are sent to ray', function (): void {
     ad()->showDuplicateQueries();
 
     User::create(['email' => 'john@example.com']);
@@ -75,7 +75,7 @@ it('eloquent duplicate queries are sent to ray', function () {
     expect($this->client->sentPayloads())->toHaveCount(1);
 });
 
-it('can log duplicated queries with datetime parameters', function () {
+it('can log duplicated queries with datetime parameters', function (): void {
     ad()->showDuplicateQueries();
 
     DB::table('users')->where('created_at', '<', new DateTimeImmutable(now()->toString()))->get();

@@ -320,7 +320,7 @@ final class Debugger extends BaseRay
     /**
      * @throws Exception
      */
-    public function view(View $view)
+    public function view(View $view): \Spatie\Ray\Ray
     {
         $payload = new ViewPayload($view);
 
@@ -416,7 +416,7 @@ final class Debugger extends BaseRay
         return $this->showSlowQueries($milliseconds, $callable);
     }
 
-    public function showSlowQueries($milliseconds = 500, ?Closure $callable = null)
+    public function showSlowQueries(float|int $milliseconds = 500, ?Closure $callable = null)
     {
         $watcher = app(SlowQueryWatcher::class)
             ->setMinimumTimeInMilliseconds($milliseconds);

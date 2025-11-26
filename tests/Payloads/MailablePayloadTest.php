@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Akira\Debugger\Payloads\MailablePayload;
 use Akira\Debugger\Tests\TestClasses\TestMailable;
 
-it('can render a mailable', function () {
+it('can render a mailable', function (): void {
     $mailable = new TestMailable;
 
     $payload = MailablePayload::forMailable($mailable);

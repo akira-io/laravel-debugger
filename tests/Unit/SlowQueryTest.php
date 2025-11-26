@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\DB;
 
-it('can start logging slow queries', function () {
+it('can start logging slow queries', function (): void {
     ad()->showSlowQueries(0);
 
     DB::table('users')->get('id');
@@ -12,7 +12,7 @@ it('can start logging slow queries', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can start logging slow queries using alias', function () {
+it('can start logging slow queries using alias', function (): void {
     ad()->slowQueries(0);
 
     DB::table('users')->get('id');
@@ -20,7 +20,7 @@ it('can start logging slow queries using alias', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can stop logging slow queries', function () {
+it('can stop logging slow queries', function (): void {
     ad()->showSlowQueries(0);
 
     DB::table('users')->get('id');
@@ -32,7 +32,7 @@ it('can stop logging slow queries', function () {
     expect($this->client->sentRequests())->toHaveCount(2);
 });
 
-it('calling log slow queries twice will not log all queries twice', function () {
+it('calling log slow queries twice will not log all queries twice', function (): void {
     ad()->showSlowQueries(0);
     ad()->showSlowQueries(0);
 
@@ -41,8 +41,8 @@ it('calling log slow queries twice will not log all queries twice', function () 
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('can log all slow queries in a callable', function () {
-    ad()->showSlowQueries(0, function () {
+it('can log all slow queries in a callable', function (): void {
+    ad()->showSlowQueries(0, function (): void {
         // will be logged
         DB::table('users')->where('id', 1)->get();
     });
@@ -54,7 +54,7 @@ it('can log all slow queries in a callable', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('show slow queries can be colorized', function () {
+it('show slow queries can be colorized', function (): void {
     $this->useRealUuid();
 
     ad()->showSlowQueries(0)->green();

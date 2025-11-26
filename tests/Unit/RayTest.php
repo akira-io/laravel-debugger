@@ -7,7 +7,7 @@ use Akira\Debugger\Tests\TestClasses\User;
 use Illuminate\Support\Arr;
 use Spatie\Ray\Settings\Settings;
 
-it('when disabled nothing will be sent to ray', function () {
+it('when disabled nothing will be sent to ray', function (): void {
     app(Settings::class)->enable = false;
 
     ad('test');
@@ -17,7 +17,7 @@ it('when disabled nothing will be sent to ray', function () {
     expect($this->client->sentRequests())->toHaveCount(0);
 });
 
-it('can be disabled', function () {
+it('can be disabled', function (): void {
     ad()->disable();
     ad('test');
     expect($this->client->sentRequests())->toHaveCount(0);
@@ -27,13 +27,13 @@ it('can be disabled', function () {
     expect($this->client->sentRequests())->toHaveCount(1);
 });
 
-it('will not blow up when not passing anything', function () {
+it('will not blow up when not passing anything', function (): void {
     ad();
 
     expect($this->client->sentRequests())->toHaveCount(0);
 });
 
-it('can check enabled status', function () {
+it('can check enabled status', function (): void {
     ad()->disable();
     expect(ad()->enabled())->toEqual(false);
 
@@ -41,7 +41,7 @@ it('can check enabled status', function () {
     expect(ad()->enabled())->toEqual(true);
 });
 
-it('can check disabled status', function () {
+it('can check disabled status', function (): void {
     ad()->disable();
     expect(ad()->disabled())->toEqual(true);
 
@@ -49,7 +49,7 @@ it('can check disabled status', function () {
     expect(ad()->disabled())->toEqual(false);
 });
 
-it('can replace the remote path with the local one', function () {
+it('can replace the remote path with the local one', function (): void {
     app(Settings::class)->remote_path = __DIR__;
     app(Settings::class)->local_path = 'local_tests';
 
@@ -58,7 +58,7 @@ it('can replace the remote path with the local one', function () {
     expect(Arr::get($this->client->sentRequests(), '0.payloads.0.origin.file'))->toContain('local_tests');
 });
 
-it('will automatically use specialized payloads', function () {
+it('will automatically use specialized payloads', function (): void {
     ad(new TestMailable(), new User);
 
     $payloads = $this->client->sentRequests();

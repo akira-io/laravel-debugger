@@ -27,7 +27,7 @@ class TestCase extends Orchestra
 
         $this->client = new FakeClient;
 
-        $this->app->bind(Debugger::class, function () {
+        $this->app->bind(Debugger::class, function (): \Akira\Debugger\Debugger {
             $settings = app(Settings::class);
 
             $ad = new Debugger($settings, $this->client, 'fakeUuid');
@@ -53,7 +53,7 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table): void {
             $table->id();
             $table->string('email')->nullable();
         });
@@ -71,14 +71,14 @@ class TestCase extends Orchestra
      */
     protected function useRealUuid(): void
     {
-        $this->app->bind(Debugger::class, function () {
+        $this->app->bind(Debugger::class, function (): \Spatie\Ray\Ray {
             Debugger::$fakeUuid = null;
 
             return Debugger::create($this->client);
         });
     }
 
-    protected function assertSqlContains($queryContent, $needle): void
+    protected function assertSqlContains(array $queryContent, string $needle): void
     {
         $sql = method_exists(Builder::class, 'toRawSql')
             ? $queryContent['sql']

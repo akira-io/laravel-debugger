@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Akira\Debugger\Tests\TestClasses\TestEvent;
 use Illuminate\Support\Arr;
 
-it('can send a class based event to ray', function () {
+it('can send a class based event to ray', function (): void {
     ad()->showEvents();
 
     event(new TestEvent);
@@ -19,7 +19,7 @@ it('can send a class based event to ray', function () {
     expect(Arr::get($this->client->sentRequests(), '0.payloads.0.content.class_based_event'))->toBeTrue();
 });
 
-it('can send a string based event to ray', function () {
+it('can send a string based event to ray', function (): void {
     ad()->showEvents();
 
     $eventName = 'this is my event';
@@ -35,16 +35,16 @@ it('can send a string based event to ray', function () {
     expect(Arr::get($this->client->sentRequests(), '0.payloads.0.content.class_based_event'))->toBeFalse();
 });
 
-it('will not send any events if it is not enabled', function () {
+it('will not send any events if it is not enabled', function (): void {
     event('test event');
 
     expect($this->client->sentRequests())->toHaveCount(0);
 });
 
-it('the show events function accepts a callable', function () {
+it('the show events function accepts a callable', function (): void {
     event('start event');
 
-    ad()->showEvents(function () {
+    ad()->showEvents(function (): void {
         event('event in callable');
     });
 
@@ -54,7 +54,7 @@ it('the show events function accepts a callable', function () {
     expect(Arr::get($this->client->sentRequests(), '0.payloads.0.content.name'))->toEqual('event in callable');
 });
 
-it('show events can be colorized', function () {
+it('show events can be colorized', function (): void {
     $this->useRealUuid();
 
     ad()->showEvents()->green();

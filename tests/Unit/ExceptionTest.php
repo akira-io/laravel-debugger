@@ -5,24 +5,24 @@ declare(strict_types=1);
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Facades\Route;
 
-it('will not send exceptions to ray if disabled', function () {
+it('will not send exceptions to ray if disabled', function (): void {
     ad()->stopShowingExceptions();
 
     $hasError = false;
 
     try {
         event(new MessageLogged('warning', 'test', ['exception' => new Exception('test')]));
-    } catch (Exception $e) {
+    } catch (Exception) {
         $hasError = true;
     }
 
     expect($hasError)->toBeFalse();
 });
 
-it('includes request headers in exception meta', function () {
+it('includes request headers in exception meta', function (): void {
     ad()->showExceptions();
 
-    Route::get('test-exception', function () {
+    Route::get('test-exception', function (): void {
         throw new Exception('Test exception');
     });
 
@@ -31,14 +31,14 @@ it('includes request headers in exception meta', function () {
             'X-Custom-Header' => 'test-value',
             'Accept' => 'application/json',
         ])->get('test-exception');
-    } catch (Throwable $e) {
+    } catch (Throwable) {
         // Expected to throw
     }
 
     $sentRequests = $this->client->sentRequests();
 
     $exceptionRequest = collect($sentRequests)
-        ->first(fn ($request) => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
+        ->first(fn ($request): bool => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
 
     expect($exceptionRequest)->not()->toBeNull();
 
@@ -50,22 +50,22 @@ it('includes request headers in exception meta', function () {
         ->and($meta['request_headers'])->toHaveKey('accept');
 });
 
-it('includes route context in exception meta', function () {
+it('includes route context in exception meta', function (): void {
     ad()->showExceptions();
 
-    Route::get('test-route', function () {
+    Route::get('test-route', function (): void {
         throw new Exception('Test exception');
     })->name('test.route')->middleware('web');
 
     try {
         $this->get('test-route');
-    } catch (Throwable $e) {
+    } catch (Throwable) {
     }
 
     $sentRequests = $this->client->sentRequests();
 
     $exceptionRequest = collect($sentRequests)
-        ->first(fn ($request) => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
+        ->first(fn ($request): bool => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
 
     expect($exceptionRequest)->not()->toBeNull();
 
@@ -79,22 +79,22 @@ it('includes route context in exception meta', function () {
         ->and($meta['application_route']['middleware'])->toContain('web');
 });
 
-it('includes route parameters in exception meta', function () {
+it('includes route parameters in exception meta', function (): void {
     ad()->showExceptions();
 
-    Route::get('users/{id}/posts/{postId}', function ($id, $postId) {
+    Route::get('users/{id}/posts/{postId}', function ($id, $postId): void {
         throw new Exception('Test exception');
     })->name('user.posts.show');
 
     try {
         $this->get('users/123/posts/456');
-    } catch (Throwable $e) {
+    } catch (Throwable) {
     }
 
     $sentRequests = $this->client->sentRequests();
 
     $exceptionRequest = collect($sentRequests)
-        ->first(fn ($request) => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
+        ->first(fn ($request): bool => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
 
     expect($exceptionRequest)->not()->toBeNull();
 
@@ -105,7 +105,7 @@ it('includes route parameters in exception meta', function () {
         ->and($meta['application_route_parameters'])->toContain('456');
 });
 
-it('handles exceptions without active route', function () {
+it('handles exceptions without active route', function (): void {
     ad()->showExceptions();
 
     event(new MessageLogged('error', 'test', ['exception' => new Exception('test')]));
@@ -113,7 +113,7 @@ it('handles exceptions without active route', function () {
     $sentRequests = $this->client->sentRequests();
 
     $exceptionRequest = collect($sentRequests)
-        ->first(fn ($request) => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
+        ->first(fn ($request): bool => isset($request['payloads'][0]['type']) && $request['payloads'][0]['type'] === 'exception');
 
     expect($exceptionRequest)->not()->toBeNull();
 
