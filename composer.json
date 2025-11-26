@@ -73,7 +73,7 @@
       "@test:lint",
       "@test:refactor",
       "@test:types",
-      "pest"
+      "pest --parallel"
     ]
   },
   "minimum-stability": "stable",
