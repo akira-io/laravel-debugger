@@ -54,7 +54,7 @@ final class LoggedMailPayload extends Payload
 
     private static function getMailContent(string $loggedMail, IMessage $message): string
     {
-        $startOfHtml = mb_strpos($loggedMail, '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0', true);
+        $startOfHtml = mb_strpos($loggedMail, '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0');
 
         if ($startOfHtml === 0 || $startOfHtml === false) {
             return $message->getContent() ?? $message->getHtmlContent() ?? '';

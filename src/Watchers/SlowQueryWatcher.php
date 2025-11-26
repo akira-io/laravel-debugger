@@ -21,7 +21,7 @@ final class SlowQueryWatcher extends ConditionalQueryWatcher
         $this->setConditionalCallback(fn (QueryExecuted $query): bool => $query->time >= $this->minimumTimeInMs);
     }
 
-    public function setMinimumTimeInMilliseconds(float $milliseconds): self
+    public function setMinimumTimeInMilliseconds(float|int $milliseconds): self
     {
         $this->minimumTimeInMs = $milliseconds;
 

@@ -6,14 +6,10 @@ namespace Akira\Debugger\Watchers;
 
 use Akira\Debugger\Debugger;
 use Exception;
-use Facade\FlareClient\Flare as FacadeFlare;
-use Facade\FlareClient\Truncation\ReportTrimmer as FacadeReportTrimmer;
+use Illuminate\Http\Request;
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Facades\Event;
-use Spatie\FlareClient\Flare;
-use Spatie\FlareClient\Truncation\ReportTrimmer;
 use Spatie\Ray\Settings\Settings;
-use Throwable;
 
 final class ExceptionWatcher extends Watcher
 {
@@ -34,11 +30,7 @@ final class ExceptionWatcher extends Watcher
 
             $exception = $message->context['exception'];
 
-            $meta = [];
-
-            if (($flareReport = $this->getFlareReport($exception)) !== null && ($flareReport = $this->getFlareReport($exception)) !== []) {
-                $meta['flare_report'] = $flareReport;
-            }
+            $meta = $this->collectMetaData();
 
             /** @var Debugger $debugger */
             $debugger = app(Debugger::class);
@@ -56,24 +48,34 @@ final class ExceptionWatcher extends Watcher
         return $messageLogged->context['exception'] instanceof Exception;
     }
 
-    public function getFlareReport(Throwable $exception): ?array
+    private function collectMetaData(): array
     {
-        if (app()->bound(Flare::class)) {
-            $flare = app(Flare::class);
+        $meta = [];
 
-            $report = $flare->createReport($exception);
-
-            return (new ReportTrimmer)->trim($report->toArray());
+        if (! app()->has(Request::class)) {
+            return $meta;
         }
 
-        if (app()->bound(FacadeFlare::class)) {
-            $flare = app(FacadeFlare::class);
+        /** @var Request $request */
+        $request = app(Request::class);
 
-            $report = $flare->createReport($exception);
+        $headers = collect($request->headers->all())
+            ->map(fn (array $header): ?string => $header[0])
+            ->toArray();
+        $meta['request_headers'] = $headers;
 
-            return (new FacadeReportTrimmer)->trim($report->toArray());
+        if ($request->route()) {
+            $meta['application_route'] = [
+                'route name' => $request->route()->getName(),
+                'controller' => $request->route()->getActionName(),
+                'middleware' => array_values($request->route()->gatherMiddleware()),
+            ];
+
+            $meta['application_route_parameters'] = array_values($request->route()->parameters());
+        } else {
+            $meta['application_route'] = null;
         }
 
-        return null;
+        return $meta;
     }
 }

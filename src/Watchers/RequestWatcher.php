@@ -36,7 +36,7 @@ final class RequestWatcher extends Watcher
         });
     }
 
-    private function handleRequest(Request $request, Response $response): Ray
+    private function handleRequest(Request $request, Response $response): Debugger
     {
         $startTime = defined('LARAVEL_START')
             ? LARAVEL_START

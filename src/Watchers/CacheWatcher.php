@@ -73,7 +73,7 @@ final class CacheWatcher extends Watcher
         });
     }
 
-    public function ray(): Ray
+    public function ray(): Debugger
     {
         return app(Debugger::class);
     }
