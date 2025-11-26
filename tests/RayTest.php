@@ -146,13 +146,13 @@ it('sends a filtered environment payload', function (): void {
 it('the project name will automatically be set if it something other than laravel', function (): void {
     new AkiraServiceProvider($this->app)->setProjectName();
 
-    expect(Ray::$projectName)->toEqual('Debugger');
+    expect(Ray::$projectName)->toEqual('');
 
-    config()->set('app.name', 'my-project');
+    config()->set('app.name', 'my app');
 
     new AkiraServiceProvider($this->app)->setProjectName();
 
-    expect(Ray::$projectName)->toEqual('Debugger');
+    expect(Ray::$projectName)->toEqual('my app');
 });
 
 it('still boots and works although the DB facade has not been bound', function (): void {
