@@ -1,5 +1,13 @@
 # Changelog
 
+# [1.3.0](/compare/v1.2.0...v1.3.0) (2025-11-26)
+
+
+### Features
+
+* add test classes and implement caching, event, and mailable functionalities 2b174ce
+* enhance ExceptionWatcher with request and route context logging c1f894b
+
 All notable changes to `akira/laravel-debugger` will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
