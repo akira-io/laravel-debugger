@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ it('can send a json test response to ray', function (): void {
 });
 
 it('can send a regular test response to ray', function (): void {
-    Route::get('test', fn (): Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response => response('hello', 201));
+    Route::get('test', fn (): Illuminate\Contracts\Routing\ResponseFactory|Response => response('hello', 201, ['Content-Type' => 'text/plain']));
 
     $this
         ->get('test')
@@ -33,7 +34,7 @@ it('can send a regular test response to ray', function (): void {
     expect($this->client->sentRequests())->toHaveCount(1);
     expect(Arr::get($this->client->sentRequests(), '0.payloads.0.content.status_code'))->toEqual(201);
 
-    expect(Arr::get($this->client->sentRequests(), '0.payloads.0.content.headers'))->toContain('text/html; charset=UTF-8');
+    expect(Arr::get($this->client->sentRequests(), '0.payloads.0.content.headers'))->toContain('text/plain');
 
     expect(Arr::get($this->client->sentRequests(), '0.payloads.0.content.content'))->toEqual('hello');
 
