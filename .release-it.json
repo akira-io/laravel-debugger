@@ -28,6 +28,7 @@
     "@release-it/conventional-changelog": {
       "infile": "CHANGELOG.md",
       "preset": "angular",
+      "header": "# Changelog\n\nAll notable changes to `akira/laravel-debugger` will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).",
       "types": {
         "feat": {
           "section": "Features"
