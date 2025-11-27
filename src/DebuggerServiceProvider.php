@@ -53,7 +53,6 @@ final class DebuggerServiceProvider extends ServiceProvider
             ->registerBindings()
             ->registerWatchers()
             ->registerMacros()
-            ->registerBindings()
             ->registerBladeDirectives()
             ->registerPayloadFinder();
     }
