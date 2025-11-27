@@ -21,7 +21,7 @@ it('can send a logged mailable automatically', function (): void {
         ->to(['freek@spatie.be', 'ruben@spatie.be'])
         ->send(new TestMailable);
 
-    expect($this->client->sentRequests())->toHaveCount(2);
+    expect($this->client->sentRequests())->toHaveCount(1);
 });
 
 it('can send multiple mailable payloads', function (): void {
@@ -52,7 +52,7 @@ it('will automatically send mails to ray', function (): void {
 
     $requests = $this->client->sentRequests();
 
-    expect($requests)->toHaveCount(2);
+    expect($requests)->toHaveCount(1);
     expect(Arr::get($requests, '0.payloads.0.origin.file'))->toContain('Mailer.php');
 });
 
@@ -67,5 +67,5 @@ it('works with Mail::raw()', function (): void {
 
     $requests = $this->client->sentRequests();
 
-    expect($requests)->toHaveCount(2);
+    expect($requests)->toHaveCount(1);
 });

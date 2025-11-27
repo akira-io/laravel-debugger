@@ -42,7 +42,7 @@ use Spatie\Ray\Payloads\Payload;
 use Spatie\Ray\Settings\Settings;
 use Spatie\Ray\Settings\SettingsFactory;
 
-final class AkiraServiceProvider extends ServiceProvider
+final class DebuggerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
@@ -186,7 +186,7 @@ final class AkiraServiceProvider extends ServiceProvider
         return $this;
     }
 
-    private function bootWatchers(): self
+    private function bootWatchers(): void
     {
         $watchers = [
             ExceptionWatcher::class,
@@ -207,18 +207,14 @@ final class AkiraServiceProvider extends ServiceProvider
             RequestWatcher::class,
             HttpClientWatcher::class,
             DeprecatedNoticeWatcher::class,
-            MailWatcher::class,
         ];
 
         collect($watchers)
             ->each(function (string $watcherClass): void {
-                /** @var \Spatie\LaravelRay\Watchers\Watcher $watcher */
                 $watcher = app($watcherClass);
 
                 $watcher->register();
             });
-
-        return $this;
     }
 
     private function registerMacros(): self
@@ -232,6 +228,7 @@ final class AkiraServiceProvider extends ServiceProvider
         });
 
         Collection::macro('ray', fn (string $description = '') => $this->debug($description));
+        Collection::macro('ad', fn (string $description = '') => $this->debug($description));
 
         TestResponse::macro('debug', function (): object {
             ad()->testResponse($this);
@@ -273,6 +270,7 @@ final class AkiraServiceProvider extends ServiceProvider
         $this->callAfterResolving('blade.compiler', function (BladeCompiler $bladeCompiler): void {
             Blade::directive('debug', fn ($expression): string => "<?php ad($expression); ?>");
             Blade::directive('ray', fn ($expression): string => "<?php ad($expression); ?>");
+            Blade::directive('ad', fn ($expression): string => "<?php ad($expression); ?>");
             Blade::directive('measure', fn (): string => '<?php ad()->measure() ?>');
             Blade::directive('xdebug', fn (): string => '<?php ad($__data)?>');
             Blade::directive('xray', fn (): string => '<?php ad($__data)?>');

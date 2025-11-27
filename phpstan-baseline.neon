@@ -1,108 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Access to an undefined property Spatie\\Ray\\Settings\\Settings\:\:\$enable\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Access to an undefined property Spatie\\Ray\\Settings\\Settings\:\:\$host\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Access to an undefined property Spatie\\Ray\\Settings\\Settings\:\:\$port\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Access to protected property Illuminate\\Support\\Collection\:\:\$items\.$#'
-			identifier: property.protected
-			count: 2
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Access to protected property Illuminate\\Support\\Stringable\:\:\$value\.$#'
-			identifier: property.protected
-			count: 2
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Call to an undefined method Illuminate\\Database\\Query\\Builder\:\:debug\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Call to an undefined method Illuminate\\Support\\Collection\:\:debug\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Call to an undefined method Illuminate\\Support\\Stringable\:\:debug\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Call to an undefined method Illuminate\\Testing\\TestResponse\:\:debug\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Call to method register\(\) on an unknown class Spatie\\LaravelRay\\Watchers\\Watcher\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Cannot call method configPath\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^PHPDoc tag @var for variable \$watcher contains unknown class Spatie\\LaravelRay\\Watchers\\Watcher\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Parameter \#1 \$configDirectory of static method Spatie\\Ray\\Settings\\SettingsFactory\:\:createFromConfigFile\(\) expects string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Parameter \#1 \$portNumber of class Spatie\\Ray\\Client constructor expects int, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Parameter \#1 \$projectName of method Spatie\\Ray\\Ray\:\:project\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Parameter \#2 \$host of class Spatie\\Ray\\Client constructor expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/AkiraServiceProvider.php
-
-		-
-			message: '#^Part \$expression \(mixed\) of encapsed string cannot be cast to string\.$#'
-			identifier: encapsedStringPart.nonString
-			count: 2
-			path: src/AkiraServiceProvider.php
-
-		-
 			message: '#^Parameter \#2 \$workingPath of class Akira\\Debugger\\Support\\Composer constructor expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -431,6 +329,102 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/DebuggerProxy.php
+
+		-
+			message: '#^Access to an undefined property Spatie\\Ray\\Settings\\Settings\:\:\$enable\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Access to an undefined property Spatie\\Ray\\Settings\\Settings\:\:\$host\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Access to an undefined property Spatie\\Ray\\Settings\\Settings\:\:\$port\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Access to protected property Illuminate\\Support\\Collection\:\:\$items\.$#'
+			identifier: property.protected
+			count: 2
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Access to protected property Illuminate\\Support\\Stringable\:\:\$value\.$#'
+			identifier: property.protected
+			count: 2
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Query\\Builder\:\:debug\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Support\\Collection\:\:debug\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Support\\Stringable\:\:debug\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Testing\\TestResponse\:\:debug\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Cannot call method configPath\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Cannot call method register\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$configDirectory of static method Spatie\\Ray\\Settings\\SettingsFactory\:\:createFromConfigFile\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$portNumber of class Spatie\\Ray\\Client constructor expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$projectName of method Spatie\\Ray\\Ray\:\:project\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Parameter \#2 \$host of class Spatie\\Ray\\Client constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/DebuggerServiceProvider.php
+
+		-
+			message: '#^Part \$expression \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 3
+			path: src/DebuggerServiceProvider.php
 
 		-
 			message: '#^Access to property \$settings on an unknown class Akira\\Debugger\\DumpRecorder\\Ray\.$#'

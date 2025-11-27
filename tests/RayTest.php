@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Akira\Debugger\AkiraServiceProvider;
+use Akira\Debugger\DebuggerServiceProvider;
 use Akira\Debugger\Tests\TestClasses\TestMailable;
 use Akira\Debugger\Tests\TestClasses\User;
 use Illuminate\Support\Arr;
@@ -144,13 +144,13 @@ it('sends a filtered environment payload', function (): void {
 });
 
 it('the project name will automatically be set if it something other than laravel', function (): void {
-    new AkiraServiceProvider($this->app)->setProjectName();
+    new DebuggerServiceProvider($this->app)->setProjectName();
 
     expect(Ray::$projectName)->toEqual('');
 
     config()->set('app.name', 'my app');
 
-    new AkiraServiceProvider($this->app)->setProjectName();
+    new DebuggerServiceProvider($this->app)->setProjectName();
 
     expect(Ray::$projectName)->toEqual('my app');
 });
@@ -159,7 +159,7 @@ it('still boots and works although the DB facade has not been bound', function (
     unset($this->app['db']);
     Facade::clearResolvedInstance('db');
 
-    new AkiraServiceProvider($this->app)->boot();
+    new DebuggerServiceProvider($this->app)->boot();
 
     ad('foo');
 

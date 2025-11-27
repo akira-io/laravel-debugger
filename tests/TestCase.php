@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Akira\Debugger\Tests;
 
-use Akira\Debugger\AkiraServiceProvider;
 use Akira\Debugger\Debugger;
+use Akira\Debugger\DebuggerServiceProvider;
 use Akira\Debugger\Tests\TestClasses\FakeClient;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Schema\Blueprint;
@@ -62,7 +62,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app): array
     {
         return [
-            AkiraServiceProvider::class,
+            DebuggerServiceProvider::class,
         ];
     }
 
