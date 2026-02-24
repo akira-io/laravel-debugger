@@ -1,6 +1,12 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Parameter \#2 \$callback of method Illuminate\\Console\\Command\:\:withProgressBar\(\) expects Closure\(''app''\|''config''\|''database''\|''public''\|''resources''\|''routes''\|''tests''\|Symfony\\Component\\Console\\Helper\\ProgressBar, Symfony\\Component\\Console\\Helper\\ProgressBar\|null, int\|string\|null\)\: void, Closure\(string\)\: void given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Commands/CleanDebuggerCommand.php
+
+		-
 			message: '#^Parameter \#2 \$workingPath of class Akira\\Debugger\\Support\\Composer constructor expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -447,6 +453,12 @@ parameters:
 		-
 			message: '#^PHPDoc tag @var for variable \$ray contains unknown class Akira\\Debugger\\DumpRecorder\\Ray\.$#'
 			identifier: class.notFound
+			count: 1
+			path: src/DumpRecorder/DumpRecorder.php
+
+		-
+			message: '#^Parameter \#1 \$callable of method Akira\\Debugger\\DumpRecorder\\MultiDumpHandler\:\:addHandler\(\) expects \(callable\(\)\: mixed\)\|null, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/DumpRecorder/DumpRecorder.php
 
