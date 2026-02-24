@@ -21,7 +21,7 @@
     "symfony/var-dumper": "^6.0|^7.0|^8.0",
     "symfony/stopwatch": "^6.0|^7.0|^8.0",
     "spatie/backtrace": "^1.8",
-    "spatie/ray": "^1.41 ",
+    "spatie/ray": "^1.41",
     "zbateson/mail-mime-parser": "^2.0|^3.0"
   },
   "require-dev": {
