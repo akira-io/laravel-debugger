@@ -38,9 +38,17 @@ final class DumpRecorder
 
             $multiDumpHandler->resetHandlers();
 
-            $this->ensureOriginalHandlerExists();
+            $handlerProperty = new ReflectionProperty(VarDumper::class, 'handler');
 
-            $originalHandler = VarDumper::setHandler(function ($dumpedVariable) use ($multiDumpHandler): void {
+            $originalHandler = $handlerProperty->getValue();
+
+            if (! $originalHandler) {
+                $this->ensureOriginalHandlerExists();
+                $originalHandler = $handlerProperty->getValue();
+            }
+
+            // Bypass VarDumper::setHandler() which is a no-op when VAR_DUMPER_FORMAT is set.
+            $handlerProperty->setValue(null, function ($dumpedVariable) use ($multiDumpHandler): void {
                 $multiDumpHandler->dump($dumpedVariable);
             });
 

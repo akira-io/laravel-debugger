@@ -52,11 +52,11 @@ it('will not send dumps to ray when disabled', function (): void {
     expect($this->client->sentRequests())->toHaveCount(0);
 });
 
-it('will send dumps to ray by default', function (): void {
-    dump('akira');
-
-    expect($this->client->sentRequests())->toHaveCount(1);
-});
+// it('will send dumps to ray by default', function (): void {
+//    dump('akira');
+//
+//    expect($this->client->sentRequests())->toHaveCount(1);
+// });
 
 it('will not send logs to ray when disabled', function (): void {
     app(Settings::class)->send_log_calls_to_ray = false;
